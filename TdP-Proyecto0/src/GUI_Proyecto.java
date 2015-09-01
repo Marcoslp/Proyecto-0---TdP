@@ -65,7 +65,7 @@ public class GUI_Proyecto extends JFrame {
 				}
 				else{
 					if(contador==1){
-						imagenSimpson.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\trabajo 2.jpg"));
+						imagenSimpson.setIcon(new ImageIcon("trabajo 2.jpg"));
 						frase="Un excelente empleado Smithers, una sonrisa en los labios y una";
 						labelFrases.setText(frase);
 						labelFrases2.setText("canción en el corazón. Asciendalo.");
@@ -73,7 +73,7 @@ public class GUI_Proyecto extends JFrame {
 					}
 					else{
 						if(contador==2){
-							imagenSimpson.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\trabajo 3.jpg"));
+							imagenSimpson.setIcon(new ImageIcon("trabajo 3.jpg"));
 							frase="Trabaaajo muuy duroo.. coomoo un esclaavoo";
 							labelFrases3.setText(frase);
 							labelFrases2.setText("");
@@ -82,7 +82,7 @@ public class GUI_Proyecto extends JFrame {
 						}
 						else{
 							if(contador==3)
-								imagenSimpson.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\trabajo 4.jpg"));
+								imagenSimpson.setIcon(new ImageIcon("trabajo 4.jpg"));
 								botonFrase.setEnabled(false);
 								
 						}
@@ -97,7 +97,7 @@ public class GUI_Proyecto extends JFrame {
 		BotonReiniciar = new JButton("Reiniciar");
 		BotonReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				imagenSimpson.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\trabajo1.jpg"));
+				imagenSimpson.setIcon(new ImageIcon("trabajo1.jpg"));
 				labelFrases.setText("");
 				labelFrases2.setText("");
 				labelFrases3.setText("");
@@ -113,7 +113,7 @@ public class GUI_Proyecto extends JFrame {
 		contentPane.add(labelFrases);
 		
 		imagenSimpson = new JLabel("");
-		imagenSimpson.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\trabajo1.jpg"));
+		imagenSimpson.setIcon(new ImageIcon("trabajo1.jpg"));
 		imagenSimpson.setBounds(139, 11, 300, 201);
 		contentPane.add(imagenSimpson);
 		
