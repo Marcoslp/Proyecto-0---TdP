@@ -14,7 +14,9 @@ import java.awt.event.ActionEvent;
 public class GUI {
 
 	private JFrame frame;
-
+	private JLabel Frase, Imagen;
+	private JButton Boton;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,16 +42,16 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel Imagen = new JLabel();
+		Imagen = new JLabel();
 		Imagen.setBounds(86, 15, 181, 285);
 		frame.getContentPane().add(Imagen);
 		Imagen.setIcon(new ImageIcon(getClass().getResource("/Imagenes/SeñorTopo.jpg")));
 		
-		JLabel Frase = new JLabel("");
+		Frase = new JLabel("");
 		Frase.setBounds(40, 311, 313, 30);
 		frame.getContentPane().add(Frase);
 		
-		JButton Boton = new JButton("Ver frase");
+		Boton = new JButton("Ver frase");
 		Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Frase.setText("Aprobar TDP es como comer una naranja");
