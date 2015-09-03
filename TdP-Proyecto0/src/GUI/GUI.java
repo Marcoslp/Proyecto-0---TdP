@@ -54,7 +54,7 @@ public class GUI {
 		Boton = new JButton("Ver frase");
 		Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Frase.setText("Aprobar TDP es como comer una naranja");
+				Frase.setText("Tener un buen matrimonio es como comer una naranja");
 				Imagen.setIcon(new ImageIcon(getClass().getResource("/Imagenes/SeñorTopo2.jpg")));
 				Boton.setEnabled(false);
 			}
