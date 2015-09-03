@@ -35,7 +35,7 @@ public class GUI {
 
 	
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Proyecto 0");
 		frame.setBounds(100, 100, 379, 465);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
