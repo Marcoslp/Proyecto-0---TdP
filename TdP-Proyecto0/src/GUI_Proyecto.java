@@ -1,6 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -42,6 +42,9 @@ public class GUI_Proyecto extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI_Proyecto() {
+		
+		
+		
 		setTitle("Proyecto 0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 619, 378);
@@ -65,7 +68,7 @@ public class GUI_Proyecto extends JFrame {
 				}
 				else{
 					if(contador==1){
-						imagenSimpson.setIcon(new ImageIcon("trabajo 2.jpg"));
+						imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo 2.jpg")));
 						frase="Un excelente empleado Smithers, una sonrisa en los labios y una";
 						labelFrases.setText(frase);
 						labelFrases2.setText("canción en el corazón. Asciendalo.");
@@ -73,7 +76,7 @@ public class GUI_Proyecto extends JFrame {
 					}
 					else{
 						if(contador==2){
-							imagenSimpson.setIcon(new ImageIcon("trabajo 3.jpg"));
+							imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo 3.jpg")));
 							frase="Trabaaajo muuy duroo.. coomoo un esclaavoo";
 							labelFrases3.setText(frase);
 							labelFrases2.setText("");
@@ -82,7 +85,7 @@ public class GUI_Proyecto extends JFrame {
 						}
 						else{
 							if(contador==3)
-								imagenSimpson.setIcon(new ImageIcon("trabajo 4.jpg"));
+								imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo 4.jpg")));
 								botonFrase.setEnabled(false);
 								
 						}
@@ -97,7 +100,7 @@ public class GUI_Proyecto extends JFrame {
 		BotonReiniciar = new JButton("Reiniciar");
 		BotonReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				imagenSimpson.setIcon(new ImageIcon("trabajo1.jpg"));
+				imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo 1.jpg")));
 				labelFrases.setText("");
 				labelFrases2.setText("");
 				labelFrases3.setText("");
@@ -113,7 +116,7 @@ public class GUI_Proyecto extends JFrame {
 		contentPane.add(labelFrases);
 		
 		imagenSimpson = new JLabel("");
-		imagenSimpson.setIcon(new ImageIcon("trabajo1.jpg"));
+		//imagenSimpson.setIcon(new ImageIcon(imagen1));
 		imagenSimpson.setBounds(139, 11, 300, 201);
 		contentPane.add(imagenSimpson);
 		
