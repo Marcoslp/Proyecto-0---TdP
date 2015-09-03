@@ -100,7 +100,7 @@ public class GUI_Proyecto extends JFrame {
 		BotonReiniciar = new JButton("Reiniciar");
 		BotonReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo 1.jpg")));
+				imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo1.jpg")));
 				labelFrases.setText("");
 				labelFrases2.setText("");
 				labelFrases3.setText("");
@@ -116,7 +116,7 @@ public class GUI_Proyecto extends JFrame {
 		contentPane.add(labelFrases);
 		
 		imagenSimpson = new JLabel("");
-		//imagenSimpson.setIcon(new ImageIcon(imagen1));
+		imagenSimpson.setIcon(new ImageIcon(getClass().getResource("/Imagenes/trabajo1.jpg")));
 		imagenSimpson.setBounds(139, 11, 300, 201);
 		contentPane.add(imagenSimpson);
 		
