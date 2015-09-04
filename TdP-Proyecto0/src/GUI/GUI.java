@@ -54,7 +54,7 @@ public class GUI {
 		Boton = new JButton("Ver frase");
 		Boton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Frase.setText("Tener un buen matrimonio es como comer una naranja");
+				Frase.setText("Comer una naranja es como llevar un buen matrimonio");
 				Imagen.setIcon(new ImageIcon(getClass().getResource("/Imagenes/SeñorTopo2.jpg")));
 				Boton.setEnabled(false);
 			}
