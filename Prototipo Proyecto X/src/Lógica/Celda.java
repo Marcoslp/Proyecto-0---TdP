@@ -17,6 +17,7 @@ public class Celda {
 	protected Pared miPared;
 	protected PowerUp [] misPowerUps;
 	protected Enemigo [] misEnemigos;
+	protected Posicion miPosicion;
 	
 	
 	//Constructor
@@ -26,14 +27,18 @@ public class Celda {
 		miPared = p;
 	}
 	
-	protected Celda(){
+	public Celda(){
 		
 	}
 	
 	//Operaciones
 	
-	public void recibirBomberman (Bomberman b, int direccion) {
-		
+	// Recibir Bomberman cambio, ahora tiene un parámetro
+	public void recibirBomberman(Bomberman b) {
+		if(miPared == null){
+			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
+			miBomberman=b;
+		}
 	}
 	
 	public void setBomberman(Bomberman b){
@@ -42,6 +47,14 @@ public class Celda {
 
 	public void recibirEnemigo (Enemigo e, int direccion) {
 		
+	}
+	
+	public Pared obtenerPared(){
+		return miPared;
+	}
+	
+	public void establecerPared(Pared p){
+		miPared=p;
 	}
 
 	
