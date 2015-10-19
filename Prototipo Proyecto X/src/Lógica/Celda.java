@@ -68,5 +68,26 @@ public class Celda {
 		return miPosicion;
 	}
 
+	public void eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
+		boolean cortar = false;
+		
+		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
+			cortar = misEnemigos[i] == e;
+			if(cortar)
+				misEnemigos[i] = null;
+		}		
+	}
+
+	public void añadirEnemigo(Enemigo e) { //Busca el primer lugar libre y se lo asiga al enemigo
+		boolean cortar = false;
+		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
+			cortar = misEnemigos[i] != null;
+			if(cortar)
+				misEnemigos[i] = e;
+		}
+		
+	}
+	
+
 	
 }

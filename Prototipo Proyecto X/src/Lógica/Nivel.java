@@ -197,4 +197,8 @@ public class Nivel {
 	public Celda obtenerCelda(int i, int j){
 		return misCeldas[i][j];
 	}
+	
+	public int obtenerMarcadorTiempo(){
+		return marcadorTiempo;		
+	}
 }

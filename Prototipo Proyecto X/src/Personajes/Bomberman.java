@@ -85,7 +85,23 @@ public class Bomberman {
 	
 	public boolean obtenerModoDios () {
 		
-		return modoDios;
+		return this.modoDios;
 		
+	}
+	
+	public int obtenerCapacidadBombas(){
+		return this.capacidadBombas;
+	}
+	
+	public void establecerCapacidadBombas(int i){
+		this.capacidadBombas = i;
+	}
+	
+	public Bomba obtenerBomba(){
+		return this.miBomba;
+	}
+	
+	public void aumentarCapacidadBombas(){
+		this.capacidadBombas++;
 	}
 }

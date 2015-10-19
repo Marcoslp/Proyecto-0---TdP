@@ -21,7 +21,7 @@ public abstract class Pared {
 	
 	public abstract void recibirBomberman (Bomberman b);
 
-	public abstract  void recibirEnemigo (Enemigo e, int direccion);
+	public abstract  void recibirEnemigo (Enemigo e);
 	
 	public abstract boolean destruirPared () ;
 	

@@ -19,7 +19,7 @@ public class Bombality extends PowerUp{
 	//Operaciones
 	
 	public void powa (Bomberman b) {
-		
+		b.aumentarCapacidadBombas();
 	}
 
 }

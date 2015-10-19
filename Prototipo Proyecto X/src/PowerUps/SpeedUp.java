@@ -17,8 +17,8 @@ public class SpeedUp extends PowerUp  {
 	
 	//Operaciones
 	
-	public void powa (Bomberman B) {
-		
+	public void powa (Bomberman b) {
+		b.DuplicarVelocidad();
 	}
 
 }
