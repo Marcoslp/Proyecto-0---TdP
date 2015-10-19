@@ -30,6 +30,8 @@ public abstract class Enemigo {
 	
 	public void matar () {
 		
+		miNivel.matarBomberman ();
+		
 	}
 	
 	public Posicion obtenerPosicion () {

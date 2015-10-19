@@ -134,7 +134,17 @@ public class Nivel {
 		misCeldas[x][y].setBomberman(null);
 	}
 	
-	public void MoverEnemigo (Enemigo e) {
+	public void moverEnemigo (Enemigo e) {
+		
+	}
+
+	public void matarBomberman() {
+		
+		miBomberman.morir();
+		
+	}
+
+	public void matarEnemigo() {
 		
 	}
 }
