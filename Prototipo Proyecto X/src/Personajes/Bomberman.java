@@ -17,30 +17,32 @@ public class Bomberman {
 	
 	//Constructor
 	
-	public Bomberman (int x, int y) {
+	public Bomberman (int x, int y, Nivel lvl){
 		
 		miPosicion.establecerX(x);
 		miPosicion.establecerY(y);
 		modoDios = false;
-		
+		velocidad=15;
+		miNivel= lvl;
+		miBomba= new Bomba();
 	}
 	
 	//Operaciones
 	
 	public void moverIzquierda () {
-		
+		miNivel.moverBomberman(1);
 	}
 	
 	public void moverDerecha () {
-		
+		miNivel.moverBomberman(2);
 	}
 
 	public void moverArriba () {
-		
+		miNivel.moverBomberman(3);
 	}
 
 	public void moverAbajo() {
-		
+		miNivel.moverBomberman(4);
 	}
 
 	public void ponerBomba () {
