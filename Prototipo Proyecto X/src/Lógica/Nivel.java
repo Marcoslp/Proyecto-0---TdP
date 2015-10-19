@@ -21,8 +21,8 @@ public class Nivel {
 	
 	//Constructor
 	
-	public Nivel (Bomberman b, Enemigo[] e, PowerUp [] p) {
-		miBomberman = b;
+	public Nivel (Enemigo[] e, PowerUp [] p) {
+		miBomberman = new Bomberman(1,1);
 		misEnemigos = e;
 		misPowerUps = p;
 		marcadorPuntos=0;
