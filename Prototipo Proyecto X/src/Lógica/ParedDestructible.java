@@ -1,12 +1,13 @@
-package Bomberman;
+package Lógica;
 
-public class ParedIndestructible extends Pared{
+
+public class ParedDestructible extends Pared{
 	
 	//Atributos
 	
 	//Constructor
 	
-	public ParedIndestructible () {
+	public ParedDestructible () {
 		
 	}
 	
@@ -26,4 +27,7 @@ public class ParedIndestructible extends Pared{
 	public void recibirEnemigo (Enemigo e, int direccion) {
 		
 	}
+	
+	
+
 }

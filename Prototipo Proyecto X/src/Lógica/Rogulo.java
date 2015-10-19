@@ -1,4 +1,5 @@
-package Bomberman;
+package Lógica;
+
 
 public class Rogulo extends Enemigo {
 	

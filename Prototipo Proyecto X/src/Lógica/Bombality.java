@@ -1,4 +1,6 @@
-package Bomberman;
+package Lógica;
+
+
 
 public class Bombality extends PowerUp{
 	

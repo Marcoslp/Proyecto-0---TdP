@@ -1,4 +1,4 @@
-package Bomberman;
+package Lógica;
 
 public class Posicion {
 	
