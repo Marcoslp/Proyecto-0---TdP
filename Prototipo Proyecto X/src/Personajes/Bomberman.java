@@ -49,6 +49,8 @@ public class Bomberman {
 
 	public void morir () {
 		
+		miNivel.matarBomberman();
+		
 	}
 	
 	public void añadirPowerUp (PowerUp p) {

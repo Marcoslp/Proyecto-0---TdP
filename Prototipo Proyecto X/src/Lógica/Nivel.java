@@ -90,7 +90,17 @@ public class Nivel {
 		
 	}
 	
-	public void MoverEnemigo (Enemigo e) {
+	public void moverEnemigo (Enemigo e) {
+		
+	}
+
+	public void matarBomberman() {
+		
+		miBomberman.morir();
+		
+	}
+
+	public void matarEnemigo() {
 		
 	}
 }

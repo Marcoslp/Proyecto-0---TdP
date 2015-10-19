@@ -12,7 +12,7 @@ public class Altair extends Enemigo {
 		
 		super(x,y);
 		modoDios = true;       /*Estos son enemigos los que pueden
-						        *atravesar paredes destruibles */
+						        *atravesar paredes destructibles */
 		
 	}
 	
@@ -20,6 +20,7 @@ public class Altair extends Enemigo {
 	
 	public void morir () {
 		
+		miNivel.matarEnemigo();
 	}
 	
 	public void moverse (){
