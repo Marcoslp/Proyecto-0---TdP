@@ -37,7 +37,11 @@ public class Celda {
 	public void recibirBomberman(Bomberman b) {
 		if(miPared == null){
 			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
+			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
 			miBomberman=b;
+		}
+		else{
+			miPared.recibirBomberman(b);
 		}
 	}
 	
@@ -55,6 +59,10 @@ public class Celda {
 	
 	public void establecerPared(Pared p){
 		miPared=p;
+	}
+	
+	public Posicion obtenerPosicion(){
+		return miPosicion;
 	}
 
 	

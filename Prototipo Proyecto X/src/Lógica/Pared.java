@@ -19,7 +19,7 @@ public abstract class Pared {
 	
 	//Operaciones 	
 	
-	public abstract void recibirBomberman (Bomberman b, int direccion);
+	public abstract void recibirBomberman (Bomberman b);
 
 	public abstract  void recibirEnemigo (Enemigo e, int direccion);
 	

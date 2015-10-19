@@ -126,10 +126,11 @@ public class Nivel {
 			}
 			break;
 			case 4:{
-				misCeldas[x-1][y+1].recibirBomberman(miBomberman);
+				misCeldas[x][y+1].recibirBomberman(miBomberman);
 			}
 			break;
 		}
+		//Preguntar :D
 		misCeldas[x][y].setBomberman(null);
 	}
 	

@@ -23,8 +23,11 @@ public class ParedDestructible extends Pared{
 		return seCumplio;
 	}
 	
-	public void recibirBomberman (Bomberman b, int direccion) {
-		
+	public void recibirBomberman (Bomberman b) {
+		if(b.obtenerModoDios()){
+			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
+			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerY());
+		}
 	}
 
 	public void recibirEnemigo (Enemigo e, int direccion) {

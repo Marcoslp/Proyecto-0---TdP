@@ -23,7 +23,7 @@ public class ParedIndestructible extends Pared{
 		return seCumplio;
 	}
 	
-	public void recibirBomberman (Bomberman b, int direccion) {
+	public void recibirBomberman (Bomberman b) {
 		
 	}
 
