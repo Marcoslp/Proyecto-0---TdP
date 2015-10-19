@@ -91,17 +91,30 @@ public class Nivel {
 			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
-			while(!termine && i<3){
+			while (i < 3){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
 					misEnemigos[i] = new Rogulo (Ex,Ey);
+					i++;
+					}
 				}
+				while (i<5) {
+					int Fx= rnd.nextInt(30);
+					int Fy= rnd.nextInt(12);
+					if(misCeldas[Fx][Fy].obtenerPared() == null){
+						misEnemigos[i] = new Altair (Fx,Fy);
+						i++;
+						}
+				while (i<6) {
+					int Gx= rnd.nextInt(30);
+					int Gy= rnd.nextInt(12);
+					if(misCeldas[Gx][Gy].obtenerPared() == null){
+						misEnemigos[i] = new Sirius (Gx,Gy);
+						i++;
+						}
+					}
 				}
-			
-				
-			
-			
 	}
 	
 	//Operaciones
