@@ -1,4 +1,7 @@
-package Lógica;
+package PowerUps;
+
+import Lógica.Posicion;
+import Personajes.Bomberman;
 
 
 public abstract class PowerUp {

@@ -1,4 +1,6 @@
-package Lógica;
+package PowerUps;
+
+import Personajes.Bomberman;
 
 
 

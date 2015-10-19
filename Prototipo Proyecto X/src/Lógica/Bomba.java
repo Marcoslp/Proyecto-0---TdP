@@ -1,5 +1,7 @@
 package Lógica;
 
+import Personajes.Bomberman;
+
 
 public class Bomba {
 	

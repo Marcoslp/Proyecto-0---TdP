@@ -1,6 +1,7 @@
-package Lógica;
+package Personajes;
 
-
+import Lógica.*;
+import PowerUps.PowerUp;
 
 public class Bomberman {
 	

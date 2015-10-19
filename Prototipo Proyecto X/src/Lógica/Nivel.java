@@ -1,5 +1,9 @@
 package Lógica;
 
+import Personajes.Bomberman;
+import Personajes.Enemigo;
+import PowerUps.PowerUp;
+
 
 public class Nivel {
 	

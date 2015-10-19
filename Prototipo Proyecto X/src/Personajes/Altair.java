@@ -1,4 +1,6 @@
-package Lógica;
+package Personajes;
+import Lógica.*;
+
 
 public class Altair extends Enemigo {
 	

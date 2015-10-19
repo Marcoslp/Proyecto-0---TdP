@@ -1,5 +1,8 @@
 package Lógica;
 
+import Personajes.Bomberman;
+import Personajes.Enemigo;
+
 
 public abstract class Pared {
 	

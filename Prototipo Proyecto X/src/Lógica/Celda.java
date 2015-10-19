@@ -1,5 +1,9 @@
 package Lógica;
 
+import Personajes.Bomberman;
+import Personajes.Enemigo;
+import PowerUps.PowerUp;
+
 
 public abstract class Celda {
 	

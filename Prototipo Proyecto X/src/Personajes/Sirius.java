@@ -1,5 +1,6 @@
-package Lógica;
+package Personajes;
 
+import Lógica.*;
 
 public class Sirius extends Enemigo {
 	

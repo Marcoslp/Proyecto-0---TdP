@@ -1,13 +1,15 @@
-package Lógica;
+package PowerUps;
+
+import Personajes.Bomberman;
 
 
-public class Fatality extends PowerUp{
+public class Masacrality extends PowerUp{
 	
 	//Atributos
 	
 	//Constructor
 	
-	public Fatality (int x, int y) {
+	public Masacrality (int x, int y) {
 		
 		super(x,y);
 		
