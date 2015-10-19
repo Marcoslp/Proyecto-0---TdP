@@ -7,14 +7,16 @@ public class Bomba {
 	
 	//Atributos
 	
-	protected int alcance;
+	protected static int alcance = 1;
 	protected Bomberman miBomberman;
 	protected Posicion miPosicion;
 	
 	//Constructor
 	
-	public Bomba () {
-		alcance =1;
+	public Bomba (Bomberman b) {
+		miBomberman = b;
+		miPosicion.establecerX(miBomberman.obtenerPosicion().obtenerX());
+		miPosicion.establecerY(miBomberman.obtenerPosicion().obtenerY());
 	}
 	
 	//Operaciones
@@ -28,6 +30,13 @@ public class Bomba {
 		alcance *= 2;
 		
 	}
+
+	public int obtenerAlcance() {
+		
+		return alcance;
+		
+	}
+	
 
 	
 

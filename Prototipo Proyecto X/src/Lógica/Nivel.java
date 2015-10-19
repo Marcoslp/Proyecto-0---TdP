@@ -1,8 +1,7 @@
 package Lógica;
 
-import Personajes.Bomberman;
+import Personajes.*;
 import java.util.Random;
-import Personajes.Enemigo;
 import PowerUps.PowerUp;
 
 
@@ -22,9 +21,8 @@ public class Nivel {
 	
 	//Constructor
 	
-	public Nivel (Enemigo[] e, PowerUp [] p) {
+	public Nivel (PowerUp [] p) {
 		miBomberman = new Bomberman(1,1,this);
-		misEnemigos = e;
 		misPowerUps = p;
 		marcadorPuntos=0;
 		
@@ -89,11 +87,28 @@ public class Nivel {
 				if(aux == (cantParedes/2))
 					termine=true;
 			}
+			
+			misEnemigos = new Enemigo [6];
+			termine = false;
+			int i = 0;
+			while(!termine && i<3){
+				int Ex= rnd.nextInt(30);
+				int Ey= rnd.nextInt(12);
+				if(misCeldas[Ex][Ey].obtenerPared() == null){
+					misEnemigos[i] = new Rogulo (Ex,Ey);
+				}
+				}
+			
+				
+			
+			
 	}
 	
 	//Operaciones
 	
-	public void explosion (Posicion e, int alcance) {
+	public void explosion (Posicion e, Bomba bomb) {
+		
+		
 		
 	}
 	
@@ -130,12 +145,30 @@ public class Nivel {
 			}
 			break;
 		}
-		//Preguntar :D
-		misCeldas[x][y].setBomberman(null);
 	}
-	
-	public void moverEnemigo (Enemigo e) {
 		
+	
+	public void moverEnemigo (Enemigo e, int dir) {
+		int x = e.obtenerPosicion().obtenerX();
+		int y = e.obtenerPosicion().obtenerY();
+		switch(dir){
+			case 1:{
+				misCeldas[x-1][y].recibirBomberman(miBomberman);
+			}
+			break;
+			case 2:{
+				misCeldas[x+1][y].recibirBomberman(miBomberman);
+			}
+			break;
+			case 3:{
+				misCeldas[x][y-1].recibirBomberman(miBomberman);
+			}
+			break;
+			case 4:{
+				misCeldas[x][y+1].recibirBomberman(miBomberman);
+			}
+			break;
+		}
 	}
 
 	public void matarBomberman() {
@@ -144,7 +177,7 @@ public class Nivel {
 		
 	}
 
-	public void matarEnemigo() {
+	public void matarEnemigo(Enemigo e) {
 		
 	}
 	

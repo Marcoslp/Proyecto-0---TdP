@@ -10,6 +10,8 @@ public class Sirius extends Enemigo {
 	
 	//Atributos
 	
+	protected static final  int puntuacion = 50;
+	
 	//Constructor
 	
 	public Sirius (int x, int y) {
@@ -21,7 +23,8 @@ public class Sirius extends Enemigo {
 	//Operaciones
 	
 	public void morir () {
-		
+		miNivel.matarEnemigo(this);
+		miNivel.incrementarPuntuacion(puntuacion);
 	}
 	
 	public void moverse (){

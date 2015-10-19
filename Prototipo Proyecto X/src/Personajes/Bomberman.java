@@ -24,7 +24,7 @@ public class Bomberman {
 		modoDios = false;
 		velocidad=15;
 		miNivel= lvl;
-		miBomba= new Bomba();
+		miBomba= new Bomba(this);
 	}
 	
 	//Operaciones
@@ -46,7 +46,7 @@ public class Bomberman {
 	}
 
 	public void ponerBomba () {
-		miNivel.explosion(this.miPosicion, miBomba.obtenerAlcance());
+		miNivel.explosion(this.miPosicion, miBomba);
 	}
 
 	public void morir () {

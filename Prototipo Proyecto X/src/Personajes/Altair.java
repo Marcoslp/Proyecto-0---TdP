@@ -6,13 +6,17 @@ public class Altair extends Enemigo {
 	
 	//Atributos
 	
+	protected static final  int puntuacion = 20;
+	
 	//Constructor
+	
+	/*Estos son enemigos los que pueden
+     *atravesar paredes destructibles */
 	
 	public Altair (int x, int y) {
 		
 		super(x,y);
-		modoDios = true;       /*Estos son enemigos los que pueden
-						        *atravesar paredes destructibles */
+		modoDios = true;      
 		
 	}
 	
@@ -20,7 +24,8 @@ public class Altair extends Enemigo {
 	
 	public void morir () {
 		
-		miNivel.matarEnemigo();
+		miNivel.matarEnemigo(this);
+		miNivel.incrementarPuntuacion(puntuacion);
 	}
 	
 	public void moverse (){
