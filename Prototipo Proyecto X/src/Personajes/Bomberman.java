@@ -46,7 +46,7 @@ public class Bomberman {
 	}
 
 	public void ponerBomba () {
-		
+		miNivel.explosion(this.miPosicion, miBomba.obtenerAlcance());
 	}
 
 	public void morir () {

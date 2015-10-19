@@ -147,4 +147,8 @@ public class Nivel {
 	public void matarEnemigo() {
 		
 	}
+	
+	public Celda obtenerCelda(int i, int j){
+		return misCeldas[i][j];
+	}
 }

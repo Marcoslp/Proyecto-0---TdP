@@ -25,6 +25,8 @@ public class ParedDestructible extends Pared{
 	
 	public void recibirBomberman (Bomberman b) {
 		if(b.obtenerModoDios()){
+			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
+			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
 			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerY());
 		}

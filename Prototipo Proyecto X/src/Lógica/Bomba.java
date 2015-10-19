@@ -14,7 +14,7 @@ public class Bomba {
 	//Constructor
 	
 	public Bomba () {
-		
+		alcance =1;
 	}
 	
 	//Operaciones

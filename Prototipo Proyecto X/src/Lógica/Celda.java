@@ -18,6 +18,7 @@ public class Celda {
 	protected PowerUp [] misPowerUps;
 	protected Enemigo [] misEnemigos;
 	protected Posicion miPosicion;
+	protected Nivel miNivel;
 	
 	
 	//Constructor
@@ -36,6 +37,8 @@ public class Celda {
 	// Recibir Bomberman cambio, ahora tiene un parámetro
 	public void recibirBomberman(Bomberman b) {
 		if(miPared == null){
+			Celda celdaAnterior = miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
+			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
 			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
 			miBomberman=b;
