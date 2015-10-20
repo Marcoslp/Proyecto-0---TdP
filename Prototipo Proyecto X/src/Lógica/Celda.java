@@ -30,11 +30,16 @@ public class Celda {
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
-		
+		graficos = new ComponenteGrafico(3);
 	}
 	
-	public Celda(){
-		
+	public Celda(int x,int y, Nivel n){
+		miBomberman = null;
+		miPared = null;
+		misEnemigos = new Enemigo[6];
+		miPosicion = new Posicion(x,y);
+		miNivel = n;
+		graficos = new ComponenteGrafico(3);
 	}
 	
 	//Operaciones
