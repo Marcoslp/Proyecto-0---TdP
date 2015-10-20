@@ -24,7 +24,8 @@ public abstract class Pared {
 	public abstract  void recibirEnemigo (Enemigo e);
 	
 	public abstract boolean destruirPared () ;
-	
+
+	public abstract void establecerImagen() ;
 	
 
 }

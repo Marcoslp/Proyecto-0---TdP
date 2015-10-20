@@ -1,5 +1,8 @@
 package Lógica;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import Grafica.ComponenteGrafico;
 import Personajes.Bomberman;
 import Personajes.Enemigo;
@@ -30,7 +33,13 @@ public class Celda {
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
+		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new ComponenteGrafico(3);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Piso.png")), 0);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedNoDestruible.png")), 1);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedDestructible.png")), 2);
+		p.establecerImagen(); //EVITA EL INSTANCE OF Y HACE QUE LA PARED PONGA LA IMAGEN
+		graficos.obtenerImagenActual().setBounds(x*32, y*32, graficos.obtenerAncho(), graficos.obtenerAlto());
 	}
 	
 	public Celda(int x,int y, Nivel n){
@@ -39,7 +48,14 @@ public class Celda {
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
+		
+		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new ComponenteGrafico(3);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Piso.png")), 0);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedNoDestruible.png")), 1);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedDestructible.png")), 2);
+		graficos.establecerimagenActual(0);
+		graficos.obtenerImagenActual().setBounds(x*32, y*32, graficos.obtenerAncho(), graficos.obtenerAlto());
 	}
 	
 	//Operaciones
@@ -81,6 +97,7 @@ public class Celda {
 	
 	public void establecerPared(Pared p){
 		miPared=p;
+		p.establecerImagen(); //CAMBIA EL ICONO DEL JLABEL
 	}
 	
 	public Posicion obtenerPosicion(){
@@ -110,6 +127,11 @@ public class Celda {
 		}
 	}
 	
+	public ComponenteGrafico obtenerGraficos(){
+		return graficos;
+	}
+	
+
 
 	
 }

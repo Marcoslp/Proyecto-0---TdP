@@ -11,7 +11,7 @@ public class ParedDestructible extends Pared{
 	//Constructor
 	
 	public ParedDestructible () {
-		
+		super();
 	}
 	
 	//Operaciones
@@ -19,6 +19,7 @@ public class ParedDestructible extends Pared{
 	public boolean destruirPared () {
 		boolean seCumplio = true;
 		miCelda.obtenerNivel().incrementarPuntuacion(10);
+		miCelda.obtenerGraficos().establecerimagenActual(0); //MUESTRA EL PISO NUEVAMENTE DESPUES DE SER DESTRUIDA
 		return seCumplio;
 	}
 	
@@ -40,6 +41,10 @@ public class ParedDestructible extends Pared{
 			e.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerY());
 			this.miCelda.añadirEnemigo(e);
 		}
+	}
+
+	public void establecerImagen() {
+		miCelda.obtenerGraficos().establecerimagenActual(2);		
 	}
 	
 	

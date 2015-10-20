@@ -1,7 +1,10 @@
 package Lógica;
 
+import Grafica.GUI;
 import Personajes.*;
+
 import java.util.Random;
+
 import PowerUps.PowerUp;
 
 
@@ -21,9 +24,9 @@ public class Nivel {
 	
 	//Constructor
 	
-	public Nivel (PowerUp [] p) {
-		miBomberman = new Bomberman(1,1,this);
-		misPowerUps = p;
+	public Nivel (GUI miGui) {
+		//miBomberman = new Bomberman(1,1,this);
+		//misPowerUps = p;
 		marcadorPuntos=0;
 		
 		//Ver como modelar el marcador de tiempo
@@ -33,7 +36,8 @@ public class Nivel {
 		misCeldas= new Celda[largo][ancho];
 		for(int i=0; i<largo; i++){
 			for(int j=0; j<ancho; j++){
-				misCeldas[i][j]= new Celda();
+				misCeldas[i][j]= new Celda(i,j,this);
+				miGui.add(misCeldas[i][j].obtenerGraficos().obtenerImagenActual());
 			}
 		}
 		
@@ -52,7 +56,7 @@ public class Nivel {
 			miPared= new ParedIndestructible();
 			misCeldas[j][30].establecerPared(miPared);
 		}
-		
+		/*
 		//Seteo al Bomberman en la posición inicial
 		misCeldas[1][1].setBomberman(miBomberman);
 		
@@ -108,7 +112,8 @@ public class Nivel {
 						}
 				}
 				misEnemigos[5] = new Sirius (29,11);
-				}
+				}*/
+	}
 	
 	//Operaciones
 	
