@@ -13,7 +13,7 @@ public abstract class Pared {
 	
 	//Constructor
 	
-	public Pared () {
+	protected Pared () {
 		
 	}
 	

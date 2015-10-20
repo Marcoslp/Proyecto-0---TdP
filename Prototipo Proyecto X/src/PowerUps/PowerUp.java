@@ -23,7 +23,7 @@ public abstract class PowerUp {
 	
 	//Operaciones
 	
-	public abstract void powa (Bomberman B);
+	public abstract void empower (Bomberman B);
 	
 	public Posicion obtenerPosicion () {
 		return miPosicion;

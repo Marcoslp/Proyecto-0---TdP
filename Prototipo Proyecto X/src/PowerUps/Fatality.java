@@ -17,7 +17,7 @@ public class Fatality extends PowerUp{
 	
 	//Operaciones
 	
-	public void powa (Bomberman b) {
+	public void empower (Bomberman b) {
 		b.obtenerBomba().duplicarAlcance();
 	}
 

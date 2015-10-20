@@ -17,8 +17,7 @@ public class ParedDestructible extends Pared{
 	//Operaciones
 	
 	public boolean destruirPared () {
-		
-		boolean seCumplio = false;
+		boolean seCumplio = true;
 		miCelda.obtenerNivel().incrementarPuntuacion(10);
 		return seCumplio;
 	}

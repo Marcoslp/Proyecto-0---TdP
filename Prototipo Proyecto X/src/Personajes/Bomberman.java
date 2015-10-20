@@ -56,7 +56,7 @@ public class Bomberman {
 	}
 	
 	public void añadirPowerUp (PowerUp p) {
-		p.powa(this);
+		p.empower(this);
 	}
 	
 	public Posicion obtenerPosicion () {

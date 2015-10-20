@@ -52,8 +52,17 @@ public class Celda {
 		miBomberman= b;
 	}
 
-	public void recibirEnemigo (Enemigo e, int direccion) {
-		
+	public void recibirEnemigo (Enemigo e){
+		if(miPared == null){
+			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
+			celdaAnterior.eliminarEnemigo(e);
+			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerX());
+			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerY());
+			this.añadirEnemigo(e);
+		}
+		else{
+			miPared.recibirEnemigo(e);
+		}
 	}
 	
 	public Pared obtenerPared(){
@@ -89,7 +98,6 @@ public class Celda {
 			if(cortar)
 				misEnemigos[i] = e;
 		}
-		
 	}
 	
 

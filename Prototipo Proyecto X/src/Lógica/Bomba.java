@@ -26,15 +26,11 @@ public class Bomba {
 	}
 	
 	public void duplicarAlcance () {
-		
-		alcance *= 2;
-		
+		alcance *= 2;		
 	}
 
 	public int obtenerAlcance() {
-		
 		return alcance;
-		
 	}
 	
 

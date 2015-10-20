@@ -106,16 +106,9 @@ public class Nivel {
 						misEnemigos[i] = new Altair (Fx,Fy);
 						i++;
 						}
-				while (i<6) {
-					int Gx= rnd.nextInt(30);
-					int Gy= rnd.nextInt(12);
-					if(misCeldas[Gx][Gy].obtenerPared() == null){
-						misEnemigos[i] = new Sirius (Gx,Gy);
-						i++;
-						}
-					}
 				}
-	}
+				misEnemigos[5] = new Sirius (29,11);
+				}
 	
 	//Operaciones
 	
