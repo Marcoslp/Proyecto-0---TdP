@@ -1,5 +1,6 @@
 package Lógica;
 
+import Grafica.ComponenteGrafico;
 import Personajes.Bomberman;
 import Personajes.Enemigo;
 import PowerUps.PowerUp;
@@ -12,7 +13,7 @@ public class Celda {
 	 */
 	
 	//Atributos
-	
+	private ComponenteGrafico graficos;
 	protected Bomberman miBomberman;
 	protected Pared miPared;
 	protected PowerUp [] misPowerUps;
@@ -23,9 +24,13 @@ public class Celda {
 	
 	//Constructor
 	
-	public Celda (Pared p) {
-		
+	public Celda (int x,int y, Pared p, Nivel n) {
+		miBomberman = null;
 		miPared = p;
+		misEnemigos = new Enemigo[6];
+		miPosicion = new Posicion(x,y);
+		miNivel = n;
+		
 	}
 	
 	public Celda(){
