@@ -27,7 +27,7 @@ public class ParedIndestructible extends Pared{
 		
 	}
 
-	public void recibirEnemigo (Enemigo e, int direccion) {
+	public void recibirEnemigo (Enemigo e) {
 		
 	}
 }

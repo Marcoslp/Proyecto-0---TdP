@@ -17,18 +17,16 @@ public abstract class PowerUp {
 	
 	//Constructor
 	
-	public PowerUp (int x, int y) {
-		
+	protected PowerUp (int x, int y) {
+		miPosicion = new Posicion(x,y);
 	}
 	
 	//Operaciones
 	
-	abstract public void powa (Bomberman B);
+	public abstract void powa (Bomberman B);
 	
 	public Posicion obtenerPosicion () {
-		
 		return miPosicion;
-		
 	}
 	
 	public Nivel obtenerNivel(){

@@ -18,13 +18,13 @@ public class Bomberman {
 	//Constructor
 	
 	public Bomberman (int x, int y, Nivel lvl){
-		
 		miPosicion.establecerX(x);
 		miPosicion.establecerY(y);
 		modoDios = false;
 		velocidad=15;
 		miNivel= lvl;
 		miBomba= new Bomba(this);
+		capacidadBombas=1;
 	}
 	
 	//Operaciones
@@ -56,7 +56,7 @@ public class Bomberman {
 	}
 	
 	public void añadirPowerUp (PowerUp p) {
-		
+		p.powa(this);
 	}
 	
 	public Posicion obtenerPosicion () {
