@@ -19,7 +19,7 @@ public class ParedDestructible extends Pared{
 	public boolean destruirPared () {
 		
 		boolean seCumplio = false;
-		
+		miCelda.obtenerNivel().incrementarPuntuacion(10);
 		return seCumplio;
 	}
 	

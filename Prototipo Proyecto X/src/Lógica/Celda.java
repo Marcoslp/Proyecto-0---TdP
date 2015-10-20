@@ -67,7 +67,11 @@ public class Celda {
 	public Posicion obtenerPosicion(){
 		return miPosicion;
 	}
-
+	
+	public Nivel obtenerNivel(){
+		return miNivel;
+	}
+	
 	public void eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
 		boolean cortar = false;
 		
