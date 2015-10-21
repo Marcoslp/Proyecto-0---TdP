@@ -184,9 +184,7 @@ public class Nivel {
 	}
 
 	public void matarBomberman() {
-		
-		miBomberman.morir();
-		
+		miBomberman.morir();	
 	}
 
 	public void matarEnemigo(Enemigo e) {
