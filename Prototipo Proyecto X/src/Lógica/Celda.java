@@ -37,8 +37,8 @@ public class Celda {
 		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new ComponenteGrafico(3);
 		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Piso.png")), 0);
-		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedNoDestruible.png")), 1);
-		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedDestructible.png")), 2);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/paredInd.jpg")), 1);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/paredDes.jpg")), 2);
 		p.establecerImagen(); //EVITA EL INSTANCE OF Y HACE QUE LA PARED PONGA LA IMAGEN
 		graficos.obtenerImagenActual().setBounds(x*32, y*32, graficos.obtenerAncho(), graficos.obtenerAlto());
 	}
@@ -52,8 +52,8 @@ public class Celda {
 		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new ComponenteGrafico(3);
 		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Piso.png")), 0);
-		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedNoDestruible.png")), 1);
-		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ParedDestructible.png")), 2);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/paredInd.jpg")), 1);
+		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/paredDes.jpg")), 2);
 		graficos.establecerimagenActual(0);
 		graficos.obtenerImagenActual().setBounds(x*32, y*32, graficos.obtenerAncho(), graficos.obtenerAlto());
 	}
