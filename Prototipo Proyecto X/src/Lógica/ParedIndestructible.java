@@ -10,8 +10,8 @@ public class ParedIndestructible extends Pared{
 	
 	//Constructor
 	
-	public ParedIndestructible () {
-		super();
+	public ParedIndestructible (Celda c) {
+		super(c);
 	}
 	
 	//Operaciones
@@ -33,7 +33,8 @@ public class ParedIndestructible extends Pared{
 
 	
 	public void establecerImagen() {
-		//miCelda.obtenerGraficos().establecerimagenActual(1); //ELIGE LA IMAGEN
+		
+		miCelda.obtenerGraficos().establecerimagenActual(1); //ELIGE LA IMAGEN
 		//miCelda.obtenerGraficos().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32, miCelda.obtenerPosicion().obtenerY()*32, miCelda.obtenerGraficos().obtenerAncho(), miCelda.obtenerGraficos().obtenerAlto());
 		
 	}

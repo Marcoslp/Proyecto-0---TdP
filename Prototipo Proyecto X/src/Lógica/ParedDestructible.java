@@ -10,8 +10,8 @@ public class ParedDestructible extends Pared{
 	
 	//Constructor
 	
-	public ParedDestructible () {
-		super();
+	public ParedDestructible (Celda c) {
+		super(c);
 	}
 	
 	//Operaciones

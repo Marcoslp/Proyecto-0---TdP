@@ -13,8 +13,8 @@ public abstract class Pared {
 	
 	//Constructor
 	
-	protected Pared () {
-		
+	protected Pared (Celda miCelda) {
+		this.miCelda = miCelda;
 	}
 	
 	//Operaciones 	
