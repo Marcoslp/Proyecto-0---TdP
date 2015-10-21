@@ -38,16 +38,14 @@ public class GUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
 		contentPane = new JPanel();
-		contentPane.addKeyListener(new KeyAdapter() {
+		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				accion(e);
-			}
-
-			private void accion(KeyEvent e) {
-				
-			   switch(e.getKeyCode()){
-			   		case KeyEvent.VK_LEFT:
+				 switch(e.getKeyCode()){
+				  
+			   		case KeyEvent.VK_LEFT:{
+			   			
 			   			miNivel.obtenerBomberman().moverIzquierda();
+			   		}
 			   			break;
 			   		case KeyEvent.VK_RIGHT:
 			   			miNivel.obtenerBomberman().moverDerecha();
@@ -57,10 +55,10 @@ public class GUI extends JFrame {
 			   			break;
 			   		case KeyEvent.VK_DOWN:
 			   			miNivel.obtenerBomberman().moverAbajo();
-			   			
+			   			break;
 			   }
-						
 			}
+
 		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
