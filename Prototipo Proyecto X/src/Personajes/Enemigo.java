@@ -63,8 +63,7 @@ public abstract class Enemigo extends Thread {
 		while(!this.mDetener){
 			try {
 				Thread.sleep(1000);
-				this.moverse();
-				System.out.println("(x :"+this.miPosicion.obtenerX()+""+" , y:"+ this.miPosicion.obtenerY()+")");
+				this.moverse();				
 			} catch (InterruptedException e) { }
 		}
 	}

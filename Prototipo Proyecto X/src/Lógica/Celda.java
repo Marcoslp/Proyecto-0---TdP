@@ -69,6 +69,13 @@ public class Celda {
 			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
 			b.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
 			miBomberman=b;
+			for(int i = 0 ; i < misEnemigos.length; i++){
+				if(misEnemigos[i]!=null){
+					System.out.println("Bomberman toco enemigo");
+					break;
+				}
+					
+			}
 		}
 		else{
 			miPared.recibirBomberman(b);
@@ -81,11 +88,14 @@ public class Celda {
 
 	public void recibirEnemigo (Enemigo e){
 		if(miPared == null){
-			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
-			celdaAnterior.eliminarEnemigo(e);
+			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY()); 
+			celdaAnterior.eliminarEnemigo(e);	//LO QUITA DE LA CELDA ANTERIOR
 			e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
-			e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY());
+			e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
+			if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
+				System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+			}			
 			this.añadirEnemigo(e);
 		}
 		else{

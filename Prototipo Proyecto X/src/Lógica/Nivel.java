@@ -84,7 +84,7 @@ public class Nivel {
 			boolean termine=false;
 			Pared paredAux;
 			int aux=0;
-			
+			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
 				int Px= rnd.nextInt(30);
 				int Py= rnd.nextInt(12);
@@ -96,35 +96,41 @@ public class Nivel {
 				if(aux == (cantParedes/2))
 					termine=true;
 			}
-			
+			//SE INICILIZAN ENEMIGOS
+			//ROGULOS
 			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
-			while (i < 1){
+			while (i < 3){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
-					misEnemigos[i] = new Altair (Ex,Ey,this);
+					misEnemigos[i] = new Rogulo (Ex,Ey,this);
 					misCeldas[Ex][Ey].añadirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
-					
-						miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
 					misEnemigos[i].start();
 					i++;					
 					}
 				}
 				
+			//ALTAIR
+			while (i<5) {
+				int Fx= rnd.nextInt(30);
+				int Fy= rnd.nextInt(12);
+				if(misCeldas[Fx][Fy].obtenerPared() == null){
+					misEnemigos[i] = new Altair (Fx,Fy,this);
+					misCeldas[Fx][Fy].añadirEnemigo(misEnemigos[i]);
+					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
+					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					misEnemigos[i].start();
+					i++;					
+					}
+			}
 			/*
-				while (i<5) {
-					int Fx= rnd.nextInt(30);
-					int Fy= rnd.nextInt(12);
-					if(misCeldas[Fx][Fy].obtenerPared() == null){
-						misEnemigos[i] = new Altair (Fx,Fy);
-						i++;
-						}
-				}
-				misEnemigos[5] = new Sirius (29,11);
-				}*/
+			// SIRIUS
+			misEnemigos[5] = new Sirius (29,11);
+			}*/
 	}
 	
 	//Operaciones
