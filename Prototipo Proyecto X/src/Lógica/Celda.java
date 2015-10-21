@@ -83,8 +83,8 @@ public class Celda {
 		if(miPared == null){
 			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
 			celdaAnterior.eliminarEnemigo(e);
-			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerX());
-			e.obtenerPosicion().establecerY(obtenerPosicion().obtenerY());
+			e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
+			e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY());
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
 			this.añadirEnemigo(e);
 		}

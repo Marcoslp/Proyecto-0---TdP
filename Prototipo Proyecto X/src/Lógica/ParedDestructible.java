@@ -29,7 +29,8 @@ public class ParedDestructible extends Pared{
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
 			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
-			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerY());
+			b.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
+			
 			this.miCelda.setBomberman(b);
 		}
 	}
@@ -39,7 +40,8 @@ public class ParedDestructible extends Pared{
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
 			celdaAnterior.eliminarEnemigo(e);
 			e.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
-			e.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerY());
+			e.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
+			e.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
 			this.miCelda.añadirEnemigo(e);
 		}
 	}

@@ -57,5 +57,25 @@ public abstract class Enemigo extends Thread {
 	public ComponenteGrafico obtenerGrafico(){
 		return Graficos;
 	}
+	
+	public void run() {
+		// Ejecuto indefinidamente hasta que el flag sea verdadero.
+		while(!this.mDetener){
+			try {
+				Thread.sleep(1000);
+				this.moverse();
+				System.out.println("(x :"+this.miPosicion.obtenerX()+""+" , y:"+ this.miPosicion.obtenerY()+")");
+			} catch (InterruptedException e) { }
+		}
+	}
+	public void detener() {
+		this.interrupt(); 
+		this.mDetener = true;
+	}
+	
+	public void destruir() {
+		this.detener();
+		this.morir();
+	}
 
 }

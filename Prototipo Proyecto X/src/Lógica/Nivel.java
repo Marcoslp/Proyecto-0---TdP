@@ -100,14 +100,15 @@ public class Nivel {
 			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
-			while (i < 2){
+			while (i < 1){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
-					misEnemigos[i] = new Rogulo (Ex,Ey,this);
-					misCeldas[Ex][Ey].recibirEnemigo(misEnemigos[i]);
+					misEnemigos[i] = new Altair (Ex,Ey,this);
+					misCeldas[Ex][Ey].añadirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
-					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 1);
+					
+						miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
 					misEnemigos[i].start();
 					i++;					
 					}

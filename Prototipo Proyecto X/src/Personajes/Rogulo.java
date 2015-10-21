@@ -33,26 +33,7 @@ public class Rogulo extends Enemigo {
 		miNivel.matarEnemigo(this);
 		miNivel.incrementarPuntuacion(puntuacion);	
 	}
-	
-	public void run() {
-		// Ejecuto indefinidamente hasta que el flag sea verdadero.
-		while(!this.mDetener){
-			try {
-				Thread.sleep(1000);
-				this.moverse();
-			} catch (InterruptedException e) { }
-		}
-	}
-	public void detener() {
-		this.interrupt(); 
-		this.mDetener = true;
-	}
-	
-	public void destruir() {
-		this.detener();
-		this.morir();
-	}
-	
+			
 	public void moverse (){
 		Random r = new Random ();
 		int i = r.nextInt(4);
