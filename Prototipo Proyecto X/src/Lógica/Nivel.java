@@ -115,10 +115,9 @@ public class Nivel {
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
 					misEnemigos[i] = new EnemigoThread(new Rogulo (Ex,Ey));
-					i++;
-					System.out.println(misEnemigos[i]);
-					//miGui.add(misEnemigos[i].obtenerLogica().obtenerGrafico().obtenerImagenActual());
-					
+					misEnemigos[i].run();
+					miGui.add(misEnemigos[i].obtenerLogica().obtenerGrafico().obtenerImagenActual());
+					i++;					
 					}
 				}
 			/*
@@ -183,19 +182,19 @@ public class Nivel {
 		int x = e.obtenerPosicion().obtenerX();
 		int y = e.obtenerPosicion().obtenerY();
 		switch(dir){
-			case 1:{
+			case 0:{
 				misCeldas[x-1][y].recibirEnemigo(e);
 			}
 			break;
-			case 2:{
+			case 1:{
 				misCeldas[x+1][y].recibirEnemigo(e);
 			}
 			break;
-			case 3:{
+			case 2:{
 				misCeldas[x][y-1].recibirEnemigo(e);
 			}
 			break;
-			case 4:{
+			case 3:{
 				misCeldas[x][y+1].recibirEnemigo(e);
 			}
 			break;
