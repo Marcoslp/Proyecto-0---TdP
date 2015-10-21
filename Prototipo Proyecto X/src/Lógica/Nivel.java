@@ -1,6 +1,7 @@
 package Lógica;
 
 import Grafica.GUI;
+import InteligenciaEnemigos.EnemigoThread;
 import Personajes.*;
 
 import java.util.Random;
@@ -18,7 +19,7 @@ public class Nivel {
 	protected int marcadorTiempo;
 	protected int marcadorPuntos;
 	protected Bomberman miBomberman;
-	protected Enemigo[] misEnemigos;
+	protected EnemigoThread[] misEnemigos;
 	protected Celda [][] misCeldas;
 	protected PowerUp [] misPowerUps;
 	
@@ -76,7 +77,7 @@ public class Nivel {
 				largoAux+=2;
 				anchoAux=2;
 			}
-			/*
+			
 			Random rnd= new Random();
 			boolean termine=false;
 			Pared paredAux;
@@ -85,27 +86,42 @@ public class Nivel {
 			while(!termine){
 				int Px= rnd.nextInt(30);
 				int Py= rnd.nextInt(12);
-				if(misCeldas[Px][Py].obtenerPared() == null){
-					paredAux= new ParedDestructible();
+				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 0 && Py!=0)){
+					paredAux= new ParedDestructible(misCeldas[Px][Py]);
 					misCeldas[Px][Py].establecerPared(paredAux);
 					aux++;
 				}
 				if(aux == (cantParedes/2))
 					termine=true;
 			}
-			*/
+			
 			/*
-			misEnemigos = new Enemigo [6];
+			 * 	this.mMalos = new MaloThread[3];
+		for(int i = 0; i < this.mMalos.length; i++){
+			Random r = new Random();
+			
+			Malo malo = new Malo(10, r.nextInt(gui.getWidth() - 32), r.nextInt(gui.getHeight() - 32));
+			this.mMalos[i] = new MaloThread(malo);
+			gui.add(malo.getGrafico());
+			
+			this.mMalos[i].start();
+		}
+		**/
+			misEnemigos = new EnemigoThread [6];
 			termine = false;
 			int i = 0;
-			while (i < 3){
+			while (i < 6){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
-					misEnemigos[i] = new Rogulo (Ex,Ey);
+					misEnemigos[i] = new EnemigoThread(new Rogulo (Ex,Ey));
 					i++;
+					System.out.println(misEnemigos[i]);
+					//miGui.add(misEnemigos[i].obtenerLogica().obtenerGrafico().obtenerImagenActual());
+					
 					}
 				}
+			/*
 				while (i<5) {
 					int Fx= rnd.nextInt(30);
 					int Fy= rnd.nextInt(12);
@@ -168,19 +184,19 @@ public class Nivel {
 		int y = e.obtenerPosicion().obtenerY();
 		switch(dir){
 			case 1:{
-				misCeldas[x-1][y].recibirBomberman(miBomberman);
+				misCeldas[x-1][y].recibirEnemigo(e);
 			}
 			break;
 			case 2:{
-				misCeldas[x+1][y].recibirBomberman(miBomberman);
+				misCeldas[x+1][y].recibirEnemigo(e);
 			}
 			break;
 			case 3:{
-				misCeldas[x][y-1].recibirBomberman(miBomberman);
+				misCeldas[x][y-1].recibirEnemigo(e);
 			}
 			break;
 			case 4:{
-				misCeldas[x][y+1].recibirBomberman(miBomberman);
+				misCeldas[x][y+1].recibirEnemigo(e);
 			}
 			break;
 		}

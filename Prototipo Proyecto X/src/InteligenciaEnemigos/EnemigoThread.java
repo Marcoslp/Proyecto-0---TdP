@@ -46,4 +46,7 @@ public class EnemigoThread extends Thread {
 		// Notificamos a la logica que este hilo se destruyo.
 		this.miLogica.morir();
 	}
+	public Enemigo obtenerLogica(){
+		return this.miLogica;
+	}
 }

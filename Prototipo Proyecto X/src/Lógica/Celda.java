@@ -65,7 +65,7 @@ public class Celda {
 		if(miPared == null){
 			Celda celdaAnterior = miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
 			celdaAnterior.setBomberman(null);
-			b.obtenerPosicion().establecerX(miPosicion.obtenerX());//
+			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
 			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
 			b.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
 			miBomberman=b;
@@ -86,6 +86,7 @@ public class Celda {
 			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerX());
 			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerY());
 			this.añadirEnemigo(e);
+			e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
 		}
 		else{
 			miPared.recibirEnemigo(e);

@@ -1,12 +1,13 @@
 package Personajes;
 
+import Grafica.ComponenteGrafico;
 import Lógica.*;
 
 
 public abstract class Enemigo {
 	
 	//Atributos
-	
+	protected ComponenteGrafico Graficos;
 	protected int velocidad;
 	protected boolean modoDios;
 	protected Posicion miPosicion;
@@ -16,8 +17,7 @@ public abstract class Enemigo {
 	
 	protected Enemigo (int x, int y) {
 		
-		miPosicion.establecerX(x);
-		miPosicion.establecerY(y);
+		miPosicion = new Posicion(x,y);
 		modoDios = false;
 		
 	}
@@ -50,6 +50,10 @@ public abstract class Enemigo {
 		
 		modoDios = b;
 		
+	}
+	
+	public ComponenteGrafico obtenerGrafico(){
+		return Graficos;
 	}
 
 }
