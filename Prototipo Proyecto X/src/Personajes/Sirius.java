@@ -17,6 +17,7 @@ public class Sirius extends Enemigo {
 	public Sirius (int x, int y,Nivel miNivel) {
 		
 		super(x,y, miNivel);
+		this.modoDios= true;
 		
 	}
 	

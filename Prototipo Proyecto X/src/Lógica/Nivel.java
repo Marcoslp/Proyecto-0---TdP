@@ -28,6 +28,7 @@ public class Nivel {
 	public Nivel (GUI miGui) {
 		miBomberman = new Bomberman(1,1,this);
 		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
+		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);
 		//misPowerUps = p;
 		marcadorPuntos=0;
 		
@@ -40,6 +41,7 @@ public class Nivel {
 			for(int j=0; j<ancho; j++){
 				misCeldas[i][j]= new Celda(i,j,this);
 				miGui.add(misCeldas[i][j].obtenerGraficos().obtenerImagenActual());
+				miGui.getContentPane().setComponentZOrder(misCeldas[i][j].obtenerGraficos().obtenerImagenActual(), 1);
 				
 			}
 		}
@@ -95,33 +97,22 @@ public class Nivel {
 					termine=true;
 			}
 			
-			/*
-			 * 	this.mMalos = new MaloThread[3];
-		for(int i = 0; i < this.mMalos.length; i++){
-			Random r = new Random();
-			
-			Malo malo = new Malo(10, r.nextInt(gui.getWidth() - 32), r.nextInt(gui.getHeight() - 32));
-			this.mMalos[i] = new MaloThread(malo);
-			gui.add(malo.getGrafico());
-			
-			this.mMalos[i].start();
-		}
-		**/
 			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
-			while (i < 6){
+			while (i < 2){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
 					misEnemigos[i] = new Rogulo (Ex,Ey,this);
 					misCeldas[Ex][Ey].recibirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
-					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 1);
 					misEnemigos[i].start();
 					i++;					
 					}
 				}
+				
 			/*
 				while (i<5) {
 					int Fx= rnd.nextInt(30);
