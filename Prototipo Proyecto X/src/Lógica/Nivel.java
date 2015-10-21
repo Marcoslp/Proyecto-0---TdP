@@ -25,7 +25,8 @@ public class Nivel {
 	//Constructor
 	
 	public Nivel (GUI miGui) {
-		//miBomberman = new Bomberman(1,1,this);
+		miBomberman = new Bomberman(1,1,this);
+		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
 		//misPowerUps = p;
 		marcadorPuntos=0;
 		
@@ -38,6 +39,7 @@ public class Nivel {
 			for(int j=0; j<ancho; j++){
 				misCeldas[i][j]= new Celda(i,j,this);
 				miGui.add(misCeldas[i][j].obtenerGraficos().obtenerImagenActual());
+				
 			}
 		}
 		
@@ -57,7 +59,7 @@ public class Nivel {
 			misCeldas[30][j].establecerPared(new ParedIndestructible(misCeldas[30][j]));
 		}
 		
-		/*
+		
 		//Seteo al Bomberman en la posición inicial
 		misCeldas[1][1].setBomberman(miBomberman);
 		
@@ -67,15 +69,14 @@ public class Nivel {
 		int anchoAux=2;
 			while(largoAux<largo-1){
 				while(anchoAux<ancho-1){
-				miPared= new ParedIndestructible();
-				misCeldas[largoAux][anchoAux].establecerPared(miPared);
+				misCeldas[largoAux][anchoAux].establecerPared(new ParedIndestructible(misCeldas[largoAux][anchoAux]));
 				anchoAux+=2;
 				cantParedes++;
 				}
 				largoAux+=2;
 				anchoAux=2;
 			}
-			
+			/*
 			Random rnd= new Random();
 			boolean termine=false;
 			Pared paredAux;
@@ -92,7 +93,8 @@ public class Nivel {
 				if(aux == (cantParedes/2))
 					termine=true;
 			}
-			
+			*/
+			/*
 			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
@@ -114,6 +116,7 @@ public class Nivel {
 				}
 				misEnemigos[5] = new Sirius (29,11);
 				}*/
+			
 	}
 	
 	//Operaciones
@@ -140,19 +143,19 @@ public class Nivel {
 		int x = miBomberman.obtenerPosicion().obtenerX();
 		int y = miBomberman.obtenerPosicion().obtenerY();
 		switch(dir){
-			case 1:{
+			case 0:{
 				misCeldas[x-1][y].recibirBomberman(miBomberman);
 			}
 			break;
-			case 2:{
+			case 1:{
 				misCeldas[x+1][y].recibirBomberman(miBomberman);
 			}
 			break;
-			case 3:{
+			case 2:{
 				misCeldas[x][y-1].recibirBomberman(miBomberman);
 			}
 			break;
-			case 4:{
+			case 3:{
 				misCeldas[x][y+1].recibirBomberman(miBomberman);
 			}
 			break;

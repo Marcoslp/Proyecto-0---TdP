@@ -67,6 +67,7 @@ public class Celda {
 			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
 			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
+			b.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX(),miPosicion.obtenerY(),b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
 			miBomberman=b;
 		}
 		else{
