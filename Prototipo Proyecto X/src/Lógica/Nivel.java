@@ -42,8 +42,8 @@ public class Nivel {
 		}
 		
 		//Inicializo los bordes con paredes indestructibles
-		Pared miPared;
-		for(int i=0; i<largo; i++){
+		/*Pared miPared;
+		for(int i=1; i<largo; i++){ //hasta 31
 			miPared= new ParedIndestructible();
 			misCeldas[0][i].establecerPared(miPared);
 			miPared= new ParedIndestructible();
@@ -56,6 +56,7 @@ public class Nivel {
 			miPared= new ParedIndestructible();
 			misCeldas[j][30].establecerPared(miPared);
 		}
+		*/
 		/*
 		//Seteo al Bomberman en la posición inicial
 		misCeldas[1][1].setBomberman(miBomberman);
