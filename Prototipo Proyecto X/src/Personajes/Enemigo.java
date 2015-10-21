@@ -4,9 +4,10 @@ import Grafica.ComponenteGrafico;
 import Lógica.*;
 
 
-public abstract class Enemigo {
+public abstract class Enemigo extends Thread {
 	
 	//Atributos
+	protected volatile boolean mDetener;
 	protected ComponenteGrafico Graficos;
 	protected int velocidad;
 	protected boolean modoDios;
@@ -15,10 +16,11 @@ public abstract class Enemigo {
 	
 	//Constructor
 	
-	protected Enemigo (int x, int y) {
+	protected Enemigo (int x, int y, Nivel MiNivel) {
 		
 		miPosicion = new Posicion(x,y);
 		modoDios = false;
+		this.miNivel = MiNivel;
 		
 	}
 	

@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Grafica.ComponenteGrafico;
+
 import Personajes.Bomberman;
 import Personajes.Enemigo;
 import PowerUps.PowerUp;
@@ -48,7 +49,6 @@ public class Celda {
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
-		
 		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new ComponenteGrafico(3);
 		graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Piso.png")), 0);
@@ -84,9 +84,9 @@ public class Celda {
 			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
 			celdaAnterior.eliminarEnemigo(e);
 			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerX());
-			e.obtenerPosicion().establecerX(obtenerPosicion().obtenerY());
-			this.añadirEnemigo(e);
+			e.obtenerPosicion().establecerY(obtenerPosicion().obtenerY());
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
+			this.añadirEnemigo(e);
 		}
 		else{
 			miPared.recibirEnemigo(e);
@@ -112,20 +112,22 @@ public class Celda {
 	
 	public void eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
 		boolean cortar = false;
-		
+
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
 			cortar = misEnemigos[i] == e;
-			if(cortar)
+			if(cortar){
 				misEnemigos[i] = null;
+			}
 		}		
 	}
 
 	public void añadirEnemigo(Enemigo e) { //Busca el primer lugar libre y se lo asiga al enemigo
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
-			cortar = misEnemigos[i] != null;
-			if(cortar)
+			cortar = misEnemigos[i] == null;
+			if(cortar){
 				misEnemigos[i] = e;
+			}
 		}
 	}
 	

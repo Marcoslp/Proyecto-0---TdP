@@ -13,9 +13,9 @@ public class Altair extends Enemigo {
 	/*Estos son enemigos los que pueden
      *atravesar paredes destructibles */
 	
-	public Altair (int x, int y) {
+	public Altair (int x, int y, Nivel miNivel) {
 		
-		super(x,y);
+		super(x,y,miNivel);
 		modoDios = true;      
 		
 	}

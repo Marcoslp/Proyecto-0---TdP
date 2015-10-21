@@ -14,9 +14,9 @@ public class Sirius extends Enemigo {
 	
 	//Constructor
 	
-	public Sirius (int x, int y) {
+	public Sirius (int x, int y,Nivel miNivel) {
 		
-		super(x,y);
+		super(x,y, miNivel);
 		
 	}
 	

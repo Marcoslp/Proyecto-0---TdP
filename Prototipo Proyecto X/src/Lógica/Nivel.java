@@ -1,7 +1,7 @@
 package Lógica;
 
 import Grafica.GUI;
-import InteligenciaEnemigos.EnemigoThread;
+
 import Personajes.*;
 
 import java.util.Random;
@@ -19,7 +19,7 @@ public class Nivel {
 	protected int marcadorTiempo;
 	protected int marcadorPuntos;
 	protected Bomberman miBomberman;
-	protected EnemigoThread[] misEnemigos;
+	protected Enemigo[] misEnemigos;
 	protected Celda [][] misCeldas;
 	protected PowerUp [] misPowerUps;
 	
@@ -107,16 +107,18 @@ public class Nivel {
 			this.mMalos[i].start();
 		}
 		**/
-			misEnemigos = new EnemigoThread [6];
+			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
 			while (i < 6){
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
-					misEnemigos[i] = new EnemigoThread(new Rogulo (Ex,Ey));
-					misEnemigos[i].run();
-					miGui.add(misEnemigos[i].obtenerLogica().obtenerGrafico().obtenerImagenActual());
+					misEnemigos[i] = new Rogulo (Ex,Ey,this);
+					misCeldas[Ex][Ey].recibirEnemigo(misEnemigos[i]);
+					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
+					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					misEnemigos[i].start();
 					i++;					
 					}
 				}
@@ -131,7 +133,6 @@ public class Nivel {
 				}
 				misEnemigos[5] = new Sirius (29,11);
 				}*/
-			
 	}
 	
 	//Operaciones
