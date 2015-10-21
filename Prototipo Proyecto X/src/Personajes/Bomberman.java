@@ -28,10 +28,10 @@ public class Bomberman {
 		//miBomba= new Bomba(this);
 		capacidadBombas=1;
 		Graficos = new ComponenteGrafico(4);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 0);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 1);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 2);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 3);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-izquierda.png")), 0);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-derecha.png")), 1);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-arriba.png")), 2);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-abajo.png")), 3);
 		Graficos.establecerimagenActual(3);
 		Graficos.obtenerImagenActual().setBounds(x*32, y*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
 	}
