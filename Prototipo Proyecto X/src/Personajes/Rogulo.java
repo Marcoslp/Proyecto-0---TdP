@@ -24,6 +24,6 @@ public class Rogulo extends Enemigo {
 	
 	public void moverse (){
 		Random r = new Random ();
-		miNivel.moverEnemigo(this,r.nextInt(4)+1);
+		miNivel.moverEnemigo(this,r.nextInt(4));
 	}
 }

@@ -1,12 +1,15 @@
 package Personajes;
 
+import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Lógica.*;
 import PowerUps.PowerUp;
 
 public class Bomberman {
 	
 	//Atributos
-	
+	protected ComponenteGrafico Graficos;
 	protected int velocidad;
 	protected boolean modoDios;
 	protected int capacidadBombas;
@@ -18,31 +21,41 @@ public class Bomberman {
 	//Constructor
 	
 	public Bomberman (int x, int y, Nivel lvl){
-		miPosicion.establecerX(x);
-		miPosicion.establecerY(y);
+		miPosicion = new Posicion(x,y);
 		modoDios = false;
 		velocidad=15;
 		miNivel= lvl;
-		miBomba= new Bomba(this);
+		//miBomba= new Bomba(this);
 		capacidadBombas=1;
+		Graficos = new ComponenteGrafico(4);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/BombermanIzquierda.png")), 0);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/BombermanDerecha.png")), 1);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/BombermanArriba.png")), 2);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/BombermanAbajo.png")), 3);
+		Graficos.establecerimagenActual(3);
+		Graficos.obtenerImagenActual().setBounds(x*32, y*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
 	}
 	
 	//Operaciones
 	
 	public void moverIzquierda () {
-		miNivel.moverBomberman(1);
+		miNivel.moverBomberman(0);
+		Graficos.establecerimagenActual(0);
 	}
 	
 	public void moverDerecha () {
-		miNivel.moverBomberman(2);
+		miNivel.moverBomberman(1);
+		Graficos.establecerimagenActual(1);
 	}
 
 	public void moverArriba () {
-		miNivel.moverBomberman(3);
+		miNivel.moverBomberman(2);
+		Graficos.establecerimagenActual(2);
 	}
 
 	public void moverAbajo() {
-		miNivel.moverBomberman(4);
+		Graficos.establecerimagenActual(3);
+		miNivel.moverBomberman(3);
 	}
 
 	public void ponerBomba () {
@@ -103,5 +116,9 @@ public class Bomberman {
 	
 	public void aumentarCapacidadBombas(){
 		this.capacidadBombas++;
+	}
+	
+	public ComponenteGrafico obtenerGrafico(){
+		return this.Graficos;
 	}
 }
