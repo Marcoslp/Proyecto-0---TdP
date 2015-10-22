@@ -7,7 +7,7 @@ import Lógica.*;
 import PowerUps.PowerUp;
 import Threads.ContadorBomba;
 
-public class Bomberman extends Thread {
+public class Bomberman{
 	
 	//Atributos
 	protected ComponenteGrafico Graficos;
@@ -41,12 +41,6 @@ public class Bomberman extends Thread {
 	
 	public void moverIzquierda () {
 		miNivel.moverBomberman(0);
-		try {
-			this.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		Graficos.establecerimagenActual(0);
 	}
 	
