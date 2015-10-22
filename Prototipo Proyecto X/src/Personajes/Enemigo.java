@@ -63,13 +63,9 @@ public abstract class Enemigo extends Thread {
 			} catch (InterruptedException e) { }
 		}
 	}
-	private void detener() {
-		this.interrupt(); 
-		this.mDetener = true;
-	}
+	
 	
 	public void destruir() {
-		this.detener();
-		this.morir();
+		this.mDetener = true;
 	}
 }
