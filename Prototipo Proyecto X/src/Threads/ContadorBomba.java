@@ -28,6 +28,7 @@ public class ContadorBomba extends Thread {
 				
 				Thread.sleep(tiempo);
 				miNivel.explosion(miBomba);
+				miNivel.obtenerBomberman().aumentarCapacidadBombas();
 				Thread.sleep(500);
 				miNivel.restaurarPiso(miBomba);
 				this.interrupt ();
