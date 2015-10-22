@@ -33,6 +33,7 @@ public class Bomba {
 	
 	//Operaciones
 	
+
 	public void explotar (Posicion p, Bomberman b) {
 		
 	}
@@ -40,7 +41,11 @@ public class Bomba {
 	public void duplicarAlcance () {
 		alcance *= 2;		
 	}
-
+	
+	public void establecerAlcance(int i){
+		alcance = i;
+	}
+	
 	public int obtenerAlcance() {
 		return alcance;
 	}
@@ -51,6 +56,14 @@ public class Bomba {
 	
 	public Posicion obtenerPosicion(){
 		return this.miPosicion;
+	}
+
+	public Bomba clonar() {
+		Bomba devolver = new Bomba(miBomberman);
+		devolver.obtenerPosicion().establecerX(miPosicion.obtenerX());
+		devolver.obtenerPosicion().establecerY(miPosicion.obtenerY());
+		devolver.establecerAlcance(this.obtenerAlcance());
+		return devolver;
 	}
 	
 

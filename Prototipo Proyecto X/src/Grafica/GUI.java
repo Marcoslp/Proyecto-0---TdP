@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Lógica.Bomba;
 import Lógica.Nivel;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -55,10 +57,11 @@ public class GUI extends JFrame {
 			   			miNivel.obtenerBomberman().moverAbajo();
 			   			break;
 			   		case KeyEvent.VK_SPACE:{
-			   			miNivel.obtenerBomberman().ponerBomba();
-			   			miNivel.obtenerBomberman().obtenerBomba().obtenerGraficos().obtenerImagenActual().setBounds(miNivel.obtenerBomberman().obtenerBomba().obtenerPosicion().obtenerX()*32, miNivel.obtenerBomberman().obtenerBomba().obtenerPosicion().obtenerY()*32,32,32);
-			   			add(miNivel.obtenerBomberman().obtenerBomba().obtenerGraficos().obtenerImagenActual());
-			   			getContentPane().setComponentZOrder(miNivel.obtenerBomberman().obtenerBomba().obtenerGraficos().obtenerImagenActual(), 0);
+			   			Bomba bombaClonada = miNivel.obtenerBomberman().ponerBomba();
+			   			//LE MODIFICA LA POSICION AL LABEL
+			   			bombaClonada.obtenerGraficos().obtenerImagenActual().setBounds(bombaClonada.obtenerPosicion().obtenerX()*32, bombaClonada.obtenerPosicion().obtenerY()*32,32,32);
+			   			add(bombaClonada.obtenerGraficos().obtenerImagenActual());
+			   			getContentPane().setComponentZOrder(bombaClonada.obtenerGraficos().obtenerImagenActual(), 0);
 			   		
 			   		}
 			   		break;			   		

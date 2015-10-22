@@ -58,7 +58,8 @@ public class Bomberman {
 		miNivel.moverBomberman(3);
 	}
 
-	public void ponerBomba () {
+	public Bomba ponerBomba() {
+		return miBomba.clonar();
 		
 		//miNivel.explosion(this.miPosicion, miBomba);
 	}
@@ -127,4 +128,5 @@ public class Bomberman {
 		this.miBomba.obtenerPosicion().establecerX(this.miPosicion.obtenerX());
 		this.miBomba.obtenerPosicion().establecerY(this.miPosicion.obtenerY());
 	}
+		
 }
