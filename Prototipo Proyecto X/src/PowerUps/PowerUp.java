@@ -37,16 +37,10 @@ public abstract class PowerUp {
 	public Nivel obtenerNivel(){
 		return miNivel;		
 	}
-		
 	
-	
-	
-	
-	 
-	
-	
-	
-	
+	public JLabel obtenerImagen(){
+		return miImagen;
+	}	
 	
 	
 }

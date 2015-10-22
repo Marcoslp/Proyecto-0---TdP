@@ -5,7 +5,9 @@ import Personajes.*;
 
 import java.util.Random;
 
+import PowerUps.Fatality;
 import PowerUps.PowerUp;
+import PowerUps.SpeedUp;
 import Threads.ContadorThread;
 
 
@@ -28,7 +30,7 @@ public class Nivel {
 	public Nivel (GUI miGui) {
 		miBomberman = new Bomberman(1,1,this);
 		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
-		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);
+		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DEL BOMBERMAN POR ENCIMA DEL PISO
 		//misPowerUps = p;
 		marcadorPuntos=0;
 		
@@ -88,7 +90,7 @@ public class Nivel {
 			while(!termine){
 				int Px= rnd.nextInt(30);
 				int Py= rnd.nextInt(12);
-				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 1 && Py!=1)){
+				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 1 && Py!=1) && (Px!= 1 && Py!=2) && (Px!= 1 && Py!=5)){ //EVITA QUE SE PONGA ARRIBA DEL BOMBERMAN Y LOS POWERUPS, PROVISORIO. SE HARIA UN PRIVADO QUE CONTROLE MAS POSICIONES PROHIBIDAS
 					paredAux= new ParedDestructible(misCeldas[Px][Py]);
 					misCeldas[Px][Py].establecerPared(paredAux);
 					aux++;
@@ -122,7 +124,7 @@ public class Nivel {
 					misEnemigos[i] = new Altair (Fx,Fy,this);
 					misCeldas[Fx][Fy].añadirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
-					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DE LOS ENEMIGOS POR ENCIMA DEL PISO
 					misEnemigos[i].start();
 					i++;					
 					}
@@ -131,6 +133,25 @@ public class Nivel {
 			// SIRIUS
 			misEnemigos[5] = new Sirius (29,11);
 			}*/
+			
+			//SE INICIALIZAN LOS POWERUPS
+			//POR SER UN PROTOTIPO DE PRUEBA SOLAMENTE CREO 2 Y LOS AGREGO A POSICIONES ARBITRARIAS
+			//SINO SERIA NECESARIO PODER DESTRUIR LAS PAREDES DESTRUCTIBLES
+			//INICIALIZO EL SPEED UP PROVISORIO
+			this.misPowerUps = new PowerUp[11]; 
+			
+			this.misPowerUps[0] = new SpeedUp(1,2,this.misCeldas[1][2]);
+		    misCeldas[1][2].establecerPowerUp(misPowerUps[0]);
+			miGui.add(this.misPowerUps[0].obtenerImagen());
+		    miGui.getContentPane().setComponentZOrder(misPowerUps[0].obtenerImagen(), 0); //PARA PONER EL LABEL DEL POWERUP POR ENCIMA DEL PISO
+		    
+		    //INICIALIZO EL FATALITY
+		    
+		   	this.misPowerUps[1] = new Fatality(1,5,this.misCeldas[1][5]);
+		    misCeldas[1][5].establecerPowerUp(misPowerUps[1]);
+			miGui.add(this.misPowerUps[1].obtenerImagen());
+		    miGui.getContentPane().setComponentZOrder(misPowerUps[1].obtenerImagen(), 0);//PARA PONER EL LABEL DEL POWERUP POR ENCIMA DEL PISO
+			
 	}
 	
 	//Operaciones
@@ -213,5 +234,15 @@ public class Nivel {
 	
 	public int obtenerMarcadorTiempo(){
 		return marcadorTiempo;		
+	}
+
+	public void eliminarPowerUp(PowerUp miPowerUp) {
+		boolean cortar = false;
+		for(int i = 0; i < this.misPowerUps.length && !cortar ; i++){
+			cortar = miPowerUp == this.misPowerUps[i];
+			if(cortar){
+				this.misPowerUps[i] = null; //BUSCO EL POWERUP EN EL ARREGLO Y LO QUITO				
+			}
+		}		
 	}
 }

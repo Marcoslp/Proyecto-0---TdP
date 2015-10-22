@@ -16,14 +16,16 @@ public class SpeedUp extends PowerUp  {
 	public SpeedUp (int x, int y, Celda miCelda) {
 		super(x,y,miCelda);
 		this.miImagen = new JLabel (new ImageIcon(this.getClass().getResource("/Imagenes/SpeedUp.png")));
-		this.miImagen.setBounds(12*32, 13*32, 32, 32);
+		this.miImagen.setBounds(1*32, 2*32, 32, 32); //PROVISORIO, SOLO PARA EL PROTOTIPO, PORQUE SE NECESITARIA PODER EXPLOTAR LAS PAREDES
+													//POSICION TOTALMENTE ARBITRARIA
 	}
 	
 	//Operaciones
 	
 	public void empower (Bomberman b) {
 		b.DuplicarVelocidad();
-		
+		this.miImagen.setVisible(false); //PROVISORIO PROTOTIPO, REALMENTE LA CELDA MANEJARIA LA IMAGEN ---> PREGUNTAR  SI ESTA BIEN
+		System.out.println("Velocidad x 2");
 	}
 
 }

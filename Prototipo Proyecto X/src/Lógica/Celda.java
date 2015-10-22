@@ -20,7 +20,7 @@ public class Celda {
 	private ComponenteGrafico graficos;
 	protected Bomberman miBomberman;
 	protected Pared miPared;
-	protected PowerUp [] misPowerUps;
+	protected PowerUp miPowerUp;
 	protected Enemigo [] misEnemigos;
 	protected Posicion miPosicion;
 	protected Nivel miNivel;
@@ -46,6 +46,7 @@ public class Celda {
 	public Celda(int x,int y, Nivel n){
 		miBomberman = null;
 		miPared = null;
+		miPowerUp = null;
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
@@ -72,9 +73,14 @@ public class Celda {
 			for(int i = 0 ; i < misEnemigos.length; i++){
 				if(misEnemigos[i]!=null){
 					System.out.println("Bomberman toco enemigo");
-					break;
+					break; //PROVISORIO
 				}
 					
+			}
+			if(miPowerUp != null){
+				miPowerUp.empower(b); //ACTIVA EL POWERUP
+				miNivel.eliminarPowerUp(miPowerUp);
+				this.quitarPowerUp();	
 			}
 		}
 		else{
@@ -145,6 +151,13 @@ public class Celda {
 		return graficos;
 	}
 	
+	public void establecerPowerUp(PowerUp p){
+		this.miPowerUp = p;
+	}
+	
+	public void quitarPowerUp(){
+		this.miPowerUp = null;
+	}
 
 
 	
