@@ -7,7 +7,7 @@ import Lógica.*;
 import PowerUps.PowerUp;
 import Threads.ContadorBomba;
 
-public class Bomberman{
+public class Bomberman extends Thread{
 	
 	//Atributos
 	protected ComponenteGrafico Graficos;
@@ -17,6 +17,8 @@ public class Bomberman{
 	protected Bomba miBomba;
 	protected Nivel miNivel;
 	protected Posicion miPosicion;
+	protected int direccion;
+	protected boolean puseBomba;
 	
 	
 	//Constructor
@@ -24,11 +26,13 @@ public class Bomberman{
 	public Bomberman (int x, int y, Nivel lvl){
 		miPosicion = new Posicion(x,y);
 		modoDios = false;
+		puseBomba=false;
 		velocidad=10;
 		miNivel= lvl;
 		miBomba= new Bomba(this);
 		capacidadBombas=1;
 		Graficos = new ComponenteGrafico(4);
+		direccion=-1;
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-izquierda.png")), 0);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-derecha.png")), 1);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-arriba.png")), 2);
@@ -141,5 +145,41 @@ public class Bomberman{
 		this.miBomba.obtenerPosicion().establecerX(this.miPosicion.obtenerX());
 		this.miBomba.obtenerPosicion().establecerY(this.miPosicion.obtenerY());
 	}
+	
+	public void establecerDireccion(int i){
+		direccion=i;
+	}
+	
+	public void establecerPuseBomba(boolean b){
+		puseBomba=b;
+	}
+	
+	public void run() {
+		while(true){
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if(direccion==0){
+				this.moverIzquierda();
+			}
+			else if(direccion==1){
+					this.moverDerecha();
+				}
+			else if(direccion==2){
+					this.moverArriba();
+			}
+			else if(direccion==3){
+					this.moverAbajo();
+			}
+			
+			if(puseBomba){
+				ponerBomba();
+				puseBomba=false;
+			}
+		}
+	}
+	
 		
 }

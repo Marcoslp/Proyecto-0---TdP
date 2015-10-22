@@ -33,6 +33,7 @@ public class Nivel {
 	public Nivel (GUI miGui) {
 		this.miGui = miGui;
 		miBomberman = new Bomberman(1,1,this);
+		miBomberman.start();
 		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
 		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DEL BOMBERMAN POR ENCIMA DEL PISO
 		//misPowerUps = p;
@@ -94,12 +95,14 @@ public class Nivel {
 			int aux=0;
 			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
-				int Px= rnd.nextInt(30);
-				int Py= rnd.nextInt(12);
-				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 1 && Py!=1) && (Px!= 1 && Py!=2) && (Px!= 1 && Py!=5)){ //EVITA QUE SE PONGA ARRIBA DEL BOMBERMAN Y LOS POWERUPS, PROVISORIO. SE HARIA UN PRIVADO QUE CONTROLE MAS POSICIONES PROHIBIDAS
-					paredAux= new ParedDestructible(misCeldas[Px][Py]);
-					misCeldas[Px][Py].establecerPared(paredAux);
-					aux++;
+				int Px= rnd.nextInt(31);
+				int Py= rnd.nextInt(13);
+				if(misCeldas[Px][Py].obtenerPared() == null){ //EVITA QUE SE PONGA ARRIBA DEL BOMBERMAN Y LOS POWERUPS, PROVISORIO. SE HARIA UN PRIVADO QUE CONTROLE MAS POSICIONES PROHIBIDAS
+					if(misCeldas[Px][Py] != misCeldas[1][1]){
+						paredAux= new ParedDestructible(misCeldas[Px][Py]);
+						misCeldas[Px][Py].establecerPared(paredAux);
+						aux++;
+					}
 				}
 				if(aux == (total/2))
 					termine=true;
@@ -202,6 +205,7 @@ public class Nivel {
 				if(celdaActual.obtenerEnemigo()!=null){
 					System.out.println("Bomberman mató enemigo");
 					celdaActual.matarEnemigo();
+					//Muere pero no cambia la imagen a la primera si no a la segunda O_o
 					celdaActual.eliminarEnemigo();
 				}
 			}
