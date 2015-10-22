@@ -1,12 +1,15 @@
 package Lógica;
 
+import javax.swing.ImageIcon;
+
+import Grafica.ComponenteGrafico;
 import Personajes.Bomberman;
 
 
 public class Bomba {
 	
 	//Atributos
-	
+	protected ComponenteGrafico Graficos;
 	protected static int alcance = 1;
 	protected Bomberman miBomberman;
 	protected Posicion miPosicion;
@@ -15,8 +18,17 @@ public class Bomba {
 	
 	public Bomba (Bomberman b) {
 		miBomberman = b;
-		miPosicion.establecerX(miBomberman.obtenerPosicion().obtenerX());
-		miPosicion.establecerY(miBomberman.obtenerPosicion().obtenerY());
+		miPosicion = new Posicion(miBomberman.obtenerPosicion().obtenerX(),miBomberman.obtenerPosicion().obtenerY());
+		
+		
+		//INICIALIZO LA PARTE GRAFICA
+		Graficos = new ComponenteGrafico(4);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Bomba.png")), 0);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionVertical.png")), 1);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionHorizontal.png")), 2);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionCentral.png")), 3);
+		Graficos.establecerimagenActual(0);
+		Graficos.obtenerImagenActual().setBounds(miPosicion.obtenerX()*32, miPosicion.obtenerY()*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
 	}
 	
 	//Operaciones
@@ -31,6 +43,14 @@ public class Bomba {
 
 	public int obtenerAlcance() {
 		return alcance;
+	}
+	
+	public ComponenteGrafico obtenerGraficos(){
+		return Graficos;
+	}
+	
+	public Posicion obtenerPosicion(){
+		return this.miPosicion;
 	}
 	
 

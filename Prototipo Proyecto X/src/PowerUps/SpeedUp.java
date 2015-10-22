@@ -25,6 +25,7 @@ public class SpeedUp extends PowerUp  {
 	public void empower (Bomberman b) {
 		b.DuplicarVelocidad();
 		this.miImagen.setVisible(false); //PROVISORIO PROTOTIPO, REALMENTE LA CELDA MANEJARIA LA IMAGEN ---> PREGUNTAR  SI ESTA BIEN
+										 //SINO DEBERIA PASAR LA GUI POR PARAMETRO D:
 		System.out.println("Velocidad x 2");
 	}
 

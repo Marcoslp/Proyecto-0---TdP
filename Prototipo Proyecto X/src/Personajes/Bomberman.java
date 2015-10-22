@@ -25,7 +25,7 @@ public class Bomberman {
 		modoDios = false;
 		velocidad=15;
 		miNivel= lvl;
-		//miBomba= new Bomba(this);
+		miBomba= new Bomba(this);
 		capacidadBombas=1;
 		Graficos = new ComponenteGrafico(4);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-izquierda.png")), 0);
@@ -59,7 +59,8 @@ public class Bomberman {
 	}
 
 	public void ponerBomba () {
-		miNivel.explosion(this.miPosicion, miBomba);
+		
+		//miNivel.explosion(this.miPosicion, miBomba);
 	}
 
 	public void morir () {
@@ -120,5 +121,10 @@ public class Bomberman {
 	
 	public ComponenteGrafico obtenerGrafico(){
 		return this.Graficos;
+	}
+	
+	public void actualizarPosicionBomba(){ //ACTUALIZA POSICION DE LA BOMBA
+		this.miBomba.obtenerPosicion().establecerX(this.miPosicion.obtenerX());
+		this.miBomba.obtenerPosicion().establecerY(this.miPosicion.obtenerY());
 	}
 }

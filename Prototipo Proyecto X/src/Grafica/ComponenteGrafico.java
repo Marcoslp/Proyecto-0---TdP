@@ -21,6 +21,10 @@ public class ComponenteGrafico {
 		misImagenes[i] = j;
 	}
 	
+	
+	public JLabel obtenerIconoActual(int i){
+		return new JLabel(misImagenes[i]);
+	}
 	public JLabel obtenerImagenActual(){
 		return imagenActual;
 	}
