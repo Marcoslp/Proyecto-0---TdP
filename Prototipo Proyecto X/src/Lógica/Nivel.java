@@ -239,6 +239,7 @@ public class Nivel {
 	public void moverBomberman (int dir){
 		int x = miBomberman.obtenerPosicion().obtenerX();
 		int y = miBomberman.obtenerPosicion().obtenerY();
+		
 		switch(dir){
 			case 0:{
 				misCeldas[x-1][y].recibirBomberman(miBomberman);

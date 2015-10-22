@@ -40,9 +40,10 @@ public class GUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
 		contentPane = new JPanel();
+		this.setTitle("Bomberman");
 		addKeyListener(new KeyAdapter() {
 			
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				 switch(e.getKeyCode()){
 					case KeyEvent.VK_LEFT:
 			   			miNivel.obtenerBomberman().moverIzquierda();

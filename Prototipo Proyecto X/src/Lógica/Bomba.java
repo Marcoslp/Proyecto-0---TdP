@@ -23,7 +23,7 @@ public class Bomba {
 		
 		//INICIALIZO LA PARTE GRAFICA
 		Graficos = new ComponenteGrafico(4);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Bomba.png")), 0);
+		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Bomba.gif")), 0);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionVertical.png")), 1);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionHorizontal.png")), 2);
 		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionCentral.png")), 3);
