@@ -1,12 +1,12 @@
 package Lógica;
 
 import Grafica.GUI;
-
 import Personajes.*;
 
 import java.util.Random;
 
 import PowerUps.PowerUp;
+import Threads.ContadorThread;
 
 
 public class Nivel {
@@ -136,9 +136,8 @@ public class Nivel {
 	//Operaciones
 	
 	public void explosion (Posicion e, Bomba bomb) {
-		
-		
-		
+		ContadorThread contador = new ContadorThread (3,miBomberman);
+		contador.start();	
 	}
 	
 	public void incrementarPuntuacion (int x) {
