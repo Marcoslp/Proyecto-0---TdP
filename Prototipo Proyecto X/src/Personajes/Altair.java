@@ -3,6 +3,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import Grafica.AltairGrafico;
 import Grafica.ComponenteGrafico;
 import Lógica.*;
 
@@ -22,13 +23,7 @@ public class Altair extends Enemigo {
 		super(x,y,miNivel);
 		modoDios = true;      
 		this.mDetener = false;
-		Graficos = new ComponenteGrafico(4);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 0);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 1);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 2);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ricky.jpg")), 3);
-		Graficos.establecerimagenActual(3);
-		Graficos.obtenerImagenActual().setBounds(x*32, y*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
+		Graficos = new AltairGrafico(4,x,y);
 	}
 	
 	//Operaciones

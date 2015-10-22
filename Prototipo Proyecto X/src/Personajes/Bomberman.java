@@ -2,6 +2,7 @@ package Personajes;
 
 import javax.swing.ImageIcon;
 
+import Grafica.BombermanGrafico;
 import Grafica.ComponenteGrafico;
 import Lógica.*;
 import PowerUps.PowerUp;
@@ -10,7 +11,7 @@ import Threads.ContadorBomba;
 public class Bomberman extends Thread{
 	
 	//Atributos
-	protected ComponenteGrafico Graficos;
+	protected BombermanGrafico Graficos;
 	protected int velocidad;
 	protected boolean modoDios;
 	protected int capacidadBombas;
@@ -31,14 +32,8 @@ public class Bomberman extends Thread{
 		miNivel= lvl;
 		miBomba= new Bomba(this);
 		capacidadBombas=1;
-		Graficos = new ComponenteGrafico(4);
-		direccion=-1;
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-izquierda.png")), 0);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-derecha.png")), 1);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-arriba.png")), 2);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/B-abajo.png")), 3);
-		Graficos.establecerimagenActual(3);
-		Graficos.obtenerImagenActual().setBounds(x*32, y*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
+		Graficos = new BombermanGrafico(4,x,y);
+		direccion=-1;		
 	}
 	
 	//Operaciones

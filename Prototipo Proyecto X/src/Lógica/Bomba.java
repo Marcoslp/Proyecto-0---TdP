@@ -2,6 +2,7 @@ package Lógica;
 
 import javax.swing.ImageIcon;
 
+import Grafica.BombaGrafica;
 import Grafica.ComponenteGrafico;
 import Personajes.Bomberman;
 
@@ -20,15 +21,11 @@ public class Bomba {
 		miBomberman = b;
 		miPosicion = new Posicion(miBomberman.obtenerPosicion().obtenerX(),miBomberman.obtenerPosicion().obtenerY());
 		
-		
+		int Px = this.miPosicion.obtenerX();
+		int Py = this.miPosicion.obtenerY();
 		//INICIALIZO LA PARTE GRAFICA
-		Graficos = new ComponenteGrafico(4);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/Bomba.gif")), 0);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionVertical.png")), 1);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionHorizontal.png")), 2);
-		Graficos.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionCentral.png")), 3);
-		Graficos.establecerimagenActual(0);
-		Graficos.obtenerImagenActual().setBounds(miPosicion.obtenerX()*32, miPosicion.obtenerY()*32, Graficos.obtenerAncho(), Graficos.obtenerAlto());
+		Graficos = new BombaGrafica(4,Px,Py);
+		
 	}
 	
 	//Operaciones
