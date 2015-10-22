@@ -41,11 +41,13 @@ public class Nivel {
 		//Ver como modelar el marcador de tiempo
 		
 		
+		int contadorCelda=0;
 		//Creo el arreglo de celdas vacío
 		misCeldas= new Celda[largo][ancho];
 		for(int i=0; i<largo; i++){
 			for(int j=0; j<ancho; j++){
 				misCeldas[i][j]= new Celda(i,j,this);
+				contadorCelda++;
 				miGui.add(misCeldas[i][j].obtenerGraficos().obtenerImagenActual());
 				miGui.getContentPane().setComponentZOrder(misCeldas[i][j].obtenerGraficos().obtenerImagenActual(), 1);
 				
@@ -57,15 +59,14 @@ public class Nivel {
 		for(int i=0; i<largo; i++){ //hasta 31
 			
 			misCeldas[i][0].establecerPared(new ParedIndestructible(misCeldas[i][0]));
-			
 			misCeldas[i][12].establecerPared(new ParedIndestructible(misCeldas[i][12]));
+			contadorCelda-=2;
 		}
 		
 		for(int j=0; j<ancho; j++){
-			
 			misCeldas[0][j].establecerPared(new ParedIndestructible(misCeldas[0][j]));
-			
 			misCeldas[30][j].establecerPared(new ParedIndestructible(misCeldas[30][j]));
+			contadorCelda-=2;
 		}
 		
 		
@@ -89,6 +90,7 @@ public class Nivel {
 			Random rnd= new Random();
 			boolean termine=false;
 			Pared paredAux;
+			int total= contadorCelda - cantParedes;
 			int aux=0;
 			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
@@ -99,7 +101,7 @@ public class Nivel {
 					misCeldas[Px][Py].establecerPared(paredAux);
 					aux++;
 				}
-				if(aux == (cantParedes/2))
+				if(aux == (total/2))
 					termine=true;
 			}
 			//SE INICILIZAN ENEMIGOS
@@ -160,70 +162,58 @@ public class Nivel {
 	
 	//Operaciones
 	
+	//Método auxiliar para explotar la bomba
+	private void explosionAuxiliar(Bomba b, int direccion, String s){
+		boolean cortar=false;
+		Icon DireccionExplosion= b.obtenerGraficos().obtenerIconoActual(direccion);
+		int posX = b.obtenerPosicion().obtenerX();
+		int posY = b.obtenerPosicion().obtenerY();
+		Celda celdaActual=null;
+		
+		
+		for(int i = 1; i< b.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			
+			switch(s){
+				case "derecha":{
+					celdaActual = this.obtenerCelda(posX+i,posY);
+				}
+				break;
+				case "izquierda":{
+					celdaActual = this.obtenerCelda(posX-i,posY);
+				}
+				break;
+				case "abajo":{
+					celdaActual = this.obtenerCelda(posX,posY+i);
+				}
+				break;
+				case "arriba":{
+					celdaActual = this.obtenerCelda(posX,posY-i);
+				}
+				break;
+			}
+				
+			cortar = celdaActual.obtenerPared() != null;
+			celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(DireccionExplosion);
+			if(cortar){
+				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
+				celdaActual.obtenerPared().destruirPared();
+			}
+			else{
+				if(celdaActual.obtenerEnemigo()!=null){
+					System.out.println("Bomberman mató enemigo");
+					celdaActual.matarEnemigo();
+					celdaActual.eliminarEnemigo();
+				}
+			}
+		}
+	}
+	
 	public void explosion (Bomba bomba) {
-		//ESTE METODO DIVIRDIRLO SI O SI EN MAS METODOS CHIQUITOS, QUEDO MUUUUUUY GRANDE (pero son las 3:33 am)
-		
-		//SOLO ESTA LA PARTE GRAFICA, NO MODIFICA LAS ESTRUCTURAS NI NADA (no probar en los bordes, transpasa paredes destructibles y todo.
 		bomba.obtenerGraficos().establecerimagenActual(3);
-		//CICLO QUE EXPLOTA HACIA LA DERECHA
-		boolean cortar = false;
-		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
-		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
-		int posX = bomba.obtenerPosicion().obtenerX();
-		int posY = bomba.obtenerPosicion().obtenerY();
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX+i,posY);
-			cortar = celdaActual.obtenerPared() != null; 
-			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
-				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
-				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
-			}
-			else{
-				//ACA DEBERIA DESTRUIR PAREDES/O NO
-			}
-		}
-		//CICLO QUE EXPLOTA HACIA LA IZQ
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX-i,posY);
-			cortar = celdaActual.obtenerPared() != null; 
-			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
-				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
-				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
-			}
-			else{
-				//ACA DEBERIA DESTRUIR PAREDES/O NO
-			}
-		}
-		//CICLO QUE EXPLOTA HACIA ARRIBA
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX,posY-i);
-			cortar = celdaActual.obtenerPared() != null; 
-			System.out.println(bomba.obtenerAlcance());
-			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
-				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
-				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionVertical);
-			}
-			else{
-				//ACA DEBERIA DESTRUIR PAREDES/O NO
-			}
-		}
-		//CICLO QUE EXPLOTA HACIA ABAJO
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX,posY+i);
-			cortar = celdaActual.obtenerPared() != null; 
-			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
-				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
-				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionVertical);
-			}
-			else{
-				//ACA DEBERIA DESTRUIR PAREDES/O NO
-			}
-		}
-		
-		
+		this.explosionAuxiliar(bomba,2,"derecha");
+		this.explosionAuxiliar(bomba,2,"izquierda");
+		this.explosionAuxiliar(bomba,1,"arriba");
+		this.explosionAuxiliar(bomba,1,"abajo");
 	}
 	
 	public void incrementarPuntuacion (int x) {

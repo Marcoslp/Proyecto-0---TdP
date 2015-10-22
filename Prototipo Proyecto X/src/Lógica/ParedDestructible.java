@@ -17,11 +17,9 @@ public class ParedDestructible extends Pared{
 	
 	//Operaciones
 	
-	public boolean destruirPared () {
-		boolean seCumplio = true;
+	public void destruirPared () {
 		miCelda.obtenerNivel().incrementarPuntuacion(10);
-		miCelda.obtenerGraficos().establecerimagenActual(0); //MUESTRA EL PISO NUEVAMENTE DESPUES DE SER DESTRUIDA
-		return seCumplio;
+		miCelda.eliminarPared();
 	}
 	
 	public void recibirBomberman (Bomberman b) {
@@ -39,7 +37,7 @@ public class ParedDestructible extends Pared{
 	public void recibirEnemigo (Enemigo e) {
 		if(e.obtenerModoDios()){   //Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
-			celdaAnterior.eliminarEnemigo(e);
+			celdaAnterior.eliminarEnemigo();
 			e.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
 			e.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
@@ -50,7 +48,4 @@ public class ParedDestructible extends Pared{
 	public void establecerImagen() {
 		miCelda.obtenerGraficos().establecerimagenActual(2);		
 	}
-	
-	
-
 }

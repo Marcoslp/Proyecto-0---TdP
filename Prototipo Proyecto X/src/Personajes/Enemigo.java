@@ -43,15 +43,11 @@ public abstract class Enemigo extends Thread {
 	}
 	
 	public boolean obtenerModoDios () {
-		
 		return modoDios;
-		
 	}
 	
 	public void establecerModoDios (boolean b) {
-		
 		modoDios = b;
-		
 	}
 	
 	public ComponenteGrafico obtenerGrafico(){
@@ -67,7 +63,7 @@ public abstract class Enemigo extends Thread {
 			} catch (InterruptedException e) { }
 		}
 	}
-	public void detener() {
+	private void detener() {
 		this.interrupt(); 
 		this.mDetener = true;
 	}
@@ -76,5 +72,4 @@ public abstract class Enemigo extends Thread {
 		this.detener();
 		this.morir();
 	}
-
 }

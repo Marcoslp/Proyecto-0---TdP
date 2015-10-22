@@ -1,6 +1,7 @@
 package Grafica;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class ComponenteGrafico {
@@ -14,7 +15,11 @@ public class ComponenteGrafico {
 		imagenActual = new JLabel();
 	}
 	public void establecerimagenActual(int i){
-		imagenActual.setIcon(misImagenes[i]);
+		if(i!=-1)
+			imagenActual.setIcon(misImagenes[i]);
+		//PROVISORIO
+		else
+			imagenActual.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/morido.png")));
 	}
 	
 	public void establecerImagen(Icon j, int i){

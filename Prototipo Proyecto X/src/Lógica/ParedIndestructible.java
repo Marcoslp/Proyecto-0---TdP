@@ -17,11 +17,8 @@ public class ParedIndestructible extends Pared{
 	
 	//Operaciones
 	
-	public boolean destruirPared () {
-		
-		boolean seCumplio = false;
-		
-		return seCumplio;
+	public void destruirPared () {
+		miCelda.obtenerGraficos().establecerimagenActual(1);
 	}
 	
 	public void recibirBomberman (Bomberman b) {
