@@ -87,7 +87,6 @@ public class Celda {
 		else{
 			miPared.recibirBomberman(b);
 		}
-		System.out.println(b.obtenerPosicion().obtenerX() +" "+ b.obtenerPosicion().obtenerY());
 	}
 	
 	public void setBomberman(Bomberman b){

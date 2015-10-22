@@ -5,10 +5,13 @@ import Personajes.*;
 
 import java.util.Random;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
 import PowerUps.Fatality;
 import PowerUps.PowerUp;
 import PowerUps.SpeedUp;
-import Threads.ContadorThread;
+import Threads.ContadorBomba;
 
 
 public class Nivel {
@@ -17,7 +20,7 @@ public class Nivel {
 	private static final int ancho=13;
 	
 	//Atributos
-	
+	protected GUI miGui;
 	protected int marcadorTiempo;
 	protected int marcadorPuntos;
 	protected Bomberman miBomberman;
@@ -28,6 +31,7 @@ public class Nivel {
 	//Constructor
 	
 	public Nivel (GUI miGui) {
+		this.miGui = miGui;
 		miBomberman = new Bomberman(1,1,this);
 		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
 		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DEL BOMBERMAN POR ENCIMA DEL PISO
@@ -156,9 +160,68 @@ public class Nivel {
 	
 	//Operaciones
 	
-	public void explosion (Posicion e, Bomba bomb) {
-		ContadorThread contador = new ContadorThread (3,miBomberman);
-		contador.start();	
+	public void explosion (Bomba bomba) {
+		//ESTE METODO DIVIRDIRLO SI O SI EN MAS METODOS CHIQUITOS, QUEDO MUUUUUUY GRANDE (pero son las 3:33 am)
+		
+		//SOLO ESTA LA PARTE GRAFICA, NO MODIFICA LAS ESTRUCTURAS NI NADA (no probar en los bordes, transpasa paredes destructibles y todo.
+		bomba.obtenerGraficos().establecerimagenActual(3);
+		//CICLO QUE EXPLOTA HACIA LA DERECHA
+		boolean cortar = false;
+		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
+		int posX = bomba.obtenerPosicion().obtenerX();
+		int posY = bomba.obtenerPosicion().obtenerY();
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX+i,posY);
+			cortar = celdaActual.obtenerPared() != null; 
+			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
+				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
+				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
+			}
+			else{
+				//ACA DEBERIA DESTRUIR PAREDES/O NO
+			}
+		}
+		//CICLO QUE EXPLOTA HACIA LA IZQ
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX-i,posY);
+			cortar = celdaActual.obtenerPared() != null; 
+			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
+				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
+				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
+			}
+			else{
+				//ACA DEBERIA DESTRUIR PAREDES/O NO
+			}
+		}
+		//CICLO QUE EXPLOTA HACIA ARRIBA
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY-i);
+			cortar = celdaActual.obtenerPared() != null; 
+			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
+				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
+				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
+			}
+			else{
+				//ACA DEBERIA DESTRUIR PAREDES/O NO
+			}
+		}
+		//CICLO QUE EXPLOTA HACIA ABAJO
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY+i);
+			cortar = celdaActual.obtenerPared() != null; 
+			if(!cortar){	//SI NO HAY PAREDES VA EXPLOTANDO
+				//EN LA PARTE LOGICA AQUI DEBERA ACCEDER A LAS CELDAS Y VER QUE MATAR..
+				celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(explosionHorizontal);
+			}
+			else{
+				//ACA DEBERIA DESTRUIR PAREDES/O NO
+			}
+		}
+		
+		
 	}
 	
 	public void incrementarPuntuacion (int x) {
@@ -245,4 +308,55 @@ public class Nivel {
 			}
 		}		
 	}
+	
+	public GUI obtenerGui(){
+		return this.miGui;
+	}
+
+	public void restaurarPiso(Bomba bomba) {
+		boolean cortar;
+		//QUITA EL LABEL CENTRAL
+		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
+		//CICLO QUE LIMPIA A LA DERECHA
+		cortar = false;
+		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
+		int posX = bomba.obtenerPosicion().obtenerX();
+		int posY = bomba.obtenerPosicion().obtenerY();
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX+i,posY);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+			}			
+		}
+		//CICLO QUE LIMPIA A LA IZQ
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX-i,posY);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+			}			
+		}
+		//CICLO QUE LIMPIA ARRIBA
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY-i);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+			}			
+		}
+		//CICLO QUE LIMPIA ABAJO
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY+i);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+			}			
+		}
+		
+	}
+
 }

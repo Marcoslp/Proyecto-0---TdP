@@ -57,12 +57,7 @@ public class GUI extends JFrame {
 			   			miNivel.obtenerBomberman().moverAbajo();
 			   			break;
 			   		case KeyEvent.VK_SPACE:{
-			   			Bomba bombaClonada = miNivel.obtenerBomberman().ponerBomba();
-			   			//LE MODIFICA LA POSICION AL LABEL
-			   			bombaClonada.obtenerGraficos().obtenerImagenActual().setBounds(bombaClonada.obtenerPosicion().obtenerX()*32, bombaClonada.obtenerPosicion().obtenerY()*32,32,32);
-			   			add(bombaClonada.obtenerGraficos().obtenerImagenActual());
-			   			getContentPane().setComponentZOrder(bombaClonada.obtenerGraficos().obtenerImagenActual(), 0);
-			   		
+			   			miNivel.obtenerBomberman().ponerBomba();			   		
 			   		}
 			   		break;			   		
 			   }
