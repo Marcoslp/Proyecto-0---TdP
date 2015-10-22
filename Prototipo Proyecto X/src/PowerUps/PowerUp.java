@@ -1,5 +1,9 @@
 package PowerUps;
 
+import javax.swing.JLabel;
+
+import Grafica.ComponenteGrafico;
+import Lógica.Celda;
 import Lógica.Nivel;
 import Lógica.Posicion;
 import Personajes.Bomberman;
@@ -12,12 +16,13 @@ public abstract class PowerUp {
 	//Atributos
 	
 	protected Nivel miNivel;
-	
+	protected Celda miCelda;
 	protected Posicion miPosicion;
-	
+	protected JLabel miImagen;
 	//Constructor
 	
-	protected PowerUp (int x, int y) {
+	protected PowerUp (int x, int y, Celda miCelda) {
+		this.miCelda=miCelda;
 		miPosicion = new Posicion(x,y);
 	}
 	

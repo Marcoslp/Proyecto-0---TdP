@@ -88,7 +88,7 @@ public class Nivel {
 			while(!termine){
 				int Px= rnd.nextInt(30);
 				int Py= rnd.nextInt(12);
-				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 0 && Py!=0)){
+				if(misCeldas[Px][Py].obtenerPared() == null && (Px!= 1 && Py!=1)){
 					paredAux= new ParedDestructible(misCeldas[Px][Py]);
 					misCeldas[Px][Py].establecerPared(paredAux);
 					aux++;

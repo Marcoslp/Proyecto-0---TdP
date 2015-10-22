@@ -1,5 +1,6 @@
 package PowerUps;
 
+import Lógica.Celda;
 import Personajes.Bomberman;
 
 
@@ -9,9 +10,9 @@ public class Masacrality extends PowerUp{
 	
 	//Constructor
 	
-	public Masacrality (int x, int y) {
+	public Masacrality (int x, int y, Celda miCelda) {
 		
-		super(x,y);
+		super(x,y,miCelda);
 		
 	}
 	
