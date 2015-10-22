@@ -30,7 +30,7 @@ public class ParedDestructible extends Pared{
 			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
 			b.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
-			
+			b.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
 			this.miCelda.setBomberman(b);
 		}
 	}
