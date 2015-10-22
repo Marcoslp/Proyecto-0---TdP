@@ -60,18 +60,13 @@ public class Bomberman{
 	}
 
 	public void ponerBomba() {
-		/*
-		 * ContadorBomba contador = new ContadorBomba (3,miBomba.clonar());
-			contador.start();	
-		 */
 		if(capacidadBombas>0){
 			capacidadBombas--;
 			Bomba bombaClonada = miBomba.clonar();  //CLONA UNA BOMBA Y LUEGO LA AGREGA A LA GUI
 			bombaClonada.obtenerGraficos().obtenerImagenActual().setBounds(bombaClonada.obtenerPosicion().obtenerX()*32, bombaClonada.obtenerPosicion().obtenerY()*32,32,32);
 			miNivel.obtenerGui().add(bombaClonada.obtenerGraficos().obtenerImagenActual());
 			miNivel.obtenerGui().getContentPane().setComponentZOrder(bombaClonada.obtenerGraficos().obtenerImagenActual(), 1);
-			
-			//INICIO UN THREAD QUE HARA QUE A LOS 3 SEGUNDOS EXPLOTE TODO... incluido el programa
+			//INICIO UN THREAD QUE HARA QUE A LOS 3 SEGUNDOS EXPLOTE TODO... 
 			ContadorBomba contador = new ContadorBomba (3,bombaClonada,miNivel);
 			contador.start();
 		}
