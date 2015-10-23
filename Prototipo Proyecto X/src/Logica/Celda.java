@@ -72,7 +72,7 @@ public class Celda {
 						break; //PROVISORIO
 					}
 				}
-	
+				//PROVISORIO PARA PROBAR POWERUPS, ESTÁN SUELTOS EN LAS CELDAS. ESTO DEBERÍA MODELARSE EN OTRA CLASE
 				if(miPowerUp != null){
 					miPowerUp.empower(b); //ACTIVA EL POWERUP
 					miNivel.eliminarPowerUp(miPowerUp);
