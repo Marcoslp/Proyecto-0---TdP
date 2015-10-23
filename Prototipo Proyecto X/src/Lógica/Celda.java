@@ -138,7 +138,7 @@ public class Celda {
 	}
 	
 	public void matarEnemigo(){
-		miEnemigo.obtenerGrafico().establecerimagenActual(-1);
+		miEnemigo.obtenerGrafico().obtenerImagenActual().setVisible(false);
 		miEnemigo.destruir();
 	}
 	/*
