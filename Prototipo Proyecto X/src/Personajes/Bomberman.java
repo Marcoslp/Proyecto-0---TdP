@@ -62,9 +62,7 @@ public class Bomberman extends Thread{
 		if(capacidadBombas>0){
 			capacidadBombas--;
 			Bomba bombaClonada = miBomba.clonar();  //CLONA UNA BOMBA Y LUEGO LA AGREGA A LA GUI
-			bombaClonada.obtenerGraficos().obtenerImagenActual().setBounds(bombaClonada.obtenerPosicion().obtenerX()*32, bombaClonada.obtenerPosicion().obtenerY()*32,32,32);
-			miNivel.obtenerGui().add(bombaClonada.obtenerGraficos().obtenerImagenActual());
-			miNivel.obtenerGui().getContentPane().setComponentZOrder(bombaClonada.obtenerGraficos().obtenerImagenActual(), 1);
+			miNivel.obtenerManejadorGUI().añadirBombaClonada(bombaClonada);
 			//INICIO UN THREAD QUE HARA QUE A LOS 3 SEGUNDOS EXPLOTE TODO... 
 			ContadorBomba contador = new ContadorBomba (3,bombaClonada,miNivel);
 			contador.start();
@@ -72,9 +70,7 @@ public class Bomberman extends Thread{
 	}
 
 	public void morir () {
-		
 		miNivel.matarBomberman();
-		
 	}
 	
 	public void añadirPowerUp (PowerUp p) {

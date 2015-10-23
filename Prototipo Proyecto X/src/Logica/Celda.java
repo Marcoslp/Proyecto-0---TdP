@@ -24,6 +24,7 @@ public class Celda {
 	protected Enemigo [] misEnemigos;
 	protected Posicion miPosicion;
 	protected Nivel miNivel;
+	protected Bomba miBomba;
 	
 	
 	//Constructor
@@ -32,6 +33,7 @@ public class Celda {
 		miBomberman = null;
 		miPared = null;
 		miPowerUp = null;
+		miBomba= null;
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
@@ -44,31 +46,33 @@ public class Celda {
 	
 	// Recibir Bomberman cambio, ahora tiene un parámetro
 	public void recibirBomberman(Bomberman b) {
-		if(miPared == null){
-			Celda celdaAnterior = miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
-			celdaAnterior.setBomberman(null);
-			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
-			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
-			graficos.recibirBomberman(b,miPosicion);
-			miBomberman=b;
-			
-			
-			for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
-				if(misEnemigos[i]!=null){
-					System.out.println("Bomberman toco enemigo");
-					break; //PROVISORIO
+		if(miBomba==null){
+			if(miPared == null){
+				Celda celdaAnterior = miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
+				celdaAnterior.setBomberman(null);
+				b.obtenerPosicion().establecerX(miPosicion.obtenerX());
+				b.obtenerPosicion().establecerY(miPosicion.obtenerY());
+				graficos.recibirBomberman(b,miPosicion);
+				miBomberman=b;
+				
+				
+				for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
+					if(misEnemigos[i]!=null){
+						System.out.println("Bomberman toco enemigo");
+						break; //PROVISORIO
+					}
 				}
+	
+				if(miPowerUp != null){
+					miPowerUp.empower(b); //ACTIVA EL POWERUP
+					miNivel.eliminarPowerUp(miPowerUp);
+					this.quitarPowerUp();	
+				}
+				b.actualizarPosicionBomba();
 			}
-
-			if(miPowerUp != null){
-				miPowerUp.empower(b); //ACTIVA EL POWERUP
-				miNivel.eliminarPowerUp(miPowerUp);
-				this.quitarPowerUp();	
+			else{
+				miPared.recibirBomberman(b);
 			}
-			b.actualizarPosicionBomba();
-		}
-		else{
-			miPared.recibirBomberman(b);
 		}
 	}
 	
@@ -77,19 +81,21 @@ public class Celda {
 	}
 
 	public void recibirEnemigo (Enemigo e){
-		if(miPared == null){
-			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY()); 
-			celdaAnterior.eliminarEnemigo(e);	//LO QUITA DE LA CELDA ANTERIOR
-			e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
-			e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
-			graficos.recibirEnemigo(e,miPosicion);
-			if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
-				System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
-			}			
-			this.añadirEnemigo(e);
-		}
-		else{
-			miPared.recibirEnemigo(e);
+		if(miBomba== null){
+			if(miPared == null){
+				Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY()); 
+				celdaAnterior.eliminarEnemigo(e);	//LO QUITA DE LA CELDA ANTERIOR
+				e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
+				e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
+				graficos.recibirEnemigo(e,miPosicion);
+				if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
+					System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+				}			
+				this.añadirEnemigo(e);
+			}
+			else{
+				miPared.recibirEnemigo(e);
+			}
 		}
 	}
 	
@@ -165,5 +171,9 @@ public class Celda {
 	public void eliminarPared() {
 				miPared=null;
 			
+	}
+
+	public void setBomba(Bomba b) {
+		miBomba=b;
 	}
 }

@@ -21,7 +21,6 @@ public class Nivel {
 	private static final int ancho=13;
 	
 	//Atributos
-	protected GUI miGui;
 	protected int marcadorTiempo;
 	protected int marcadorPuntos;
 	protected Bomberman miBomberman;
@@ -33,7 +32,6 @@ public class Nivel {
 	//Constructor
 	
 	public Nivel (GUI miGui) {
-		this.miGui = miGui;
 		miManejador= new ManejadorGUI(miGui);
 		miBomberman = new Bomberman(1,1,this);
 		miBomberman.start();
@@ -169,7 +167,8 @@ public class Nivel {
 		Icon DireccionExplosion= b.obtenerGraficos().obtenerIconoActual(direccion);
 		int posX = b.obtenerPosicion().obtenerX();
 		int posY = b.obtenerPosicion().obtenerY();
-		Celda celdaActual=null;
+		Celda celdaActual=misCeldas[posX][posY];
+		celdaActual.setBomba(b);
 		
 		
 		for(int i = 1; i< b.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
@@ -307,8 +306,8 @@ public class Nivel {
 		}		
 	}
 	
-	public GUI obtenerGui(){
-		return this.miGui;
+	public ManejadorGUI obtenerManejadorGUI(){
+		return miManejador;
 	}
 
 	public void restaurarPiso(Bomba bomba) {
