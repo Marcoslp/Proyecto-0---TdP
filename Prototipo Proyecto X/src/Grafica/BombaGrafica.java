@@ -11,8 +11,5 @@ public class BombaGrafica extends ComponenteGrafico {
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/ExplosionCentral.png")), 3);
 		this.establecerimagenActual(0);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
-		
-		
 	}
-	
 }
