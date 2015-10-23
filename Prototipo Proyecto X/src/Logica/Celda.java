@@ -120,6 +120,10 @@ public class Celda {
 		return miNivel;
 	}
 	
+	public Bomberman obtenerBomberman(){
+		return miBomberman;
+	}
+	
 	
 	public boolean eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
 		boolean cortar = false;

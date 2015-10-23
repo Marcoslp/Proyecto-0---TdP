@@ -20,11 +20,13 @@ public class Bomberman extends Thread{
 	protected Posicion miPosicion;
 	protected int direccion;
 	protected boolean puseBomba;
+	protected volatile boolean Detener;
 	
 	
 	//Constructor
 	
 	public Bomberman (int x, int y, Nivel lvl){
+		Detener=false;
 		miPosicion = new Posicion(x,y);
 		modoDios = false;
 		puseBomba=false;
@@ -71,6 +73,12 @@ public class Bomberman extends Thread{
 
 	public void morir () {
 		miNivel.matarBomberman();
+	
+	}
+	
+	public void detener(){
+		this.interrupt();
+		Detener=true;
 	}
 	
 	public void añadirPowerUp (PowerUp p) {
@@ -141,11 +149,10 @@ public class Bomberman extends Thread{
 	}
 	
 	public void run() {
-		while(true){
+		while(!Detener){
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
 			if(direccion==0){
 				this.moverIzquierda();

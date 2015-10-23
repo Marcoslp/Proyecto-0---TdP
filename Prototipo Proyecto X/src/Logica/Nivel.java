@@ -168,8 +168,10 @@ public class Nivel {
 		int posX = b.obtenerPosicion().obtenerX();
 		int posY = b.obtenerPosicion().obtenerY();
 		Celda celdaActual=misCeldas[posX][posY];
-		celdaActual.setBomba(b);
 		
+		if(celdaActual.obtenerBomberman()!=null){
+			celdaActual.obtenerBomberman().morir();
+		}
 		
 		for(int i = 1; i< b.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
 			
@@ -281,7 +283,8 @@ public class Nivel {
 	}
 
 	public void matarBomberman() {
-		miBomberman.morir();	
+		miBomberman.detener();
+		miBomberman.obtenerGrafico().eliminarImagen();	
 	}
 
 	public void matarEnemigo(Enemigo e) {
