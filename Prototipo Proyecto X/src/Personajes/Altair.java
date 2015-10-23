@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 import Grafica.AltairGrafico;
 import Grafica.ComponenteGrafico;
-import Lógica.*;
+import Logica.*;
 
 
 public class Altair extends Enemigo {

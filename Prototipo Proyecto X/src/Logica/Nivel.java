@@ -1,6 +1,7 @@
-package Lógica;
+package Logica;
 
 import Grafica.GUI;
+import Grafica.ManejadorGUI;
 import Personajes.*;
 
 import java.util.Random;
@@ -27,15 +28,17 @@ public class Nivel {
 	protected Enemigo[] misEnemigos;
 	protected Celda [][] misCeldas;
 	protected PowerUp [] misPowerUps;
+	protected ManejadorGUI miManejador;
 	
 	//Constructor
 	
 	public Nivel (GUI miGui) {
 		this.miGui = miGui;
+		miManejador= new ManejadorGUI(miGui);
 		miBomberman = new Bomberman(1,1,this);
 		miBomberman.start();
-		miGui.add(miBomberman.obtenerGrafico().obtenerImagenActual());
-		miGui.getContentPane().setComponentZOrder(miBomberman.obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DEL BOMBERMAN POR ENCIMA DEL PISO
+		//Añade el bomberman a la GUI
+		miManejador.añadirBomberman(miBomberman);
 		//misPowerUps = p;
 		marcadorPuntos=0;
 		
@@ -49,9 +52,8 @@ public class Nivel {
 			for(int j=0; j<ancho; j++){
 				misCeldas[i][j]= new Celda(i,j,this);
 				contadorCelda++;
-				miGui.add(misCeldas[i][j].obtenerGraficos().obtenerImagenActual());
-				miGui.getContentPane().setComponentZOrder(misCeldas[i][j].obtenerGraficos().obtenerImagenActual(), 1);
-				
+				//Añade las celdas a la GUI
+				miManejador.añadirCelda(misCeldas[i][j]);
 			}
 		}
 		
@@ -118,12 +120,11 @@ public class Nivel {
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
 					misEnemigos[i] = new Rogulo (Ex,Ey,this);
 					misCeldas[Ex][Ey].añadirEnemigo(misEnemigos[i]);
-					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
-					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);
+					miManejador.añadirEnemigo(misEnemigos[i]);
 					misEnemigos[i].start();
 					i++;					
-					}
 				}
+			}
 				
 			//ALTAIR
 			while (i<5) {
@@ -136,7 +137,7 @@ public class Nivel {
 					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DE LOS ENEMIGOS POR ENCIMA DEL PISO
 					misEnemigos[i].start();
 					i++;					
-					}
+				}
 			}
 			/*
 			// SIRIUS
@@ -151,16 +152,13 @@ public class Nivel {
 			
 			this.misPowerUps[0] = new SpeedUp(1,2,this.misCeldas[1][2]);
 		    misCeldas[1][2].establecerPowerUp(misPowerUps[0]);
-			miGui.add(this.misPowerUps[0].obtenerImagen());
-		    miGui.getContentPane().setComponentZOrder(misPowerUps[0].obtenerImagen(), 0); //PARA PONER EL LABEL DEL POWERUP POR ENCIMA DEL PISO
-		    
+		    miManejador.añadirPowerUp(misPowerUps[0]);
+			 
 		    //INICIALIZO EL FATALITY
 		    
 		   	this.misPowerUps[1] = new Fatality(1,5,this.misCeldas[1][5]);
 		    misCeldas[1][5].establecerPowerUp(misPowerUps[1]);
-			miGui.add(this.misPowerUps[1].obtenerImagen());
-		    miGui.getContentPane().setComponentZOrder(misPowerUps[1].obtenerImagen(), 0);//PARA PONER EL LABEL DEL POWERUP POR ENCIMA DEL PISO
-			
+			miManejador.añadirPowerUp(misPowerUps[1]);
 	}
 	
 	//Operaciones
@@ -202,11 +200,14 @@ public class Nivel {
 				celdaActual.obtenerPared().destruirPared();
 			}
 			else{
-				if(celdaActual.obtenerEnemigo()!=null){
-					System.out.println("Bomberman mató enemigo");
-					celdaActual.matarEnemigo();
-					//Muere pero no cambia la imagen a la primera si no a la segunda O_o
-					celdaActual.eliminarEnemigo();
+				if(celdaActual.obtenerEnemigos()!= null){
+					Enemigo[] enem= celdaActual.obtenerEnemigos();
+					for(int j=0; j<enem.length; j++){
+						if(enem[j]!=null){
+							celdaActual.matarEnemigo(enem[j]);
+							celdaActual.eliminarEnemigo(enem[j]);
+						}
+					}
 				}
 			}
 		}

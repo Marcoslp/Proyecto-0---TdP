@@ -1,6 +1,6 @@
 package PowerUps;
 
-import Lógica.Celda;
+import Logica.Celda;
 import Personajes.Bomberman;
 
 

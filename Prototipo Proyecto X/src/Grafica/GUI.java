@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Lógica.Bomba;
-import Lógica.Nivel;
+import Logica.Bomba;
+import Logica.Nivel;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

@@ -1,7 +1,7 @@
 package Threads;
-import Lógica.Bomba;
-import Lógica.Nivel;
-import Lógica.Posicion;
+import Logica.Bomba;
+import Logica.Nivel;
+import Logica.Posicion;
 import Personajes.Bomberman;
 
 public class ContadorBomba extends Thread {

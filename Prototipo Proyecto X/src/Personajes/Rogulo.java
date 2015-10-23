@@ -2,7 +2,7 @@ package Personajes;
 
 import Grafica.ComponenteGrafico;
 import Grafica.RoguloGrafico;
-import Lógica.*;
+import Logica.*;
 
 import java.util.Random;
 

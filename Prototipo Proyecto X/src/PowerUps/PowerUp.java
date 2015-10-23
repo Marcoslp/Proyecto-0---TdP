@@ -3,9 +3,9 @@ package PowerUps;
 import javax.swing.JLabel;
 
 import Grafica.ComponenteGrafico;
-import Lógica.Celda;
-import Lógica.Nivel;
-import Lógica.Posicion;
+import Logica.Celda;
+import Logica.Nivel;
+import Logica.Posicion;
 import Personajes.Bomberman;
 
 

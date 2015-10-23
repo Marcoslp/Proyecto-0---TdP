@@ -15,11 +15,7 @@ public class ComponenteGrafico {
 		imagenActual = new JLabel();
 	}
 	public void establecerimagenActual(int i){
-		if(i!=-1)
 			imagenActual.setIcon(misImagenes[i]);
-		//PROVISORIO
-		else
-			imagenActual.setIcon(new ImageIcon(this.getClass().getResource("/Imagenes/morido.png")));
 	}
 	
 	public void establecerImagen(Icon j, int i){
@@ -38,5 +34,8 @@ public class ComponenteGrafico {
 	}
 	public int obtenerAlto() {
 		return ALTO;
+	}
+	public void eliminarImagen() {
+		this.obtenerImagenActual().setVisible(false);	
 	}
 }

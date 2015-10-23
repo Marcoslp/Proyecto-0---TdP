@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 import Grafica.BombermanGrafico;
 import Grafica.ComponenteGrafico;
-import Lógica.*;
+import Logica.*;
 import PowerUps.PowerUp;
 import Threads.ContadorBomba;
 

@@ -1,4 +1,4 @@
-package Lógica;
+package Logica;
 
 
 import Personajes.Bomberman;
@@ -37,7 +37,7 @@ public class ParedDestructible extends Pared{
 	public void recibirEnemigo (Enemigo e) {
 		if(e.obtenerModoDios()){   //Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
-			celdaAnterior.eliminarEnemigo();
+			celdaAnterior.eliminarEnemigo(e);
 			e.obtenerPosicion().establecerX(miCelda.obtenerPosicion().obtenerX());
 			e.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());

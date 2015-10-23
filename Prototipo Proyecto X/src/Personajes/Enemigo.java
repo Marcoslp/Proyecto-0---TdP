@@ -1,7 +1,7 @@
 package Personajes;
 
 import Grafica.ComponenteGrafico;
-import Lógica.*;
+import Logica.*;
 
 
 public abstract class Enemigo extends Thread {

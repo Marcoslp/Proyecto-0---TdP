@@ -3,7 +3,7 @@ package PowerUps;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Lógica.Celda;
+import Logica.Celda;
 import Personajes.Bomberman;
 
 

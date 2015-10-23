@@ -1,4 +1,4 @@
-package Lógica;
+package Logica;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,7 +22,6 @@ public class Celda {
 	protected Pared miPared;
 	protected PowerUp miPowerUp;
 	protected Enemigo [] misEnemigos;
-	protected Enemigo miEnemigo;
 	protected Posicion miPosicion;
 	protected Nivel miNivel;
 	
@@ -34,7 +33,6 @@ public class Celda {
 		miPared = null;
 		miPowerUp = null;
 		misEnemigos = new Enemigo[6];
-		miEnemigo=null;
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
 		//CREA TODO EL COMPONENTE GRAFICO
@@ -51,22 +49,17 @@ public class Celda {
 			celdaAnterior.setBomberman(null);
 			b.obtenerPosicion().establecerX(miPosicion.obtenerX());
 			b.obtenerPosicion().establecerY(miPosicion.obtenerY());
-			b.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
+			graficos.recibirBomberman(b,miPosicion);
 			miBomberman=b;
 			
-			/*
-			for(int i = 0 ; i < misEnemigos.length; i++){
+			
+			for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
 				if(misEnemigos[i]!=null){
 					System.out.println("Bomberman toco enemigo");
 					break; //PROVISORIO
 				}
 			}
-			*/
-			if(miEnemigo!=null){
-				System.out.println("Bomberman toco enemigo");
-			}
-				
-			
+
 			if(miPowerUp != null){
 				miPowerUp.empower(b); //ACTIVA EL POWERUP
 				miNivel.eliminarPowerUp(miPowerUp);
@@ -86,10 +79,10 @@ public class Celda {
 	public void recibirEnemigo (Enemigo e){
 		if(miPared == null){
 			Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY()); 
-			celdaAnterior.eliminarEnemigo();	//LO QUITA DE LA CELDA ANTERIOR
+			celdaAnterior.eliminarEnemigo(e);	//LO QUITA DE LA CELDA ANTERIOR
 			e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
 			e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
-			e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
+			graficos.recibirEnemigo(e,miPosicion);
 			if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
 				System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
 			}			
@@ -112,36 +105,41 @@ public class Celda {
 	public Posicion obtenerPosicion(){
 		return miPosicion;
 	}
-
-	public Enemigo obtenerEnemigo(){
-		return miEnemigo;
+	
+	public Enemigo[] obtenerEnemigos(){
+		return misEnemigos;
 	}
 	
 	public Nivel obtenerNivel(){
 		return miNivel;
 	}
 	
-	/*
-	public void eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
+	
+	public boolean eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
 			cortar = misEnemigos[i] == e;
 			if(cortar){
 				misEnemigos[i] = null;
 			}
-		}		
-	}
-	*/
-	
-	public void eliminarEnemigo(){
-		miEnemigo=null;
+		}	
+		return cortar;
 	}
 	
-	public void matarEnemigo(){
-		miEnemigo.obtenerGrafico().obtenerImagenActual().setVisible(false);
-		miEnemigo.destruir();
+	public boolean matarEnemigo(Enemigo e){
+		boolean cortar = false;
+		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
+			cortar = misEnemigos[i] == e;
+			System.out.println("cortar = "+cortar);
+			if(cortar){
+				misEnemigos[i].obtenerGrafico().eliminarImagen();
+				misEnemigos[i].destruir();
+			}
+		}
+		return cortar;
 	}
-	/*
+	
+	
 	public void añadirEnemigo(Enemigo e) { //Busca el primer lugar libre y se lo asiga al enemigo
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
@@ -149,12 +147,6 @@ public class Celda {
 			if(cortar){
 				misEnemigos[i] = e;
 			}
-		}
-	}
-	*/
-	public void añadirEnemigo(Enemigo e){
-		if(miEnemigo==null){
-			miEnemigo=e;
 		}
 	}
 	
