@@ -2,6 +2,12 @@ package Grafica;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Clase que representa la gráfica del Bomberman
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ *
+ */
+
 public class BombermanGrafico extends ComponenteGrafico {
 
 	public BombermanGrafico(int i, int x, int y) {

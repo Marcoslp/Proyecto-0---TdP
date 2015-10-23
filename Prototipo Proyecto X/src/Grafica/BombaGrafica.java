@@ -2,6 +2,12 @@ package Grafica;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Clase que representa la gráfica de la bomba
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ *
+ */
+
 public class BombaGrafica extends ComponenteGrafico {
 	public BombaGrafica(int i, int x, int y){
 		super(i);

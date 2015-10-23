@@ -4,6 +4,10 @@ package Logica;
 import Personajes.Bomberman;
 import Personajes.Enemigo;
 
+/**
+ * Clase que modela la logica de una pared Destructible
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
 
 public class ParedDestructible extends Pared{
 	
@@ -17,10 +21,19 @@ public class ParedDestructible extends Pared{
 	
 	//Operaciones
 	
+	/**
+	 * Método que destruye la pared asociada a la celda
+	 */
+	
 	public void destruirPared () {
 		miCelda.obtenerNivel().incrementarPuntuacion(10);
 		miCelda.eliminarPared();
 	}
+	
+	/**
+	 * Método que recibe un bomberman
+	 * @param b de tipo Bomberman que representa el bomberman a recibir
+	 */
 	
 	public void recibirBomberman (Bomberman b) {
 		if(b.obtenerModoDios()){	//Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
@@ -33,6 +46,11 @@ public class ParedDestructible extends Pared{
 			b.actualizarPosicionBomba();
 		}
 	}
+	
+	/**
+	 * Método que recibe a un enemigo
+	 * @param e de tipo Enemigo que representa el enemigo a recibir
+	 */
 
 	public void recibirEnemigo (Enemigo e) {
 		if(e.obtenerModoDios()){   //Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
@@ -44,6 +62,10 @@ public class ParedDestructible extends Pared{
 			this.miCelda.añadirEnemigo(e);
 		}
 	}
+	
+	/**
+	 * Método que establece la imagen de una pared Destructible
+	 */
 
 	public void establecerImagen() {
 		miCelda.obtenerGraficos().establecerimagenActual(2);		

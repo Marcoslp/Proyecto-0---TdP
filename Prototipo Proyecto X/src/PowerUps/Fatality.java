@@ -6,6 +6,10 @@ import javax.swing.JLabel;
 import Logica.Celda;
 import Personajes.Bomberman;
 
+/**
+ * Clase que modela la logica del powerUp Fatality
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
 
 public class Fatality extends PowerUp{
 	
@@ -20,6 +24,11 @@ public class Fatality extends PowerUp{
 	}
 	
 	//Operaciones
+	
+	/**
+	 * Método que efectiviza el powerUp Fatality en el bomberman
+	 * @param b de tipo Bomberman que representa el bomberman que piso el PowerUp
+	 */
 	
 	public void empower (Bomberman b) {
 		b.obtenerBomba().duplicarAlcance();

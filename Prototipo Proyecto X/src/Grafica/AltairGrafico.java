@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 /**
  * Clase que representa la gráfica del Altair
- * @author Usuario
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
  *
  */
 public class AltairGrafico extends ComponenteGrafico{

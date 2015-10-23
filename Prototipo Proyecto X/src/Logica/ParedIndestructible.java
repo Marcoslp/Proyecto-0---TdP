@@ -1,5 +1,9 @@
 package Logica;
 
+/**
+ * Clase que modela la logica de una pared indestructible
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
 
 import Personajes.Bomberman;
 import Personajes.Enemigo;
@@ -17,10 +21,14 @@ public class ParedIndestructible extends Pared{
 	
 	//Operaciones
 	
+	/**
+	 * Método que intenta destruir una pared indestructible
+	 */
+	
 	public void destruirPared () {
 		miCelda.obtenerGraficos().establecerimagenActual(1);
 	}
-	
+		
 	public void recibirBomberman (Bomberman b) {
 		//DEBERIA CAMBIAR LA IMAGEN DEL BOMBERMAN
 	}

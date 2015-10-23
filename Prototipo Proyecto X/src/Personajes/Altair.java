@@ -7,6 +7,10 @@ import Grafica.AltairGrafico;
 import Grafica.ComponenteGrafico;
 import Logica.*;
 
+/**
+ * Clase que modela la lógica de un enemigo Altair
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
 
 public class Altair extends Enemigo {
 	
@@ -28,11 +32,19 @@ public class Altair extends Enemigo {
 	
 	//Operaciones
 	
+	/**
+	 * Método utlizado cuando un Altair muere
+	 */
+	
 	public void morir () {
 		
 		miNivel.matarEnemigo(this);
 		miNivel.incrementarPuntuacion(puntuacion);
 	}
+	
+	/**
+	 * Método utilizado para mover un Altair
+	 */
 	
 	public void moverse (){
 		Random r = new Random ();

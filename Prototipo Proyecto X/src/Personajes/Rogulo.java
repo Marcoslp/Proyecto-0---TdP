@@ -8,6 +8,11 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Clase que modela la logica de los enemigos Rogulos
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
+
 public class Rogulo extends Enemigo {
 	
 	//Atributos
@@ -24,10 +29,18 @@ public class Rogulo extends Enemigo {
 	
 	//Operaciones
 	
+	/**
+	 * Método que se utiliza cuando muere un Rogulo
+	 */
+	
 	public void morir () {
 		miNivel.matarEnemigo(this);
 		miNivel.incrementarPuntuacion(puntuacion);	
 	}
+	
+	/**
+	 * Método que se utiliza para mover un Rogulo
+	 */
 			
 	public void moverse (){
 		Random r = new Random ();

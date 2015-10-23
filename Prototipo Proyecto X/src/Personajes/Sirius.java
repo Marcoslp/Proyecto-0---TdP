@@ -2,6 +2,11 @@ package Personajes;
 
 import Logica.*;
 
+/**
+ * Clase que modela la lógica de los enemigos Sirius
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
+
 public class Sirius extends Enemigo {
 	
 	/*Sirius accede al Bomberman, pide su posición y calcula el camino más
@@ -23,10 +28,18 @@ public class Sirius extends Enemigo {
 	
 	//Operaciones
 	
+	/**
+	 * Método utilizado para cuando muere un Sirius
+	 */ 
+	
 	public void morir () {
 		miNivel.matarEnemigo(this);
 		miNivel.incrementarPuntuacion(puntuacion);
 	}
+	
+	/**
+	 *Método utilizado para cuando se mueve un Sirius
+	 */
 	
 	public void moverse (){
 		

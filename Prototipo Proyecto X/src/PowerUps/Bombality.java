@@ -3,7 +3,10 @@ package PowerUps;
 import Logica.Celda;
 import Personajes.Bomberman;
 
-
+/**
+ * Clase que modela la logica del powerUp Bombality
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ */
 
 public class Bombality extends PowerUp{
 	
@@ -17,6 +20,11 @@ public class Bombality extends PowerUp{
 		
 	}
 	//Operaciones
+	
+	/**
+	 * Método que efectiviza el powerUp Bombality en el bomberman
+	 * @param b de tipo Bomberman que representa el bomberman que piso el PowerUp
+	 */
 	
 	public void empower (Bomberman b) {
 		b.aumentarCapacidadBombas();

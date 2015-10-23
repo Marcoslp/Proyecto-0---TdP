@@ -2,6 +2,12 @@ package Grafica;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Clase que representa la gráfica del Rogulo
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ *
+ */
+
 public class RoguloGrafico extends ComponenteGrafico {
 
 	public RoguloGrafico(int i, int x, int y) {

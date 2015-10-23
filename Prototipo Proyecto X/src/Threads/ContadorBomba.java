@@ -5,6 +5,7 @@ import Logica.Nivel;
 import Logica.Posicion;
 import Personajes.Bomberman;
 
+
 public class ContadorBomba extends Thread {
 	
 	//Atributos

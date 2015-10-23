@@ -14,7 +14,11 @@ import PowerUps.PowerUp;
 import PowerUps.SpeedUp;
 import Threads.ContadorBomba;
 
-
+/**
+ * Clase que modela la lógica del nivel
+ * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
+ *
+ */
 public class Nivel {
 	
 	private static final int largo=31;
@@ -162,6 +166,14 @@ public class Nivel {
 	//Operaciones
 	
 	//Método auxiliar para explotar la bomba
+	
+	/**
+	 * Método auxiliar para explotar una bomba
+	 * @param b de tipo Bomba que representa la bomba a explotar
+	 * @param direccion de tipo int que representa la direccion a explotar
+	 * @param s de tipo String que representa el nombre de la direccion a explotar
+	 */
+	
 	private void explosionAuxiliar(Bomba b, int direccion, String s){
 		boolean cortar=false;
 		Icon DireccionExplosion= b.obtenerGraficos().obtenerIconoActual(direccion);
@@ -214,6 +226,11 @@ public class Nivel {
 		}
 	}
 	
+	/**
+	 * Método que explota una bomba
+	 * @param bomba de tipo Bomba que representa la Bomba a explotar
+	 */
+	
 	public void explosion (Bomba bomba) {
 		bomba.obtenerGraficos().establecerimagenActual(3);
 		this.explosionAuxiliar(bomba,2,"derecha");
@@ -222,17 +239,34 @@ public class Nivel {
 		this.explosionAuxiliar(bomba,1,"abajo");
 	}
 	
+	/**
+	 * Método que incrementa la puntuacion del jugador
+	 * @param x de tipo int que representa la cantidad de puntos a sumar
+	 */
+	
 	public void incrementarPuntuacion (int x) {
 		marcadorPuntos += x;
 	}
+	
 	
 	public void bombermanPisoPowerUp () {
 		
 	}
 	
+	/**
+	 * Método que devuelve el Bomberman asociado al nivel
+	 * @return Bomberman que representa el bomberman a devolver
+	 */
+	
 	public Bomberman obtenerBomberman () {
 		return miBomberman;
 	}
+	
+	/**
+	 * Método que mueve al bomberman en la dirección deseada
+	 * @param dir de tipo int que representa la direccion deseada
+	 */
+	
 	
 	public void moverBomberman (int dir){
 		int x = miBomberman.obtenerPosicion().obtenerX();
@@ -257,7 +291,11 @@ public class Nivel {
 			break;
 		}
 	}
-		
+		/**
+		 * Método que mueve al enemigo
+		 * @param e de tipo Enemigo que representa el enemigo a mover
+		 * @param dir de tipo int que representa la direccion a mover del enemigo
+		 */
 	
 	public void moverEnemigo (Enemigo e, int dir) {
 		int x = e.obtenerPosicion().obtenerX();
@@ -281,23 +319,47 @@ public class Nivel {
 			break;
 		}
 	}
-
+	/** Método que se utiliza para matar al Bomberman :(
+	 */
+	
 	public void matarBomberman() {
 		miBomberman.detener();
 		miBomberman.obtenerGrafico().eliminarImagen();	
 	}
+	
+	/**
+	 * Método que se utiliza para matar a un enemigo
+	 * @param e de tipo Enemigo que representa el enemigo a matar
+	 */
 
 	public void matarEnemigo(Enemigo e) {
 		
 	}
 	
+	/**
+	 * Método que devuelve la celda asociada a una posicion
+	 * @param i de tipo int que representa la posicion en el eje x
+	 * @param j de tipo int que representa la posicion en el eje y
+	 * @return
+	 */
+	
 	public Celda obtenerCelda(int i, int j){
 		return misCeldas[i][j];
 	}
 	
+	/**
+	 * Método que devuelve el marcador de tiempo
+	 * @return int que representa el tiempo
+	 */
+	
 	public int obtenerMarcadorTiempo(){
 		return marcadorTiempo;		
 	}
+	
+	/**
+	 * Método que elimina un determinado PowerUp
+	 * @param miPowerUp de tipo PowerUp que representa el powerUp a eliminar
+	 */
 
 	public void eliminarPowerUp(PowerUp miPowerUp) {
 		boolean cortar = false;
@@ -309,9 +371,19 @@ public class Nivel {
 		}		
 	}
 	
+	/**
+	 * Método retorna el manejador de la GUI
+	 * @return ManejadorGUI que representa un manejador de GUI
+	 */
+	
 	public ManejadorGUI obtenerManejadorGUI(){
 		return miManejador;
 	}
+	
+	/**
+	 * Método utilizado para restaurar el gráfico de una celda luego de algun evento
+	 * @param bomba de tipo Bomba
+	 */
 
 	public void restaurarPiso(Bomba bomba) {
 		boolean cortar;
