@@ -10,10 +10,8 @@ public class Posicion {
 	//Constructor
 	
 	public Posicion (int X, int Y) {
-		
 		x = X;
-		y = Y;
-		
+		y = Y;		
 	}
 	
 	//Operaciones

@@ -33,7 +33,6 @@ public class Sirius extends Enemigo {
 	 */ 
 	
 	public void morir () {
-		miNivel.matarEnemigo(this);
 		miNivel.incrementarPuntuacion(puntuacion);
 	}
 	

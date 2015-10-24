@@ -176,10 +176,9 @@ public class Celda {
 	/**
 	 * Método que elimina un enemigo de la celda
 	 * @param e de tipo Enemigo que representa el enemigo a eliminar
-	 * @return Boolean que representa si se pudo eliminar el enemigo correctamente
 	 */
 	
-	public boolean eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
+	public void eliminarEnemigo(Enemigo e) {  //Busca al enemigo en el arreglo y lo elimina
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
 			cortar = misEnemigos[i] == e;
@@ -187,25 +186,22 @@ public class Celda {
 				misEnemigos[i] = null;
 			}
 		}	
-		return cortar;
 	}
 	
 	/**
 	 * Método que mata a un enemigo
 	 * @param e de tipo Enemigo que representa el enemigo a matar
-	 * @return Boolean que representa si se pudo matar correctamente al enemigo
 	 */
-	public boolean matarEnemigo(Enemigo e){
+	public void matarEnemigo(Enemigo e){
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
 			cortar = misEnemigos[i] == e;
-			System.out.println("cortar = "+cortar);
 			if(cortar){
+				misEnemigos[i].morir();
 				misEnemigos[i].obtenerGrafico().eliminarImagen();
 				misEnemigos[i].destruir();
 			}
 		}
-		return cortar;
 	}
 	
 	/**
@@ -254,8 +250,7 @@ public class Celda {
 	 */
 	
 	public void eliminarPared() {
-				miPared=null;
-			
+				miPared=null;	
 	}
 	
 	/**

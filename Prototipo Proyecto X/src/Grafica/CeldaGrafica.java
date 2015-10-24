@@ -22,7 +22,7 @@ public class CeldaGrafica extends ComponenteGrafico {
 	
 	/**
 	 * Método que recibe la gráfica del bomberman en una celda
-	 * @param B
+	 * @param b Bomberman , miPosicion Posicion
 	 * @param miPosicion
 	 */
 	

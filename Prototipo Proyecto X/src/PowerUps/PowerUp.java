@@ -37,7 +37,7 @@ public abstract class PowerUp {
 	 * @param b de tipo Bomberman que representa el bomberman que piso el PowerUp
 	 */
 	
-	public abstract void empower (Bomberman B);
+	public abstract void empower (Bomberman b);
 	
 	/**
 	 * Método que devuelve la posicion asociada al powerUp
@@ -46,15 +46,6 @@ public abstract class PowerUp {
 	
 	public Posicion obtenerPosicion () {
 		return miPosicion;
-	}
-	
-	/**
-	 * Método que retorna el nivel asociado al powerUp
-	 * @return Nivel que representa el nivel a devolver
-	 */
-	
-	public Nivel obtenerNivel(){
-		return miNivel;		
 	}
 	
 	/**

@@ -214,13 +214,7 @@ public class Nivel {
 			}
 			else{
 				if(celdaActual.obtenerEnemigos()!= null){
-					Enemigo[] enem= celdaActual.obtenerEnemigos();
-					for(int j=0; j<enem.length; j++){
-						if(enem[j]!=null){
-							celdaActual.matarEnemigo(enem[j]);
-							celdaActual.eliminarEnemigo(enem[j]);
-						}
-					}
+					this.matarEnemigo(celdaActual.obtenerEnemigos(), celdaActual);
 				}
 			}
 		}
@@ -247,12 +241,7 @@ public class Nivel {
 	public void incrementarPuntuacion (int x) {
 		marcadorPuntos += x;
 	}
-	
-	
-	public void bombermanPisoPowerUp () {
-		
-	}
-	
+
 	/**
 	 * Método que devuelve el Bomberman asociado al nivel
 	 * @return Bomberman que representa el bomberman a devolver
@@ -328,12 +317,18 @@ public class Nivel {
 	}
 	
 	/**
-	 * Método que se utiliza para matar a un enemigo
-	 * @param e de tipo Enemigo que representa el enemigo a matar
+	 * Método que se utiliza para matar todos los enemigos que estén en una celda
+	 * @param e un arreglo Enemigo que representa los enemigos a matar 
 	 */
 
-	public void matarEnemigo(Enemigo e) {
-		
+	public void matarEnemigo(Enemigo[] e, Celda celdaActual) {
+		e= celdaActual.obtenerEnemigos();
+		for(int j=0; j<e.length; j++){
+			if(e[j]!=null){
+				celdaActual.matarEnemigo(e[j]);
+				celdaActual.eliminarEnemigo(e[j]);
+			}
+		}
 	}
 	
 	/**

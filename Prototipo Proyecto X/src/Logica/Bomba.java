@@ -34,7 +34,7 @@ public class Bomba {
 	
 	//Operaciones
 	
-
+	//ver
 	public void explotar (Posicion p, Bomberman b) {
 		
 	}
