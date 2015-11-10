@@ -50,6 +50,7 @@ public class Celda {
 	
 	//Operaciones
 	
+	
 	// Recibir Bomberman cambio, ahora tiene un parámetro
 		/**
 		 * Método que recibe al bomberman en la celda
@@ -64,7 +65,6 @@ public class Celda {
 				b.obtenerPosicion().establecerY(miPosicion.obtenerY());
 				graficos.recibirBomberman(b,miPosicion);
 				miBomberman=b;
-				
 				
 				for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
 					if(misEnemigos[i]!=null){
@@ -195,15 +195,16 @@ public class Celda {
 	public void matarEnemigo(Enemigo e){
 		boolean cortar = false;
 		for(int i=0; i < this.misEnemigos.length && !cortar ; i++){
-			cortar = misEnemigos[i] == e;
-			if(cortar){
-				misEnemigos[i].morir();
-				misEnemigos[i].obtenerGrafico().eliminarImagen();
-				misEnemigos[i].destruir();
+			if(misEnemigos[i]!=null){
+				cortar = misEnemigos[i] == e;
+				if(cortar){
+					misEnemigos[i].obtenerGrafico().eliminarImagen();
+					misEnemigos[i].morir();
+					misEnemigos[i]=null;
+				}
 			}
 		}
 	}
-	
 	/**
 	 * Método que añade un enemigo a la celda
 	 * @param e de tipo Enemigo que representa el enemigo a añadir

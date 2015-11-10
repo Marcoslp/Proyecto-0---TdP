@@ -66,21 +66,6 @@ public class GUI extends JFrame {
 			   }
 			}
 			
-			public void keyReleased(KeyEvent e){
-				switch(e.getKeyCode()){
-				case KeyEvent.VK_LEFT:
-					miNivel.obtenerBomberman().establecerDireccion(-1);
-					break;
-		   		case KeyEvent.VK_RIGHT:
-					miNivel.obtenerBomberman().establecerDireccion(-1);
-		   			break;
-		   		case KeyEvent.VK_UP:
-					miNivel.obtenerBomberman().establecerDireccion(-1);
-		   			break;
-		   		case KeyEvent.VK_DOWN:
-					miNivel.obtenerBomberman().establecerDireccion(-1);
-		   			break;			   		
-		   }		}
 		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

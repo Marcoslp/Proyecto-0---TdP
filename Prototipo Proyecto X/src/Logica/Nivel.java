@@ -94,15 +94,21 @@ public class Nivel {
 			
 			Random rnd= new Random();
 			boolean termine=false;
+			int Px,Py;
 			Pared paredAux;
 			int total= contadorCelda - cantParedes;
 			int aux=0;
+			
 			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
-				int Px= rnd.nextInt(31);
-				int Py= rnd.nextInt(13);
+				Px= rnd.nextInt(31);
+				Py= rnd.nextInt(13);
+				boolean derecha,abajo,yo;
+				yo= misCeldas[Px][Py] != misCeldas[1][1];
+				derecha= misCeldas[Px][Py] != misCeldas[1][2];
+				abajo= misCeldas[Px][Py] != misCeldas[2][1];
 				if(misCeldas[Px][Py].obtenerPared() == null){ //EVITA QUE SE PONGA ARRIBA DEL BOMBERMAN Y LOS POWERUPS, PROVISORIO. SE HARIA UN PRIVADO QUE CONTROLE MAS POSICIONES PROHIBIDAS
-					if(misCeldas[Px][Py] != misCeldas[1][1]){
+					if(abajo && derecha && yo && misCeldas[Px][Py] != misCeldas[1][3] && misCeldas[Px][Py] != misCeldas[3][1]){
 						paredAux= new ParedDestructible(misCeldas[Px][Py]);
 						misCeldas[Px][Py].establecerPared(paredAux);
 						aux++;
@@ -152,9 +158,16 @@ public class Nivel {
 			//INICIALIZO EL SPEED UP PROVISORIO
 			this.misPowerUps = new PowerUp[11]; 
 			
-			this.misPowerUps[0] = new SpeedUp(1,2,this.misCeldas[1][2]);
-		    misCeldas[1][2].establecerPowerUp(misPowerUps[0]);
-		    miManejador.añadirPowerUp(misPowerUps[0]);
+			for(int k=0; k<4;k++){
+				Px= rnd.nextInt(30);
+				Py= rnd.nextInt(12);
+				if(misCeldas[Px][Py].obtenerPared()!=null){
+					this.misPowerUps[k] = new SpeedUp(Px,Py,this.misCeldas[Px][Py]);
+					System.out.println("Powerup en: x= "+Px+" y = "+Py);
+					misCeldas[Px][Py].establecerPowerUp(misPowerUps[k]);
+					miManejador.añadirPowerUp(misPowerUps[k]); 
+				}
+			}
 			 
 		    //INICIALIZO EL FATALITY
 		    
@@ -326,7 +339,7 @@ public class Nivel {
 		for(int j=0; j<e.length; j++){
 			if(e[j]!=null){
 				celdaActual.matarEnemigo(e[j]);
-				celdaActual.eliminarEnemigo(e[j]);
+				//celdaActual.eliminarEnemigo(e[j]);
 			}
 		}
 	}

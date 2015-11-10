@@ -108,6 +108,7 @@ public abstract class Enemigo extends Thread {
 	 */
 	
 	public void destruir() {
+		this.interrupt();
 		this.mDetener = true;
 	}
 }

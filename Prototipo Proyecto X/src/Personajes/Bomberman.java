@@ -35,7 +35,7 @@ public class Bomberman extends Thread{
 		miPosicion = new Posicion(x,y);
 		modoDios = false;
 		puseBomba=false;
-		velocidad=10;
+		velocidad=1;
 		miNivel= lvl;
 		miBomba= new Bomba(this);
 		capacidadBombas=1;
@@ -254,19 +254,23 @@ public class Bomberman extends Thread{
 	public void run() {
 		while(!Detener){
 			try {
-				Thread.sleep(100);
+				Thread.sleep(200/velocidad);
 			} catch (InterruptedException e) {
 			}
-			if(direccion==0){
+			
+			int direccion_cached = this.direccion;
+			this.direccion = -1;
+			
+			if(direccion_cached==0){
 				this.moverIzquierda();
 			}
-			else if(direccion==1){
+			else if(direccion_cached==1){
 					this.moverDerecha();
 				}
-			else if(direccion==2){
+			else if(direccion_cached==2){
 					this.moverArriba();
 			}
-			else if(direccion==3){
+			else if(direccion_cached==3){
 					this.moverAbajo();
 			}
 			

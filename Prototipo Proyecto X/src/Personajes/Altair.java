@@ -38,6 +38,7 @@ public class Altair extends Enemigo {
 	
 	public void morir () {
 		miNivel.incrementarPuntuacion(puntuacion);
+		this.destruir();
 	}
 	
 	/**

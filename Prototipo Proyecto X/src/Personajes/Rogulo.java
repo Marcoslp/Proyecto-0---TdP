@@ -35,6 +35,7 @@ public class Rogulo extends Enemigo {
 	
 	public void morir () {
 		miNivel.incrementarPuntuacion(puntuacion);	
+		this.destruir();
 	}
 	
 	/**
