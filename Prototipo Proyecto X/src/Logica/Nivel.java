@@ -423,60 +423,61 @@ public class Nivel {
 	 * Método utilizado para restaurar el gráfico de una celda luego de algun evento
 	 * @param bomba de tipo Bomba
 	 */
+	
+	private synchronized void restaurarAux(Bomba b, String s){
+		int posX = b.obtenerPosicion().obtenerX();
+		int posY = b.obtenerPosicion().obtenerY();
+		Celda celdaActual=null;
 
-	public void restaurarPiso(Bomba bomba) {
-		boolean cortarDer,cortarIzq,cortarArr,cortarAb;
-		//QUITA EL LABEL CENTRAL
-		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
-		//CICLO QUE LIMPIA A LA DERECHA
-		cortarDer = false;
-		cortarArr =false;
-		cortarAb=false;
-		cortarIzq=false;
-		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
-		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
-		int posX = bomba.obtenerPosicion().obtenerX();
-		int posY = bomba.obtenerPosicion().obtenerY();
-		boolean cortar=false;
+		Icon explosionHorizontal = b.obtenerGraficos().obtenerIconoActual(2);
+		Icon explosionVertical = b.obtenerGraficos().obtenerIconoActual(1);
+		boolean horizontal=false,vertical=false;
+		/*
+		if(celdaActual.obtenerBomberman()!=null){
+			celdaActual.obtenerBomberman().morir();
+		}
+		*/
 		
-		Celda celdaIzquierda,celdaDerecha,celdaArriba,celdaAbajo;
-		
-		
-		for(int i=1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){
-			celdaDerecha = this.obtenerCelda(posX+i,posY);
-			celdaIzquierda = this.obtenerCelda(posX-i,posY);
-			celdaArriba = this.obtenerCelda(posX,posY-i);
-			celdaAbajo = this.obtenerCelda(posX, posY+i);
+		for(int i = 1; i< b.obtenerAlcance() + 1 && (!horizontal || !vertical); i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION	
+			switch(s){
+				case "derecha":{
+					celdaActual = this.obtenerCelda(posX+i,posY);
+				}
+				break;
+				case "izquierda":{
+					celdaActual = this.obtenerCelda(posX-i,posY);
+				}
+				break;
+				case "abajo":{
+					celdaActual = this.obtenerCelda(posX,posY+i);
+				}
+				break;
+				case "arriba":{
+					celdaActual = this.obtenerCelda(posX,posY-i);
+				}
+				break;
+			}
+			horizontal = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() == explosionHorizontal;
+			vertical   = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() == explosionVertical;
 			
-			cortarDer = celdaDerecha.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal;
-			cortarIzq = celdaIzquierda.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal;
-			cortarArr =	celdaArriba.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical;
-			cortarAb  =	celdaAbajo.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical;
-			if(!cortarDer){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaDerecha.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
-				if(celdaDerecha.obtenerPowerUp()!=null){
-					miManejador.visiblePowerUp(celdaDerecha.obtenerPowerUp());
+			if(horizontal || vertical){
+				celdaActual.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
+				if(celdaActual.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
 				}
 			}
-			if(!cortarIzq){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaIzquierda.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
-				if(celdaIzquierda.obtenerPowerUp()!=null){
-					miManejador.visiblePowerUp(celdaIzquierda.obtenerPowerUp());
-				}
-			}			
-			if(!cortarArr){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaArriba.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
-				if(celdaArriba.obtenerPowerUp()!=null){
-					miManejador.visiblePowerUp(celdaArriba.obtenerPowerUp());
-				}
-			}
-			if(!cortarAb){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaAbajo.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
-				if(celdaAbajo.obtenerPowerUp()!=null){
-					miManejador.visiblePowerUp(celdaAbajo.obtenerPowerUp());
-				}
-			}	
 		}
 	}
+	
+	
 
+	public void restaurarPiso(Bomba bomba) {
+		//QUITA EL LABEL CENTRAL
+		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
+		this.restaurarAux(bomba, "abajo");
+		this.restaurarAux(bomba, "arriba");
+		this.restaurarAux(bomba, "izquierda");
+		this.restaurarAux(bomba, "derecha");
+	}
+	
 }

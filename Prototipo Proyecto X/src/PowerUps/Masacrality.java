@@ -28,6 +28,6 @@ public class Masacrality extends PowerUp{
 	 */
 	
 	public void empower(Bomberman b) {
-	
+		b.establecerModoDios(true);
 	}
 }
