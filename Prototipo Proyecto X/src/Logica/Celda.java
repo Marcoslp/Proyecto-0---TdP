@@ -74,6 +74,7 @@ public class Celda {
 				}
 				//PROVISORIO PARA PROBAR POWERUPS, ESTÁN SUELTOS EN LAS CELDAS. ESTO DEBERÍA MODELARSE EN OTRA CLASE
 				if(miPowerUp != null){
+					System.out.println("PowerUp tocado");
 					miPowerUp.empower(b); //ACTIVA EL POWERUP
 					miNivel.eliminarPowerUp(miPowerUp);
 					this.quitarPowerUp();	
@@ -134,7 +135,7 @@ public class Celda {
 	
 	public void establecerPared(Pared p){
 		miPared=p;
-		p.establecerImagen(); //CAMBIA EL ICONO DEL JLABEL
+		p.establecerImagen();
 	}
 	
 	/**
@@ -205,6 +206,11 @@ public class Celda {
 			}
 		}
 	}
+	
+	public PowerUp obtenerPowerUp(){
+		return miPowerUp;
+	}
+	
 	/**
 	 * Método que añade un enemigo a la celda
 	 * @param e de tipo Enemigo que representa el enemigo a añadir
@@ -251,7 +257,7 @@ public class Celda {
 	 */
 	
 	public void eliminarPared() {
-				miPared=null;	
+		miPared=null;	
 	}
 	
 	/**

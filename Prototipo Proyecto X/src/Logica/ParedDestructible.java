@@ -68,6 +68,6 @@ public class ParedDestructible extends Pared{
 	 */
 
 	public void establecerImagen() {
-		miCelda.obtenerGraficos().establecerimagenActual(2);		
+		miCelda.obtenerGraficos().establecerimagenActual(2);
 	}
 }

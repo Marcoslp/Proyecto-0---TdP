@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import Logica.Celda;
 import Personajes.Bomberman;
+import Grafica.*;
 
 /**
  * Clase que modela la logica del powerUp Fatality
@@ -19,8 +20,7 @@ public class Fatality extends PowerUp{
 	
 	public Fatality (int x, int y, Celda miCelda) {
 		super(x,y,miCelda);
-		this.miImagen = new JLabel (new ImageIcon(this.getClass().getResource("/Imagenes/Fatality.png")));
-		this.miImagen.setBounds(1*32, 5*32, 32, 32); //PROVISORIO, SOLO PARA EL PROTOTIPO, PORQUE SE NECESITARIA PODER EXPLOTAR LAS PAREDES
+		miGrafico = new PowerUpGrafico(1,x,y);
 	}
 	
 	//Operaciones
@@ -32,7 +32,7 @@ public class Fatality extends PowerUp{
 	
 	public void empower (Bomberman b) {
 		b.obtenerBomba().duplicarAlcance();
-		this.miImagen.setVisible(false); //PROVISORIO PROTOTIPO, REALMENTE LA CELDA MANEJARIA LA IMAGEN
+		miGrafico.eliminarImagen(); //PROVISORIO PROTOTIPO, REALMENTE LA CELDA MANEJARIA LA IMAGEN
 		System.out.println("Alcance x 2");
 	}
 

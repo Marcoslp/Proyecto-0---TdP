@@ -1,5 +1,6 @@
 package PowerUps;
 
+import Grafica.PowerUpGrafico;
 import Logica.Celda;
 import Personajes.Bomberman;
 
@@ -15,8 +16,8 @@ public class Bombality extends PowerUp{
 	//Constructor
 	
 	public Bombality (int x, int y, Celda miCelda) {
-		
 		super(x,y,miCelda);
+		miGrafico = new PowerUpGrafico(2,x,y);
 		
 	}
 	//Operaciones
@@ -28,6 +29,7 @@ public class Bombality extends PowerUp{
 	
 	public void empower (Bomberman b) {
 		b.aumentarCapacidadBombas();
+		miGrafico.eliminarImagen();
 	}
 
 }

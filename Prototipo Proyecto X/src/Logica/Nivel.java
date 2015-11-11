@@ -9,9 +9,7 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-import PowerUps.Fatality;
-import PowerUps.PowerUp;
-import PowerUps.SpeedUp;
+import PowerUps.*;
 import Threads.ContadorBomba;
 
 /**
@@ -98,12 +96,57 @@ public class Nivel {
 			Pared paredAux;
 			int total= contadorCelda - cantParedes;
 			int aux=0;
+			boolean derecha,abajo,yo;
+			int k=0;
+			
+			
+			this.misPowerUps = new PowerUp[11]; 
+			while(k<11){
+				Px= rnd.nextInt(30);
+				Py= rnd.nextInt(12);
+				
+				yo= misCeldas[Px][Py] != misCeldas[1][1];
+				derecha= misCeldas[Px][Py] != misCeldas[1][2];
+				abajo= misCeldas[Px][Py] != misCeldas[2][1];
+				if(misCeldas[Px][Py].obtenerPared() == null){
+					if(abajo && derecha && yo && misCeldas[Px][Py] != misCeldas[1][3] && misCeldas[Px][Py] != misCeldas[3][1]){
+						if(k<4){
+							this.misPowerUps[k] = new SpeedUp(Px,Py,this.misCeldas[Px][Py]);	
+						}
+						else{
+							if(k<7){
+								this.misPowerUps[k] = new Fatality(Px,Py,this.misCeldas[Px][Py]);
+							}
+							else{
+								if(k<10){
+									this.misPowerUps[k] = new Bombality(Px,Py,this.misCeldas[Px][Py]);
+								}
+								else
+									this.misPowerUps[k] = new Masacrality(Px,Py,this.misCeldas[Px][Py]);								
+							}
+						}
+						misCeldas[Px][Py].establecerPowerUp(misPowerUps[k]);
+						System.out.println("Powerup en: x= "+Px+" y = "+Py);
+						miManejador.añadirPowerUp(misPowerUps[k]);
+						misPowerUps[k].obtenerGrafico().obtenerImagenActual().setVisible(false);
+						paredAux= new ParedDestructible(misCeldas[Px][Py]);						
+						misCeldas[Px][Py].establecerPared(paredAux);
+						k++;
+						aux++;
+					}
+				}
+			}
+			
+			
+			
+			
+			
 			
 			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
 				Px= rnd.nextInt(31);
 				Py= rnd.nextInt(13);
-				boolean derecha,abajo,yo;
+				//boolean derecha,abajo,yo;
 				yo= misCeldas[Px][Py] != misCeldas[1][1];
 				derecha= misCeldas[Px][Py] != misCeldas[1][2];
 				abajo= misCeldas[Px][Py] != misCeldas[2][1];
@@ -111,6 +154,9 @@ public class Nivel {
 					if(abajo && derecha && yo && misCeldas[Px][Py] != misCeldas[1][3] && misCeldas[Px][Py] != misCeldas[3][1]){
 						paredAux= new ParedDestructible(misCeldas[Px][Py]);
 						misCeldas[Px][Py].establecerPared(paredAux);
+						if(misCeldas[Px][Py].obtenerPowerUp() == null){
+							
+						}
 						aux++;
 					}
 				}
@@ -151,29 +197,14 @@ public class Nivel {
 			// SIRIUS
 			misEnemigos[5] = new Sirius (29,11);
 			}*/
-			
-			//SE INICIALIZAN LOS POWERUPS
-			//POR SER UN PROTOTIPO DE PRUEBA SOLAMENTE CREO 2 Y LOS AGREGO A POSICIONES ARBITRARIAS
-			//SINO SERIA NECESARIO PODER DESTRUIR LAS PAREDES DESTRUCTIBLES
-			//INICIALIZO EL SPEED UP PROVISORIO
-			this.misPowerUps = new PowerUp[11]; 
-			
-			for(int k=0; k<4;k++){
-				Px= rnd.nextInt(30);
-				Py= rnd.nextInt(12);
-				if(misCeldas[Px][Py].obtenerPared()!=null){
-					this.misPowerUps[k] = new SpeedUp(Px,Py,this.misCeldas[Px][Py]);
-					System.out.println("Powerup en: x= "+Px+" y = "+Py);
-					misCeldas[Px][Py].establecerPowerUp(misPowerUps[k]);
-					miManejador.añadirPowerUp(misPowerUps[k]); 
-				}
-			}
 			 
 		    //INICIALIZO EL FATALITY
 		    
+					/**
 		   	this.misPowerUps[1] = new Fatality(1,5,this.misCeldas[1][5]);
 		    misCeldas[1][5].establecerPowerUp(misPowerUps[1]);
 			miManejador.añadirPowerUp(misPowerUps[1]);
+			**/
 	}
 	
 	//Operaciones
@@ -394,50 +425,58 @@ public class Nivel {
 	 */
 
 	public void restaurarPiso(Bomba bomba) {
-		boolean cortar;
+		boolean cortarDer,cortarIzq,cortarArr,cortarAb;
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
 		//CICLO QUE LIMPIA A LA DERECHA
-		cortar = false;
+		cortarDer = false;
+		cortarArr =false;
+		cortarAb=false;
+		cortarIzq=false;
 		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
 		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
 		int posX = bomba.obtenerPosicion().obtenerX();
 		int posY = bomba.obtenerPosicion().obtenerY();
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX+i,posY);
-			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
-			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
-			}			
-		}
-		//CICLO QUE LIMPIA A LA IZQ
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX-i,posY);
-			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
-			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
-			}			
-		}
-		//CICLO QUE LIMPIA ARRIBA
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX,posY-i);
-			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
-			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
-			}			
-		}
-		//CICLO QUE LIMPIA ABAJO
-		cortar = false;
-		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
-			Celda celdaActual = this.obtenerCelda(posX,posY+i);
-			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
-			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
-				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
-			}			
-		}
+		boolean cortar=false;
 		
+		Celda celdaIzquierda,celdaDerecha,celdaArriba,celdaAbajo;
+		
+		
+		for(int i=1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){
+			celdaDerecha = this.obtenerCelda(posX+i,posY);
+			celdaIzquierda = this.obtenerCelda(posX-i,posY);
+			celdaArriba = this.obtenerCelda(posX,posY-i);
+			celdaAbajo = this.obtenerCelda(posX, posY+i);
+			
+			cortarDer = celdaDerecha.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal;
+			cortarIzq = celdaIzquierda.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal;
+			cortarArr =	celdaArriba.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical;
+			cortarAb  =	celdaAbajo.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical;
+			if(!cortarDer){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaDerecha.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
+				if(celdaDerecha.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaDerecha.obtenerPowerUp());
+				}
+			}
+			if(!cortarIzq){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaIzquierda.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
+				if(celdaIzquierda.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaIzquierda.obtenerPowerUp());
+				}
+			}			
+			if(!cortarArr){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaArriba.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
+				if(celdaArriba.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaArriba.obtenerPowerUp());
+				}
+			}
+			if(!cortarAb){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaAbajo.obtenerGraficos().establecerimagenActual(0);//LE PONE LA IMAGEN DEL PISO
+				if(celdaAbajo.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaAbajo.obtenerPowerUp());
+				}
+			}	
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package PowerUps;
 
+import Grafica.PowerUpGrafico;
 import Logica.Celda;
 import Personajes.Bomberman;
 
@@ -15,9 +16,8 @@ public class Masacrality extends PowerUp{
 	//Constructor
 	
 	public Masacrality (int x, int y, Celda miCelda) {
-		
 		super(x,y,miCelda);
-		
+		miGrafico = new PowerUpGrafico(3,x,y);
 	}
 	
 	//Operaciones

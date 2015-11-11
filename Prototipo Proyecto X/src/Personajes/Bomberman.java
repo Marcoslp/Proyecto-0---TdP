@@ -278,6 +278,7 @@ public class Bomberman extends Thread{
 				ponerBomba();
 				puseBomba=false;
 			}
+			
 		}
 	}
 	

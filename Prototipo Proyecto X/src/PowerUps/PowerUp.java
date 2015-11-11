@@ -7,6 +7,7 @@ import Logica.Celda;
 import Logica.Nivel;
 import Logica.Posicion;
 import Personajes.Bomberman;
+import Grafica.*;
 
 /**
  * Clase que modela la logica de los PowerUps
@@ -22,11 +23,11 @@ public abstract class PowerUp {
 	protected Nivel miNivel;
 	protected Celda miCelda;
 	protected Posicion miPosicion;
-	protected JLabel miImagen;
+	protected ComponenteGrafico miGrafico;
 	//Constructor
 	
 	protected PowerUp (int x, int y, Celda miCelda) {
-		this.miCelda=miCelda;
+		this.miCelda = miCelda;
 		miPosicion = new Posicion(x,y);
 	}
 	
@@ -53,8 +54,8 @@ public abstract class PowerUp {
 	 * @return JLabel que representa la imagen a devolver
 	 */
 	
-	public JLabel obtenerImagen(){
-		return miImagen;
+	public ComponenteGrafico obtenerGrafico(){
+		return miGrafico;
 	}	
 	
 	

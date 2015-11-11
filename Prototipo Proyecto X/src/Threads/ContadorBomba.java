@@ -4,6 +4,7 @@ import Logica.Celda;
 import Logica.Nivel;
 import Logica.Posicion;
 import Personajes.Bomberman;
+import PowerUps.*;
 
 
 public class ContadorBomba extends Thread {
@@ -34,9 +35,16 @@ public class ContadorBomba extends Thread {
 				miNivel.obtenerBomberman().aumentarCapacidadBombas();
 				Thread.sleep(500);
 				miNivel.restaurarPiso(miBomba);
+				/*
+				PowerUp p= celdaAux.obtenerPowerUp();
+				if(p!=null){
+					miNivel.obtenerManejadorGUI().añadirPowerUp(p);
+				}
+				*/
 				celdaAux.setBomba(null);
 				this.interrupt ();
-			} catch (InterruptedException e) { }		
+			}catch (InterruptedException e) { 
+			}		
 		}
 }
 

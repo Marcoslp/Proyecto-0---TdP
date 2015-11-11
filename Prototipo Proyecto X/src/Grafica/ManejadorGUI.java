@@ -1,6 +1,7 @@
 package Grafica;
 import Logica.Bomba;
 import Logica.Celda;
+import Logica.Pared;
 import Personajes.*;
 import PowerUps.PowerUp;
 
@@ -31,9 +32,17 @@ public class ManejadorGUI {
 	}
 
 	public void añadirPowerUp(PowerUp powerUp) {
-		miGui.add(powerUp.obtenerImagen());
+		miGui.add(powerUp.obtenerGrafico().obtenerImagenActual());
 		//PARA PONER EL LABEL DEL POWERUP POR ENCIMA DEL PISO
-	    miGui.getContentPane().setComponentZOrder(powerUp.obtenerImagen(), 0); 
+		miGui.getContentPane().setComponentZOrder(powerUp.obtenerGrafico().obtenerImagenActual(), 1); 
+		}
+	
+	public void visiblePowerUp(PowerUp powerUp){
+		powerUp.obtenerGrafico().obtenerImagenActual().setVisible(true);
+	}
+	
+	public void ocultarPowerUp(PowerUp powerUp) {
+		powerUp.obtenerGrafico().obtenerImagenActual().setVisible(false);
 	}
 	
 	public void añadirBombaClonada(Bomba bomba){
@@ -41,4 +50,8 @@ public class ManejadorGUI {
 		miGui.add(bomba.obtenerGraficos().obtenerImagenActual());
 		miGui.getContentPane().setComponentZOrder(bomba.obtenerGraficos().obtenerImagenActual(), 1);
 	}
+
+	
+
+	
 }
