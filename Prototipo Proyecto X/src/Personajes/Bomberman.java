@@ -278,7 +278,7 @@ public class Bomberman extends Thread{
 					this.moverAbajo();
 			}
 			
-			if(puseBomba){
+			if(puseBomba && miNivel.obtenerCelda(miPosicion.obtenerX(), miPosicion.obtenerY()).obtenerBomba() == null){
 				ponerBomba();
 				puseBomba=false;
 			}

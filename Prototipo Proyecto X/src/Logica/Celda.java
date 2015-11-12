@@ -50,6 +50,9 @@ public class Celda {
 	
 	//Operaciones
 	
+		public Bomba obtenerBomba(){
+			return miBomba;
+		}
 	
 	// Recibir Bomberman cambio, ahora tiene un parámetro
 		/**
