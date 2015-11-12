@@ -56,15 +56,16 @@ public class Celda {
 		 * Método que recibe al bomberman en la celda
 		 * @param b de tipo Bomberman que representa el Bomberman a recibir
 		 */
-	public void recibirBomberman(Bomberman b) {
+	public void recibirBomberman(Bomberman b, int dir) {
 		if(miBomba==null){
 			if(miPared == null){
 				Celda celdaAnterior = miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
 				celdaAnterior.setBomberman(null);
 				b.obtenerPosicion().establecerX(miPosicion.obtenerX());
 				b.obtenerPosicion().establecerY(miPosicion.obtenerY());
-				graficos.recibirBomberman(b,miPosicion);
+				//graficos.recibirBomberman(b,miPosicion); No modifica en nada, seguir probando y borrarla de última
 				miBomberman=b;
+				b.obtenerGrafico().mover(dir);
 				
 				for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
 					if(misEnemigos[i]!=null){
@@ -80,6 +81,7 @@ public class Celda {
 					this.quitarPowerUp();	
 				}
 				b.actualizarPosicionBomba();
+				
 			}
 			else{
 				miPared.recibirBomberman(b);

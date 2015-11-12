@@ -12,6 +12,7 @@ public abstract class ComponenteGrafico {
 	protected final int ALTO  = 32;
 	protected final int ANCHO = 32;
 	protected int velocidad;
+	public int miPosX,miPosY;
 	
 	public ComponenteGrafico(int i){
 		misImagenes = new Icon[i];

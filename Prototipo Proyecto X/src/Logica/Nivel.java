@@ -303,22 +303,23 @@ public class Nivel {
 		
 		switch(dir){
 			case 0:{
-				misCeldas[x-1][y].recibirBomberman(miBomberman);
+				misCeldas[x-1][y].recibirBomberman(miBomberman,0);
 			}
 			break;
 			case 1:{
-				misCeldas[x+1][y].recibirBomberman(miBomberman);
+				misCeldas[x+1][y].recibirBomberman(miBomberman,1);
 			}
 			break;
 			case 2:{
-				misCeldas[x][y-1].recibirBomberman(miBomberman);
+				misCeldas[x][y-1].recibirBomberman(miBomberman,2);
 			}
 			break;
 			case 3:{
-				misCeldas[x][y+1].recibirBomberman(miBomberman);
+				misCeldas[x][y+1].recibirBomberman(miBomberman,3);
 			}
 			break;
 		}
+//		return pude;
 	}
 		/**
 		 * Método que mueve al enemigo
@@ -366,7 +367,6 @@ public class Nivel {
 		for(int j=0; j<e.length; j++){
 			if(e[j]!=null){
 				celdaActual.matarEnemigo(e[j]);
-				//celdaActual.eliminarEnemigo(e[j]);
 			}
 		}
 	}

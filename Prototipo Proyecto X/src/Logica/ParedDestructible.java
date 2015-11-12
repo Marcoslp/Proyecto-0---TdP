@@ -35,7 +35,7 @@ public class ParedDestructible extends Pared{
 	 * @param b de tipo Bomberman que representa el bomberman a recibir
 	 */
 	
-	public void recibirBomberman (Bomberman b) {
+	public void recibirBomberman(Bomberman b) {
 		if(b.obtenerModoDios()){	//Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
 			celdaAnterior.setBomberman(null);

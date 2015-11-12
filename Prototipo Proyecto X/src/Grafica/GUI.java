@@ -63,6 +63,10 @@ public class GUI extends JFrame {
 			   			miNivel.obtenerBomberman().establecerPuseBomba(true);			   		
 			   		}
 			   		break;
+			   		
+			   		case KeyEvent.VK_A:{
+			   			miNivel.obtenerBomberman().DuplicarVelocidad();
+			   		}
 			   }
 			}
 			

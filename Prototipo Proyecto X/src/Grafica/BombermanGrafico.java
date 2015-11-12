@@ -2,6 +2,7 @@ package Grafica;
 
 import javax.swing.ImageIcon;
 
+import Personajes.*;
 
 
 /**
@@ -11,9 +12,12 @@ import javax.swing.ImageIcon;
  */
 
 public class BombermanGrafico extends ComponenteGrafico {
+	
+	protected Bomberman miBomberman;
 
-	public BombermanGrafico(int i, int x, int y) {
+	public BombermanGrafico(int i, int x, int y, Bomberman b) {
 		super(i);
+		miBomberman=b;
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq1.png")), 0);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq2.png")), 1);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq3.png")), 2);
@@ -38,36 +42,64 @@ public class BombermanGrafico extends ComponenteGrafico {
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo4.png")), 18);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo5.png")), 19);
 		this.establecerimagenActual(15);
+
+		miPosX=x*32;
+		miPosY=y*32;
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
 	}
-	
+
+		
 	public void mover(int dir){
+		System.out.println(miBomberman.obtenerPosicion().obtenerX()+" "+miBomberman.obtenerPosicion().obtenerY());
+		
+		int movimiento=1,indiceImagen;
+		
 		try {
 			switch (dir){
 				case 0 : // Izquierda
-					for(int i = 0; i < 5; i += this.velocidad){
-						this.establecerimagenActual(i);
-						Thread.sleep(100);
+					for(int i = 0; i < ANCHO; i += this.velocidad){
+						this.obtenerImagenActual().setBounds( miPosX -= (this.velocidad%32), miPosY, ANCHO, ALTO);
+						movimiento = (2/velocidad) +1;
+						indiceImagen=((i/movimiento)%5)+5*dir;
+						if(i%(movimiento)==0)
+							this.establecerimagenActual(indiceImagen);
+						Thread.sleep(22);
 					}
 					break;
 				case 1 : // Derecha
-					for(int i = 5; i < 10; i += this.velocidad){
-						this.establecerimagenActual(i);
-						Thread.sleep(100);
+					for(int i = 0; i<ANCHO; i += this.velocidad){
+						this.obtenerImagenActual().setBounds( miPosX += this.velocidad, miPosY, ANCHO, ALTO);
+						movimiento = (2/velocidad) +1;
+						indiceImagen=((i/movimiento)%5)+5*dir;
+						if(i%(movimiento)==0)
+							this.establecerimagenActual(indiceImagen);
+						Thread.sleep(22);
 					}
+					
 					break;
 				case 2 : // Arriba
-					for(int i = 10; i < 15; i += this.velocidad){
-						this.establecerimagenActual(i);
-						Thread.sleep(100);
+					for(int i = 0; i < ALTO; i += this.velocidad){
+						this.obtenerImagenActual().setBounds( miPosX , miPosY-= this.velocidad, ANCHO, ALTO);
+						movimiento = (2/velocidad) +1;
+						indiceImagen=((i/movimiento)%5)+5*dir;
+						if(i%(movimiento)==0)
+							this.establecerimagenActual(indiceImagen);
+						Thread.sleep(22);
+
 					}
 					break;
 				case 3 : // Abajo
-					for(int i = 15; i < this.misImagenes.length; i += this.velocidad){
-						this.establecerimagenActual(i);
-						Thread.sleep(100);
+					for(int i = 0; i <ALTO; i += this.velocidad){
+						this.obtenerImagenActual().setBounds( miPosX , miPosY+= this.velocidad, ANCHO, ALTO);
+						movimiento = (2/velocidad) +1;
+						indiceImagen=((i/movimiento)%5)+5*dir;
+						if(i%(movimiento)==0)
+							this.establecerimagenActual(indiceImagen);
+						Thread.sleep(22);
+
 					}
 					break;
+					
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -39,7 +39,7 @@ public class Bomberman extends Thread{
 		miNivel= lvl;
 		miBomba= new Bomba(this);
 		capacidadBombas=1;
-		Graficos = new BombermanGrafico(20,x,y);
+		Graficos = new BombermanGrafico(20,x,y,this);
 		Graficos.establecerVelocidad(velocidad);
 		direccion=-1;		
 	}
@@ -51,8 +51,8 @@ public class Bomberman extends Thread{
 	 */
 	
 	public void moverIzquierda () {
-		miNivel.moverBomberman(0);
-		Graficos.mover(0);
+			miNivel.moverBomberman(0);
+	//		Graficos.mover(0);
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class Bomberman extends Thread{
 	
 	public void moverDerecha () {
 		miNivel.moverBomberman(1);
-		Graficos.mover(1);
+	//	Graficos.mover(1);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Bomberman extends Thread{
 	
 	public void moverArriba () {
 		miNivel.moverBomberman(2);
-		Graficos.mover(2);
+		//Graficos.mover(2);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class Bomberman extends Thread{
 	
 	public void moverAbajo() {
 		miNivel.moverBomberman(3);
-		Graficos.mover(3);
+		//Graficos.mover(3);
 		
 	}
 
@@ -228,6 +228,7 @@ public class Bomberman extends Thread{
 	 */
 	
 	public void actualizarPosicionBomba(){ //ACTUALIZA POSICION DE LA BOMBA
+		
 		this.miBomba.obtenerPosicion().establecerX(this.miPosicion.obtenerX());
 		this.miBomba.obtenerPosicion().establecerY(this.miPosicion.obtenerY());
 	}

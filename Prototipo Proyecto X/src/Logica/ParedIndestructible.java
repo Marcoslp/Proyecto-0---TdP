@@ -30,7 +30,6 @@ public class ParedIndestructible extends Pared{
 	}
 		
 	public void recibirBomberman (Bomberman b) {
-		//DEBERIA CAMBIAR LA IMAGEN DEL BOMBERMAN
 	}
 
 	public void recibirEnemigo (Enemigo e) {

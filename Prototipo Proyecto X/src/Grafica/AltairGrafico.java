@@ -20,6 +20,7 @@ public class AltairGrafico extends ComponenteGrafico{
 	}
 	
 	public void mover(int dir){
+	
 	}
 
 }
