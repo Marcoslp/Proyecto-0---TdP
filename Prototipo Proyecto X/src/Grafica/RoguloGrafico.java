@@ -19,5 +19,6 @@ public class RoguloGrafico extends ComponenteGrafico {
 		this.establecerimagenActual(3);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
 	}
-
+	public void mover(int dir){
+	}
 }

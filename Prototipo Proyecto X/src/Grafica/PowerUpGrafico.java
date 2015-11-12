@@ -12,4 +12,7 @@ public class PowerUpGrafico extends ComponenteGrafico {
 		this.establecerimagenActual(i);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
 	}
+	
+	public void mover(int dir){
+	}
 }

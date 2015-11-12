@@ -128,7 +128,7 @@ public class Nivel {
 						misCeldas[Px][Py].establecerPowerUp(misPowerUps[k]);
 						System.out.println("Powerup en: x= "+Px+" y = "+Py);
 						miManejador.añadirPowerUp(misPowerUps[k]);
-						misPowerUps[k].obtenerGrafico().obtenerImagenActual().setVisible(false);
+						//misPowerUps[k].obtenerGrafico().obtenerImagenActual().setVisible(false);
 						paredAux= new ParedDestructible(misCeldas[Px][Py]);						
 						misCeldas[Px][Py].establecerPared(paredAux);
 						k++;
@@ -136,10 +136,6 @@ public class Nivel {
 					}
 				}
 			}
-			
-			
-			
-			
 			
 			
 			// INICIALIZACION PAREDES DESTRUCTIBLES

@@ -18,5 +18,8 @@ public class AltairGrafico extends ComponenteGrafico{
 		this.establecerimagenActual(3);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ALTO, ANCHO);
 	}
+	
+	public void mover(int dir){
+	}
 
 }

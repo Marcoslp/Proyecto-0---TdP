@@ -39,4 +39,7 @@ public class CeldaGrafica extends ComponenteGrafico {
 	public void recibirEnemigo(Enemigo e, Posicion miPosicion) {
 		e.obtenerGrafico().obtenerImagenActual().setBounds(miPosicion.obtenerX()*32,miPosicion.obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
 	}
+	
+	public void mover(int dir){
+	}
 }

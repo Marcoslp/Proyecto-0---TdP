@@ -18,4 +18,7 @@ public class BombaGrafica extends ComponenteGrafico {
 		this.establecerimagenActual(0);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
 	}
+	
+	public void mover(int dir){
+	}
 }

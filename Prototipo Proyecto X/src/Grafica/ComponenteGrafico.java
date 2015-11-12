@@ -4,11 +4,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class ComponenteGrafico {
+
+
+public abstract class ComponenteGrafico {
 	protected JLabel imagenActual;
 	protected Icon misImagenes[];
 	protected final int ALTO  = 32;
 	protected final int ANCHO = 32;
+	protected int velocidad;
 	
 	public ComponenteGrafico(int i){
 		misImagenes = new Icon[i];
@@ -38,4 +41,15 @@ public class ComponenteGrafico {
 	public void eliminarImagen() {
 		this.obtenerImagenActual().setVisible(false);	
 	}
+	
+	public void establecerVelocidad(int i){
+		velocidad=i;
+	}
+	
+	public void duplicarVelocidad(){
+		velocidad= velocidad*2;
+	}
+	
+	public abstract void mover(int i);
+	
 }
