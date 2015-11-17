@@ -39,7 +39,7 @@ public class Bomberman extends Thread{
 		miNivel= lvl;
 		miBomba= new Bomba(this);
 		capacidadBombas=1;
-		Graficos = new BombermanGrafico(20,x,y,this);
+		Graficos = new BombermanGrafico(32,x,y,this);
 		Graficos.establecerVelocidad(velocidad);
 		direccion=-1;		
 	}

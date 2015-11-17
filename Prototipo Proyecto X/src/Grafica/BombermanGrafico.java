@@ -23,25 +23,38 @@ public class BombermanGrafico extends ComponenteGrafico {
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq3.png")), 2);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq4.png")), 3);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq5.png")), 4);
-
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der1.png")), 5);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der2.png")), 6);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der3.png")), 7);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der4.png")), 8);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der5.png")), 9);
-
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba1.png")), 10);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba2.png")), 11);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba3.png")), 12);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba4.png")), 13);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba5.png")), 14);
-
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo1.png")), 15);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo2.png")), 16);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo3.png")), 17);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo4.png")), 18);
-		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo5.png")), 19);
-		this.establecerimagenActual(15);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq6.png")), 5);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq7.png")), 6);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-izq8.png")), 7);
+		
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der1.png")), 8);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der2.png")), 9);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der3.png")), 10);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der4.png")), 11);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der5.png")), 12);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der6.png")), 13);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der7.png")), 14);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-der8.png")), 15);
+		
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba1.png")), 16);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba2.png")), 17);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba3.png")), 18);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba4.png")), 19);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba5.png")), 20);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba6.png")), 21);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba7.png")), 22);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-arriba8.png")), 23);
+		
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo1.png")), 24);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo2.png")), 25);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo3.png")), 26);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo4.png")), 27);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo5.png")), 28);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo6.png")), 29);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo7.png")), 30);
+		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo8.png")), 31);
+		
+		this.establecerimagenActual(31);
 
 		miPosX=x*32;
 		miPosY=y*32;
@@ -60,44 +73,53 @@ public class BombermanGrafico extends ComponenteGrafico {
 					for(int i = 0; i < ANCHO; i += this.velocidad){
 						this.obtenerImagenActual().setBounds( miPosX -= (this.velocidad%32), miPosY, ANCHO, ALTO);
 						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%5)+5*dir;
-						if(i%(movimiento)==0)
+						indiceImagen=((i/movimiento)%8)+8*dir;
+						if(i%(movimiento)==0){
 							this.establecerimagenActual(indiceImagen);
-						Thread.sleep(22);
+							Thread.sleep(10);
+						}
+							Thread.sleep(22);
 					}
+					this.establecerimagenActual(7);
 					break;
 				case 1 : // Derecha
-					for(int i = 0; i<ANCHO; i += this.velocidad){
-						this.obtenerImagenActual().setBounds( miPosX += this.velocidad, miPosY, ANCHO, ALTO);
+					for(int i = 0; i<ANCHO; i+=this.velocidad){
+						this.obtenerImagenActual().setBounds( miPosX += (this.velocidad%32), miPosY, ANCHO, ALTO);
 						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%5)+5*dir;
-						if(i%(movimiento)==0)
+						indiceImagen=((i/movimiento)%8)+8*dir;
+						if(i%(movimiento)==0){
 							this.establecerimagenActual(indiceImagen);
+							Thread.sleep(10);
+						}
 						Thread.sleep(22);
 					}
-					
+					this.establecerimagenActual(15);
 					break;
 				case 2 : // Arriba
 					for(int i = 0; i < ALTO; i += this.velocidad){
 						this.obtenerImagenActual().setBounds( miPosX , miPosY-= this.velocidad, ANCHO, ALTO);
 						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%5)+5*dir;
-						if(i%(movimiento)==0)
+						indiceImagen=((i/movimiento)%8)+8*dir;
+						if(i%(movimiento)==0){
 							this.establecerimagenActual(indiceImagen);
+							Thread.sleep(10);
+						}
 						Thread.sleep(22);
-
 					}
+					this.establecerimagenActual(23);
 					break;
 				case 3 : // Abajo
 					for(int i = 0; i <ALTO; i += this.velocidad){
 						this.obtenerImagenActual().setBounds( miPosX , miPosY+= this.velocidad, ANCHO, ALTO);
 						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%5)+5*dir;
-						if(i%(movimiento)==0)
+						indiceImagen=((i/movimiento)%8)+8*dir;
+						if(i%(movimiento)==0){
 							this.establecerimagenActual(indiceImagen);
+							Thread.sleep(10);
+						}
 						Thread.sleep(22);
-
 					}
+					this.establecerimagenActual(31);
 					break;
 					
 			}
