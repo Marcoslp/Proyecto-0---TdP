@@ -18,6 +18,7 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Nivel miNivel;
 	private JPanel contentPane;
+	private JLabel puntaje;
 
 	/**
 	 * Create the frame.
@@ -61,14 +62,22 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		miTiempo = new JLabel("Tiempo");
+		miTiempo = new JLabel("Tiempo : 0 : 0 : 0");
 		miTiempo.setBounds(0, 417, 172, 25);
 		contentPane.add(miTiempo);
+		
+		puntaje = new JLabel("Puntaje : 0");
+		puntaje.setBounds(181, 417, 191, 25);
+		contentPane.add(puntaje);
 		miNivel = new Nivel(this);
 		setVisible(true);
 	}
 	
-	public void establecerTiempo(String s){
-		miTiempo.setText(s);
+	public void establecerTiempo(String tiempo){
+		miTiempo.setText(tiempo);
+	}
+	
+	public void establecerPuntaje(String puntaje){
+		this.puntaje.setText(puntaje);
 	}
 }

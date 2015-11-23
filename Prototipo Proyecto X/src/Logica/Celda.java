@@ -210,6 +210,8 @@ public class Celda {
 				}
 			}
 		}
+		//LUEGO DE QUE MUEREN LOS ENEMIGOS SE ACTUALIZA LA PUNTACION
+		this.miNivel.obtenerManejadorGUI().establecerPuntaje(this.miNivel.obtenerPuntuacion());
 	}
 	
 	public PowerUp obtenerPowerUp(){

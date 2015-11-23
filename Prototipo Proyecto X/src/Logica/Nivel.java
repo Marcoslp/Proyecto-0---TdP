@@ -45,7 +45,7 @@ public class Nivel {
 		//misPowerUps = p;
 		marcadorPuntos=0;
 		//INICIALIZO EL TEMPORIZADOR
-		tiempo = new Tiempo(this, miGui);
+		tiempo = new Tiempo(this);
 		tiempo.start();
 		
 		//Ver como modelar el marcador de tiempo
@@ -488,6 +488,10 @@ public class Nivel {
 		this.restaurarAux(bomba, "arriba");
 		this.restaurarAux(bomba, "izquierda");
 		this.restaurarAux(bomba, "derecha");
+	}
+	
+	public int obtenerPuntuacion(){
+		return marcadorPuntos;
 	}
 	
 }

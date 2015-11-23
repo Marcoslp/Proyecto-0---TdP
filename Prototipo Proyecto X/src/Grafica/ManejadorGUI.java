@@ -51,6 +51,14 @@ public class ManejadorGUI {
 		miGui.getContentPane().setComponentZOrder(bomba.obtenerGraficos().obtenerImagenActual(), 1);
 	}
 
+	public void establecerTiempo(String tiempoActual) {
+		miGui.establecerTiempo(tiempoActual);		
+	}
+	
+	public void establecerPuntaje(int puntaje){
+		miGui.establecerPuntaje("Puntaje : " + puntaje);
+	}
+
 	
 
 	
