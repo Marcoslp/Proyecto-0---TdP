@@ -208,7 +208,7 @@ public class Celda {
 				cortar = misEnemigos[i] == e;
 				if(cortar){
 					misEnemigos[i].obtenerGrafico().eliminarImagen();
-					//misEnemigos[i].morir();
+					misEnemigos[i].morir();
 					misEnemigos[i]=null;
 				}
 			}
