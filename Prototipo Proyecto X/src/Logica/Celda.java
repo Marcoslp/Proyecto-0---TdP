@@ -87,7 +87,7 @@ public class Celda {
 				
 			}
 			else{
-				miPared.recibirBomberman(b);
+				miPared.recibirBomberman(b,dir);
 			}
 		}
 	}
@@ -105,21 +105,22 @@ public class Celda {
 	 * @param e de tipo Enemigo que representa el enemigo a recibir
 	 */
 
-	public void recibirEnemigo (Enemigo e){
+	public void recibirEnemigo (Enemigo e,int dir){
 		if(miBomba== null){
 			if(miPared == null){
 				Celda celdaAnterior = miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY()); 
 				celdaAnterior.eliminarEnemigo(e);	//LO QUITA DE LA CELDA ANTERIOR
-				e.obtenerPosicion().establecerX(this.obtenerPosicion().obtenerX());
-				e.obtenerPosicion().establecerY(this.obtenerPosicion().obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
+				e.obtenerPosicion().establecerX(miPosicion.obtenerX());
+				e.obtenerPosicion().establecerY(miPosicion.obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
 				graficos.recibirEnemigo(e,miPosicion);
+				e.obtenerGrafico().mover(dir);
 				if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
 					System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
 				}			
 				this.añadirEnemigo(e);
 			}
 			else{
-				miPared.recibirEnemigo(e);
+				miPared.recibirEnemigo(e,dir);
 			}
 		}
 	}

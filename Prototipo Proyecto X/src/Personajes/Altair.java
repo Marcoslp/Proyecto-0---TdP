@@ -27,7 +27,9 @@ public class Altair extends Enemigo {
 		super(x,y,miNivel);
 		modoDios = true;      
 		this.mDetener = false;
+		velocidad=4;
 		Graficos = new AltairGrafico(4,x,y);
+		Graficos.establecerVelocidad(velocidad);
 	}
 	
 	//Operaciones
@@ -48,9 +50,7 @@ public class Altair extends Enemigo {
 	public void moverse (){
 		Random r = new Random ();
 		int i = r.nextInt(4);
-		Graficos.establecerimagenActual(i);
 		miNivel.moverEnemigo(this,i);
-		//Graficos.mover(i);
 	}
 	
 	

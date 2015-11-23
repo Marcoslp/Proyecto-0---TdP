@@ -1,6 +1,7 @@
 package Personajes;
 
 import Logica.*;
+import Grafica.*;
 
 /**
  * Clase que modela la lógica de los enemigos Sirius
@@ -20,10 +21,8 @@ public class Sirius extends Enemigo {
 	//Constructor
 	
 	public Sirius (int x, int y,Nivel miNivel) {
-		
 		super(x,y, miNivel);
-		this.modoDios= true;
-		
+		Graficos = new SiriusGrafico(12,x,y);	
 	}
 	
 	//Operaciones

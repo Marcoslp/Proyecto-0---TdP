@@ -1,13 +1,18 @@
 package Grafica;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import Logica.Nivel;
+import PowerUps.Masacrality;
+import PowerUps.PowerUp;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JLabel;
 
 public class GUI extends JFrame {
@@ -52,7 +57,8 @@ public class GUI extends JFrame {
 			   		break;
 			   		
 			   		case KeyEvent.VK_A:{
-			   			miNivel.obtenerBomberman().DuplicarVelocidad();
+			   			PowerUp p = new Masacrality(3,1,miNivel.obtenerCelda(3, 1));
+			   			p.empower(miNivel.obtenerBomberman());
 			   		}
 			   }
 			}

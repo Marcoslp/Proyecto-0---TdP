@@ -55,7 +55,6 @@ public class BombermanGrafico extends ComponenteGrafico {
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo8.png")), 31);
 		
 		this.establecerimagenActual(31);
-
 		miPosX=x*32;
 		miPosY=y*32;
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);

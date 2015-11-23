@@ -35,7 +35,7 @@ public class ParedDestructible extends Pared{
 	 * @param b de tipo Bomberman que representa el bomberman a recibir
 	 */
 	
-	public void recibirBomberman(Bomberman b) {
+	public void recibirBomberman(Bomberman b, int dir) {
 		if(b.obtenerModoDios()){	//Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(b.obtenerPosicion().obtenerX(),b.obtenerPosicion().obtenerY());
 			celdaAnterior.setBomberman(null);
@@ -44,6 +44,7 @@ public class ParedDestructible extends Pared{
 			b.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,b.obtenerGrafico().obtenerAncho(),b.obtenerGrafico().obtenerAlto());
 			this.miCelda.setBomberman(b);
 			b.actualizarPosicionBomba();
+			b.obtenerGrafico().mover(dir);
 		}
 	}
 	
@@ -52,7 +53,7 @@ public class ParedDestructible extends Pared{
 	 * @param e de tipo Enemigo que representa el enemigo a recibir
 	 */
 
-	public void recibirEnemigo (Enemigo e) {
+	public void recibirEnemigo (Enemigo e,int dir) {
 		if(e.obtenerModoDios()){   //Lo elimina de la celda anterior y lo pone en la siguiente. Actualizando su posicion
 			Celda celdaAnterior = miCelda.miNivel.obtenerCelda(e.obtenerPosicion().obtenerX(),e.obtenerPosicion().obtenerY());
 			celdaAnterior.eliminarEnemigo(e);
@@ -60,6 +61,7 @@ public class ParedDestructible extends Pared{
 			e.obtenerPosicion().establecerY(miCelda.obtenerPosicion().obtenerY());
 			e.obtenerGrafico().obtenerImagenActual().setBounds(miCelda.obtenerPosicion().obtenerX()*32,miCelda.obtenerPosicion().obtenerY()*32,e.obtenerGrafico().obtenerAncho(),e.obtenerGrafico().obtenerAlto());
 			this.miCelda.añadirEnemigo(e);
+			e.obtenerGrafico().mover(dir);
 		}
 	}
 	

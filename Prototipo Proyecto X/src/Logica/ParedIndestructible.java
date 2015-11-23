@@ -29,10 +29,10 @@ public class ParedIndestructible extends Pared{
 		miCelda.obtenerGraficos().establecerimagenActual(1);
 	}
 		
-	public void recibirBomberman (Bomberman b) {
+	public void recibirBomberman (Bomberman b, int dir) {
 	}
 
-	public void recibirEnemigo (Enemigo e) {
+	public void recibirEnemigo (Enemigo e, int dir) {
 		//DEBERIA CAMBIAR LA IMAGEN DEL ENEMIGO
 	}
 
