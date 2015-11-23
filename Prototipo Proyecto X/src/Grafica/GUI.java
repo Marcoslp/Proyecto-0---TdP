@@ -8,12 +8,13 @@ import Logica.Nivel;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 
 public class GUI extends JFrame {
 	/**
 	 * 
 	 */
-
+	private JLabel miTiempo;
 	private static final long serialVersionUID = 1L;
 	private Nivel miNivel;
 	private JPanel contentPane;
@@ -57,10 +58,17 @@ public class GUI extends JFrame {
 			
 		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		miTiempo = new JLabel("Tiempo");
+		miTiempo.setBounds(0, 417, 172, 25);
+		contentPane.add(miTiempo);
 		miNivel = new Nivel(this);
 		setVisible(true);
-		}
+	}
+	
+	public void establecerTiempo(String s){
+		miTiempo.setText(s);
+	}
 }

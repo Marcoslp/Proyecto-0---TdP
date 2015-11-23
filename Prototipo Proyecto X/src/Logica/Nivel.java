@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import PowerUps.*;
 import Threads.ContadorBomba;
+import Threads.Tiempo;
 
 /**
  * Clase que modela la lógica del nivel
@@ -21,9 +22,9 @@ public class Nivel {
 	
 	private static final int largo=31;
 	private static final int ancho=13;
-	
+	protected Tiempo tiempo;
 	//Atributos
-	protected int marcadorTiempo;
+	protected String marcadorTiempo;
 	protected int marcadorPuntos;
 	protected Bomberman miBomberman;
 	protected Enemigo[] misEnemigos;
@@ -34,6 +35,8 @@ public class Nivel {
 	//Constructor
 	
 	public Nivel (GUI miGui) {
+		
+	
 		miManejador= new ManejadorGUI(miGui);
 		miBomberman = new Bomberman(1,1,this);
 		miBomberman.start();
@@ -41,6 +44,9 @@ public class Nivel {
 		miManejador.añadirBomberman(miBomberman);
 		//misPowerUps = p;
 		marcadorPuntos=0;
+		//INICIALIZO EL TEMPORIZADOR
+		tiempo = new Tiempo(this, miGui);
+		tiempo.start();
 		
 		//Ver como modelar el marcador de tiempo
 		
@@ -384,11 +390,19 @@ public class Nivel {
 	
 	/**
 	 * Método que devuelve el marcador de tiempo
-	 * @return int que representa el tiempo
+	 * @return String que representa el tiempo
 	 */
 	
-	public int obtenerMarcadorTiempo(){
+	public String obtenerMarcadorTiempo(){
 		return marcadorTiempo;		
+	}
+	/**
+	 * Establece el valor del marcador de tiempo
+	 * @param s Tiempo actual
+	 */
+	
+	public void establecerMarcadorTiempo(String s){
+		this.marcadorTiempo = s;
 	}
 	
 	/**
