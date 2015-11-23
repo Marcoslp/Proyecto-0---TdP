@@ -6,15 +6,16 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 public class MenuJuego extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
+	private PanelImagen p;
 	private JButton iniciar;
 	private GUI gui;
-	private Nivel miNivel;
-	
 	/**
 	 * Launch the application.
 	 */
@@ -35,11 +36,15 @@ public class MenuJuego extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
 		setLayout(new GridLayout());
-		panel=new JPanel();
-		setContentPane(panel);
 		iniciar=new JButton("Iniciar Juego");
 		iniciar.addActionListener(new Oyente());
-		panel.add(iniciar);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1024, 480);
+		p = new PanelImagen();
+		setContentPane(p);
+		p.add(iniciar);
+		
+		
 	}
 	
 	private class Oyente implements ActionListener {
@@ -48,4 +53,18 @@ public class MenuJuego extends JFrame{
 			setVisible(false);
 		}
 	}
+	
+	private class PanelImagen extends javax.swing.JPanel {
+		public PanelImagen(){
+			this.setSize(1024,768);
+		}
+		@Override
+		public void paintComponent (Graphics g){
+		Dimension tamanio = getSize();
+		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imagenes/b.png"));
+		g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);
+		setOpaque(false);
+		super.paintComponent(g);
+		}
+	}	
 }

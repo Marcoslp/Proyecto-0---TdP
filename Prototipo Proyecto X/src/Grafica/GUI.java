@@ -68,7 +68,7 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		miTiempo = new JLabel("Tiempo : 0 : 0 : 0");
+		miTiempo = new JLabel("Tiempo : 00 : 00 : 00");
 		miTiempo.setFont(new java.awt.Font("Tahoma", 1, 11));
 		miTiempo.setForeground(new java.awt.Color(2, 2, 2));
 		miTiempo.setBounds(0, 417, 172, 25);
