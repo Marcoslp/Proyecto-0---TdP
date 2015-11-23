@@ -1,47 +1,32 @@
 package Grafica;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Logica.Bomba;
 import Logica.Nivel;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GUI extends JFrame {
+	/**
+	 * 
+	 */
+
+	private static final long serialVersionUID = 1L;
 	private Nivel miNivel;
 	private JPanel contentPane;
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
+
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
 		contentPane = new JPanel();
-		this.setTitle("Bomberman");
+		this.setTitle("Bomberman: Digimon Edition");
 		
 		addKeyListener(new KeyAdapter() {
 			
@@ -76,5 +61,6 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		miNivel = new Nivel(this);
+		setVisible(true);
 		}
 }

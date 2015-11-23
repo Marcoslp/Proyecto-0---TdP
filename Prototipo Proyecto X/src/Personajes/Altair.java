@@ -50,6 +50,7 @@ public class Altair extends Enemigo {
 		int i = r.nextInt(4);
 		Graficos.establecerimagenActual(i);
 		miNivel.moverEnemigo(this,i);
+		//Graficos.mover(i);
 	}
 	
 	

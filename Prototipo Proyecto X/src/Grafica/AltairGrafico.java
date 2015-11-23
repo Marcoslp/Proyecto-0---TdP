@@ -17,10 +17,11 @@ public class AltairGrafico extends ComponenteGrafico{
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/altair-abajo.png")), 3);
 		this.establecerimagenActual(3);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ALTO, ANCHO);
+		
+		miPosY=x*32;
+		miPosY=y*32;
 	}
 	
 	public void mover(int dir){
-	
 	}
-
 }
