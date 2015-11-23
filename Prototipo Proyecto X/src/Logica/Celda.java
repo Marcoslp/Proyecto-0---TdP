@@ -82,6 +82,8 @@ public class Celda {
 					miPowerUp.empower(b); //ACTIVA EL POWERUP
 					miNivel.eliminarPowerUp(miPowerUp);
 					this.quitarPowerUp();	
+					//AUMENTA LA PUNTUACION
+					this.miNivel.obtenerManejadorGUI().establecerPuntaje(this.miNivel.obtenerPuntuacion());
 				}
 				b.actualizarPosicionBomba();
 				
@@ -205,7 +207,7 @@ public class Celda {
 				cortar = misEnemigos[i] == e;
 				if(cortar){
 					misEnemigos[i].obtenerGrafico().eliminarImagen();
-					misEnemigos[i].morir();
+					//misEnemigos[i].morir();
 					misEnemigos[i]=null;
 				}
 			}

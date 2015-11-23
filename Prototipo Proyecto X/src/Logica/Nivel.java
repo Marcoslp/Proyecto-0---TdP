@@ -368,7 +368,7 @@ public class Nivel {
 	 * @param e un arreglo Enemigo que representa los enemigos a matar 
 	 */
 
-	public void matarEnemigo(Enemigo[] e, Celda celdaActual) {
+	public void matarEnemigo(Enemigo[] e, Celda celdaActual) { //VERIFICAR ESTO
 		e= celdaActual.obtenerEnemigos();
 		for(int j=0; j<e.length; j++){
 			if(e[j]!=null){
