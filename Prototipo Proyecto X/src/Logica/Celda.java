@@ -264,7 +264,7 @@ public class Celda {
 	 */
 	
 	public void eliminarPared() {
-		miPared=null;	
+		miPared=null;
 	}
 	
 	/**

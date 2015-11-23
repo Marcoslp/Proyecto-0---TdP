@@ -286,6 +286,7 @@ public class Nivel {
 	
 	public void incrementarPuntuacion (int x) {
 		marcadorPuntos += x;
+		miManejador.establecerPuntaje(marcadorPuntos);
 	}
 
 	/**

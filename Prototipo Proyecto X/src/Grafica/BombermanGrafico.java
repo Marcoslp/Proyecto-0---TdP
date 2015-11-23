@@ -78,7 +78,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-							Thread.sleep(22);
+							Thread.sleep(12);
 					}
 					this.establecerimagenActual(7);
 					break;
@@ -91,7 +91,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(15);
 					break;
@@ -104,7 +104,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(23);
 					break;
@@ -117,7 +117,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(31);
 					break;

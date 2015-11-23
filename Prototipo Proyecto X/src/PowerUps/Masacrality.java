@@ -28,6 +28,7 @@ public class Masacrality extends PowerUp{
 	 */
 	
 	public void empower(Bomberman b) {
+		b.obtenerNivel().incrementarPuntuacion(50);
 		b.establecerModoDios(true);
 	}
 }

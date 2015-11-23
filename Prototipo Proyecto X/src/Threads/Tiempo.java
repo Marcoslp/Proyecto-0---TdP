@@ -22,7 +22,7 @@ public class Tiempo extends Thread {
 		while(this.miNivel.obtenerBomberman() != null){ //MIENTRAS EL BOMBERMAN ESTE VIVO
 			try {
 				segundos++;
-				Thread.sleep(1000);
+				Thread.sleep(20);
 				if(segundos == 60){
 					segundos = 0;
 					minutos++;

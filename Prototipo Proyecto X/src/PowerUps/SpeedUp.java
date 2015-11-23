@@ -32,6 +32,7 @@ public class SpeedUp extends PowerUp  {
 	
 	public void empower (Bomberman b) {
 		b.DuplicarVelocidad();
+		b.obtenerNivel().incrementarPuntuacion(30);
 		miGrafico.eliminarImagen();
 		System.out.println("Velocidad x 2");
 	}

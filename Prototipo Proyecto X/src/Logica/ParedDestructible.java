@@ -25,9 +25,9 @@ public class ParedDestructible extends Pared{
 	 * Método que destruye la pared asociada a la celda
 	 */
 	
-	public void destruirPared () {
-		miCelda.obtenerNivel().incrementarPuntuacion(10);
+	public void destruirPared (){
 		miCelda.eliminarPared();
+		miCelda.obtenerNivel().incrementarPuntuacion(10);
 	}
 	
 	/**
