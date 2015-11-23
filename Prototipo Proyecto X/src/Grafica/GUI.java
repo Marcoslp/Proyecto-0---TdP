@@ -69,10 +69,14 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		miTiempo = new JLabel("Tiempo : 0 : 0 : 0");
+		miTiempo.setFont(new java.awt.Font("Tahoma", 1, 11));
+		miTiempo.setForeground(new java.awt.Color(2, 2, 2));
 		miTiempo.setBounds(0, 417, 172, 25);
 		contentPane.add(miTiempo);
 		
 		puntaje = new JLabel("Puntaje : 0");
+		puntaje.setFont(new java.awt.Font("Tahoma", 1, 11));
+		puntaje.setForeground(new java.awt.Color(2, 2, 2));
 		puntaje.setBounds(181, 417, 191, 25);
 		contentPane.add(puntaje);
 		miNivel = new Nivel(this);
@@ -84,6 +88,6 @@ public class GUI extends JFrame {
 	}
 	
 	public void establecerPuntaje(String puntaje){
-		this.puntaje.setText(puntaje);
+		this.puntaje.setText(puntaje);	
 	}
 }
