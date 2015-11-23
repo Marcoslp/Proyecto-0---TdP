@@ -286,6 +286,7 @@ public class Nivel {
 	
 	public void incrementarPuntuacion (int x) {
 		marcadorPuntos += x;
+		miManejador.establecerPuntaje(marcadorPuntos);
 	}
 
 	/**
@@ -338,19 +339,19 @@ public class Nivel {
 		int y = e.obtenerPosicion().obtenerY();
 		switch(dir){
 			case 0:{
-				misCeldas[x-1][y].recibirEnemigo(e);
+				misCeldas[x-1][y].recibirEnemigo(e,dir);
 			}
 			break;
 			case 1:{
-				misCeldas[x+1][y].recibirEnemigo(e);
+				misCeldas[x+1][y].recibirEnemigo(e,dir);
 			}
 			break;
 			case 2:{
-				misCeldas[x][y-1].recibirEnemigo(e);
+				misCeldas[x][y-1].recibirEnemigo(e,dir);
 			}
 			break;
 			case 3:{
-				misCeldas[x][y+1].recibirEnemigo(e);
+				misCeldas[x][y+1].recibirEnemigo(e,dir);
 			}
 			break;
 		}

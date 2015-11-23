@@ -29,6 +29,7 @@ public class Bombality extends PowerUp{
 	
 	public void empower (Bomberman b) {
 		b.aumentarCapacidadBombas();
+		b.obtenerNivel().incrementarPuntuacion(35);
 		miGrafico.eliminarImagen();
 	}
 

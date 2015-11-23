@@ -3,7 +3,8 @@ package PowerUps;
 import Grafica.PowerUpGrafico;
 import Logica.Celda;
 import Personajes.Bomberman;
-
+import Threads.ContadorBomba;
+import Threads.*;
 /**
  * Clase que modela la logica del powerUp Masacrality
  * @author Hernán Pocchiola, Marcos Leguizamón, José Ochoa
@@ -28,6 +29,9 @@ public class Masacrality extends PowerUp{
 	 */
 	
 	public void empower(Bomberman b) {
-		b.establecerModoDios(true);
+		b.obtenerNivel().incrementarPuntuacion(50);
+		ContadorMasacrality contador = new ContadorMasacrality(5,b,miNivel);
+		contador.start();
+		miGrafico.eliminarImagen();
 	}
 }

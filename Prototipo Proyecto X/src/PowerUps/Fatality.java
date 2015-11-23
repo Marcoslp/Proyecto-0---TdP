@@ -32,6 +32,7 @@ public class Fatality extends PowerUp{
 	
 	public void empower (Bomberman b) {
 		b.obtenerBomba().duplicarAlcance();
+		b.obtenerNivel().incrementarPuntuacion(35);
 		miGrafico.eliminarImagen(); //PROVISORIO PROTOTIPO, REALMENTE LA CELDA MANEJARIA LA IMAGEN
 		System.out.println("Alcance x 2");
 	}

@@ -55,7 +55,6 @@ public class BombermanGrafico extends ComponenteGrafico {
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/b-abajo8.png")), 31);
 		
 		this.establecerimagenActual(31);
-
 		miPosX=x*32;
 		miPosY=y*32;
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO,ALTO);
@@ -78,7 +77,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-							Thread.sleep(22);
+							Thread.sleep(12);
 					}
 					this.establecerimagenActual(7);
 					break;
@@ -91,7 +90,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(15);
 					break;
@@ -104,7 +103,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(23);
 					break;
@@ -117,7 +116,7 @@ public class BombermanGrafico extends ComponenteGrafico {
 							this.establecerimagenActual(indiceImagen);
 							Thread.sleep(10);
 						}
-						Thread.sleep(22);
+						Thread.sleep(12);
 					}
 					this.establecerimagenActual(31);
 					break;

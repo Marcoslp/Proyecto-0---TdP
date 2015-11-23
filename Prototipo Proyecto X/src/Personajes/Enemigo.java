@@ -97,7 +97,7 @@ public abstract class Enemigo extends Thread {
 		// Ejecuto indefinidamente hasta que el flag sea verdadero.
 		while(!this.mDetener){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(3000/velocidad);
 				this.moverse();				
 			} catch (InterruptedException e) { }
 		}
