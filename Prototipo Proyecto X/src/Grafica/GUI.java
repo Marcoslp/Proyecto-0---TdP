@@ -57,14 +57,16 @@ public class GUI extends JFrame {
 			   		break;
 			   		
 			   		case KeyEvent.VK_A:{
-			   			PowerUp p = new Masacrality(3,1,miNivel.obtenerCelda(3, 1));
-			   			p.empower(miNivel.obtenerBomberman());
+			   			miNivel.obtenerBomberman().establecerModoDios(true);
+			   			miNivel.obtenerBomberman().DuplicarVelocidad();
+			   			
 			   		}
 			   }
 			}
 			
 		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//this.setUndecorated(true);
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

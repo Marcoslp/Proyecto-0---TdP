@@ -147,7 +147,7 @@ public class Nivel {
 				}
 			}
 			
-			
+			/*
 			// INICIALIZACION PAREDES DESTRUCTIBLES
 			while(!termine){
 				Px= rnd.nextInt(31);
@@ -169,11 +169,12 @@ public class Nivel {
 				if(aux == (total/2))
 					termine=true;
 			}
+			*/
 			//SE INICILIZAN ENEMIGOS
 			//ROGULOS
 			termine = false;
 			int i = 0;
-			while (i < 3){
+			while (i < 1){ //RECORDAR ACA VA 3
 				int Ex= rnd.nextInt(30);
 				int Ey= rnd.nextInt(12);
 				if(misCeldas[Ex][Ey].obtenerPared() == null){
@@ -184,9 +185,9 @@ public class Nivel {
 					i++;					
 				}
 			}
-				
+				/*
 			//ALTAIR
-			while (i<6) {
+			while (i<6) { 
 				int Fx= rnd.nextInt(30);
 				int Fy= rnd.nextInt(12);
 				if(misCeldas[Fx][Fy].obtenerPared() == null){
@@ -205,6 +206,7 @@ public class Nivel {
 					i++;					
 				}
 			}
+			*/
 	}
 	
 	//Operaciones

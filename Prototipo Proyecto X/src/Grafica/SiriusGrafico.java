@@ -16,7 +16,7 @@ public class SiriusGrafico extends ComponenteGrafico{
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/SiriusArriba.gif")), 2);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/SiriusIzquierda.gif")), 3);
 		this.establecerimagenActual(3);
-		this.obtenerImagenActual().setBounds(x*32, y*32, ALTO, ANCHO);
+		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO, ALTO);
 		miPosX=x*32;
 		miPosY=y*32;
 	}
@@ -33,21 +33,22 @@ public class SiriusGrafico extends ComponenteGrafico{
 					break;
 				case 1 : // Derecha
 					for(int i = 0; i<ANCHO; i+=velocidad){
+						this.obtenerImagenActual().setBounds( miPosX += (this.velocidad%32), miPosY, ANCHO, ALTO);
 						this.establecerimagenActual(1);
 						Thread.sleep(22);
-						this.obtenerImagenActual().setBounds( miPosX += (this.velocidad%32), miPosY, ANCHO, ALTO);
+						
 					}
 					break;
 				case 2 : // Arriba
 					for(int i = 0; i < ALTO; i +=velocidad){
-						this.obtenerImagenActual().setBounds( miPosX , miPosY-= this.velocidad, ANCHO, ALTO);
+						this.obtenerImagenActual().setBounds( miPosX , miPosY-= (this.velocidad%32), ANCHO, ALTO);
 						this.establecerimagenActual(2);
 						Thread.sleep(22);
 					}
 					break;
 				case 3 : // Abajo
 					for(int i = 0; i <ALTO; i +=velocidad){
-						this.obtenerImagenActual().setBounds( miPosX , miPosY+= this.velocidad, ANCHO, ALTO);
+						this.obtenerImagenActual().setBounds( miPosX , miPosY+= (this.velocidad%32), ANCHO, ALTO);
 						this.establecerimagenActual(3);
 						Thread.sleep(22);
 						}
