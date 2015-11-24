@@ -61,7 +61,7 @@ public class Sirius extends Enemigo {
 				direccion = 0; // SE MUEVE A LA IZQUIERA
 			}
 			else{
-				if(proximaCelda == this.miNivel.obtenerCelda(x+1-1, y)){
+				if(proximaCelda == this.miNivel.obtenerCelda(x+1, y)){
 					direccion = 1; // SE MUEVE A LA DERECHA
 				}
 				else{
@@ -69,17 +69,13 @@ public class Sirius extends Enemigo {
 						direccion = 2; // SE MUEVE HACIA ARRIBA
 					}
 					else{
-						if(proximaCelda == this.miNivel.obtenerCelda(x, y+1)){
-							direccion = 3; //SE MUEVE HACIA ABAJO
-						}
-						else
-							direccion = -1; //PISO AL BOMBERMAN						
+							direccion = 3; //SE MUEVE HACIA ABAJO						
 					}
 				}
 			}
 		}
-		if(direccion != -1)
-			miNivel.moverEnemigo(this,direccion);
+		miNivel.moverEnemigo(this,direccion);
+		
 	}
 	
 	private Vector<Celda> PathFinder(int Sx, int Sy, int Fx, int Fy){

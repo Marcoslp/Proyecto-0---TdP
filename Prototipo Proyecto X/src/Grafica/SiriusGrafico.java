@@ -15,7 +15,7 @@ public class SiriusGrafico extends ComponenteGrafico{
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/SiriusDerecha.gif")), 1);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/SiriusArriba.gif")), 2);
 		this.establecerImagen(new ImageIcon(this.getClass().getResource("/Imagenes/SiriusIzquierda.gif")), 3);
-		this.establecerimagenActual(3);
+		this.establecerimagenActual(0);
 		this.obtenerImagenActual().setBounds(x*32, y*32, ANCHO, ALTO);
 		miPosX=x*32;
 		miPosY=y*32;

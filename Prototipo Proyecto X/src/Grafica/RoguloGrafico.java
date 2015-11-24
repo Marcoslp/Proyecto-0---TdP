@@ -42,14 +42,14 @@ public class RoguloGrafico extends ComponenteGrafico {
 					break;
 				case 2 : // Arriba
 					for(int i = 0; i < ALTO; i +=velocidad){
-						this.obtenerImagenActual().setBounds( miPosX , miPosY-= this.velocidad, ANCHO, ALTO);
+						this.obtenerImagenActual().setBounds( miPosX , miPosY-= (this.velocidad%32), ANCHO, ALTO);
 						this.establecerimagenActual(2);
 						Thread.sleep(22);
 					}
 					break;
 				case 3 : // Abajo
 					for(int i = 0; i <ALTO; i +=velocidad){
-						this.obtenerImagenActual().setBounds( miPosX , miPosY+= this.velocidad, ANCHO, ALTO);
+						this.obtenerImagenActual().setBounds( miPosX , miPosY+= (this.velocidad%32), ANCHO, ALTO);
 						this.establecerimagenActual(3);
 						Thread.sleep(22);
 						}
