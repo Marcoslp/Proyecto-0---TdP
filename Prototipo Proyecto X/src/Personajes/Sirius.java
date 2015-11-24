@@ -69,12 +69,17 @@ public class Sirius extends Enemigo {
 						direccion = 2; // SE MUEVE HACIA ARRIBA
 					}
 					else{
-						direccion = 3; //SE MUEVE HACIA ABAJO
+						if(proximaCelda == this.miNivel.obtenerCelda(x, y+1)){
+							direccion = 3; //SE MUEVE HACIA ABAJO
+						}
+						else
+							direccion = -1; //PISO AL BOMBERMAN						
 					}
 				}
 			}
 		}
-		miNivel.moverEnemigo(this,direccion);
+		if(direccion != -1)
+			miNivel.moverEnemigo(this,direccion);
 	}
 	
 	private Vector<Celda> PathFinder(int Sx, int Sy, int Fx, int Fy){
