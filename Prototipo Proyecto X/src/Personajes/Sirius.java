@@ -161,7 +161,7 @@ public class Sirius extends Enemigo {
 	 //SINO, SINO ESTA EN LA ABIERTA, SETEA COMO CELDA "HIJA DE LA ACTUAL" (PARA PODER BACKTRACKEAR)
 	 //Y LA AGREGA A LA LISTA ABIERTA
 	private void realizarControl(int posX, int posY, Celda actual, Map<Celda,Celda> padre, Vector<Celda> abierta, Vector<Celda> cerrada){
-		if(miNivel.obtenerCelda(posX, posY).obtenerPared() != null && !estaEnLista(miNivel.obtenerCelda(posX, posY),cerrada)){
+		if(miNivel.obtenerCelda(posX, posY).obtenerPared() == null && !estaEnLista(miNivel.obtenerCelda(posX, posY),cerrada)){
 			 if(!estaEnLista(miNivel.obtenerCelda(posX, posY),abierta))
 					 abierta.add(miNivel.obtenerCelda(posX, posY));
 			 padre.put(miNivel.obtenerCelda(posX, posY), actual);
