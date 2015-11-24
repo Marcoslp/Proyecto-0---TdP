@@ -27,7 +27,7 @@ public class Rogulo extends Enemigo {
 	public Rogulo(int x, int y, Nivel miNivel) {
 		super(x,y,miNivel);
 		this.mDetener = false;
-		velocidad=4;
+		velocidad=2;
 		Graficos = new RoguloGrafico(4,x,y);
 		Graficos.establecerVelocidad(velocidad);
 	}

@@ -104,6 +104,10 @@ public class Nivel {
 			int aux=0;
 			boolean derecha,abajo,yo;
 			int k=0;
+			misEnemigos = new Enemigo [6];
+			
+			//AÑADO AL SIRIUS
+			
 			
 			
 			this.misPowerUps = new PowerUp[11]; 
@@ -151,7 +155,7 @@ public class Nivel {
 				//boolean derecha,abajo,yo;
 				yo= misCeldas[Px][Py] != misCeldas[1][1];
 				derecha= misCeldas[Px][Py] != misCeldas[1][2];
-				abajo= misCeldas[Px][Py] != misCeldas[2][1];
+				abajo= misCeldas[Px][Py] != misCeldas[2][1] && misCeldas[Px][Py] != misCeldas[29][11];
 				if(misCeldas[Px][Py].obtenerPared() == null){ //EVITA QUE SE PONGA ARRIBA DEL BOMBERMAN Y LOS POWERUPS, PROVISORIO. SE HARIA UN PRIVADO QUE CONTROLE MAS POSICIONES PROHIBIDAS
 					if(abajo && derecha && yo && misCeldas[Px][Py] != misCeldas[1][3] && misCeldas[Px][Py] != misCeldas[3][1]){
 						paredAux= new ParedDestructible(misCeldas[Px][Py]);
@@ -167,7 +171,6 @@ public class Nivel {
 			}
 			//SE INICILIZAN ENEMIGOS
 			//ROGULOS
-			misEnemigos = new Enemigo [6];
 			termine = false;
 			int i = 0;
 			while (i < 3){
@@ -191,7 +194,9 @@ public class Nivel {
 						misEnemigos[i] = new Altair (Fx,Fy,this);
 					}
 					else{
-						misEnemigos[i] = new Sirius (Fx,Fy,this);
+						Fx=29;
+						Fy=11;
+						misEnemigos[i] = new Sirius(Fx,Fy,this);
 					}
 					misCeldas[Fx][Fy].añadirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());

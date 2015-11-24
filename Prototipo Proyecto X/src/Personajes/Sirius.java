@@ -27,8 +27,7 @@ public class Sirius extends Enemigo {
 	
 	public Sirius (int x, int y,Nivel miNivel) {
 		super(x,y, miNivel);
-		this.mDetener = false;
-		velocidad=12;
+		velocidad=6;
 		Graficos = new SiriusGrafico(4,x,y);	
 		Graficos.establecerVelocidad(velocidad);
 	}
@@ -74,8 +73,8 @@ public class Sirius extends Enemigo {
 					}
 				}
 			}
-			miNivel.moverEnemigo(this,direccion);
 		}
+		miNivel.moverEnemigo(this,direccion);
 	}
 	
 	private Vector<Celda> PathFinder(int Sx, int Sy, int Fx, int Fy){
