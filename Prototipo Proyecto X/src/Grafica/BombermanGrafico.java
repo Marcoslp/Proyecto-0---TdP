@@ -69,15 +69,11 @@ public class BombermanGrafico extends ComponenteGrafico {
 		try {
 			switch (dir){
 				case 0 : // Izquierda
-					for(int i = 0; i < ANCHO; i += this.velocidad){
-						this.obtenerImagenActual().setBounds( miPosX -= (this.velocidad%32), miPosY, ANCHO, ALTO);
-						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%8)+8*dir;
-						if(i%(movimiento)==0){
-							this.establecerimagenActual(indiceImagen);
-							Thread.sleep(10);
-						}
-							Thread.sleep(12);
+					for(int i = 0; i < 4; i ++){
+							this.obtenerImagenActual().setBounds(miPosX -= 8, miPosY, ANCHO, ALTO);
+							this.establecerimagenActual(i);
+							Thread.sleep(60/velocidad);
+						
 					}
 					this.establecerimagenActual(7);
 					break;
@@ -108,15 +104,10 @@ public class BombermanGrafico extends ComponenteGrafico {
 					this.establecerimagenActual(23);
 					break;
 				case 3 : // Abajo
-					for(int i = 0; i <ALTO; i += this.velocidad){
-						this.obtenerImagenActual().setBounds( miPosX , miPosY+= this.velocidad, ANCHO, ALTO);
-						movimiento = (2/velocidad) +1;
-						indiceImagen=((i/movimiento)%8)+8*dir;
-						if(i%(movimiento)==0){
-							this.establecerimagenActual(indiceImagen);
-							Thread.sleep(10);
-						}
-						Thread.sleep(12);
+					for(int i = 0; i <4; i ++){
+						this.obtenerImagenActual().setBounds( miPosX , miPosY+=8, ANCHO, ALTO);
+						this.establecerimagenActual(28+i);
+						Thread.sleep(100/velocidad);
 					}
 					this.establecerimagenActual(31);
 					break;

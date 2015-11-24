@@ -35,15 +35,15 @@ public class MenuJuego extends JFrame{
 		setTitle("Bomberman: Digimon Edition");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
-		setLayout(new GridLayout());
 		iniciar=new JButton("Iniciar Juego");
 		iniciar.addActionListener(new Oyente());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 480);
 		p = new PanelImagen();
+		p.setLayout(null);
 		setContentPane(p);
 		p.add(iniciar);
-		
+		iniciar.setBounds(100, 100,100,100);
 		
 	}
 	
