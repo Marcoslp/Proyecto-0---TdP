@@ -183,11 +183,16 @@ public class Nivel {
 			}
 				
 			//ALTAIR
-			while (i<5) {
+			while (i<6) {
 				int Fx= rnd.nextInt(30);
 				int Fy= rnd.nextInt(12);
 				if(misCeldas[Fx][Fy].obtenerPared() == null){
-					misEnemigos[i] = new Altair (Fx,Fy,this);
+					if(i<5){
+						misEnemigos[i] = new Altair (Fx,Fy,this);
+					}
+					else{
+						misEnemigos[i] = new Sirius (Fx,Fy,this);
+					}
 					misCeldas[Fx][Fy].añadirEnemigo(misEnemigos[i]);
 					miGui.add(misEnemigos[i].obtenerGrafico().obtenerImagenActual());
 					miGui.getContentPane().setComponentZOrder(misEnemigos[i].obtenerGrafico().obtenerImagenActual(), 0);//PARA PONER EL LABEL DE LOS ENEMIGOS POR ENCIMA DEL PISO
@@ -195,18 +200,6 @@ public class Nivel {
 					i++;					
 				}
 			}
-			/*
-			// SIRIUS
-			misEnemigos[5] = new Sirius (29,11);
-			}*/
-			 
-		    //INICIALIZO EL FATALITY
-		    
-					/**
-		   	this.misPowerUps[1] = new Fatality(1,5,this.misCeldas[1][5]);
-		    misCeldas[1][5].establecerPowerUp(misPowerUps[1]);
-			miManejador.añadirPowerUp(misPowerUps[1]);
-			**/
 	}
 	
 	//Operaciones

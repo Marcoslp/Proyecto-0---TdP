@@ -27,7 +27,10 @@ public class Sirius extends Enemigo {
 	
 	public Sirius (int x, int y,Nivel miNivel) {
 		super(x,y, miNivel);
-		Graficos = new SiriusGrafico(12,x,y);	
+		this.mDetener = false;
+		velocidad=12;
+		Graficos = new SiriusGrafico(4,x,y);	
+		Graficos.establecerVelocidad(velocidad);
 	}
 	
 	//Operaciones
