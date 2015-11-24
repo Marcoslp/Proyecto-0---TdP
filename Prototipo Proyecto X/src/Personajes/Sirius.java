@@ -2,6 +2,7 @@ package Personajes;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 import Logica.*;
@@ -44,7 +45,34 @@ public class Sirius extends Enemigo {
 	 */
 	
 	public void moverse (){
-		
+		Vector<Celda> camino = this.PathFinder(this.obtenerPosicion().obtenerX(), this.obtenerPosicion().obtenerY(), miNivel.obtenerBomberman().obtenerPosicion().obtenerX(), miNivel.obtenerBomberman().obtenerPosicion().obtenerY());
+		int direccion;
+		if(camino == null){ // SI NO ENCUENTRA UN CAMINO, SE MUEVE ALEATORIAMENTE
+			Random r = new Random();
+			direccion = r.nextInt(4);
+		}
+		else{
+			int x = this.obtenerPosicion().obtenerX();
+			int y = this.obtenerPosicion().obtenerY();
+			Celda proximaCelda = camino.get(0);
+			if(proximaCelda == this.miNivel.obtenerCelda(x-1, y)){
+				direccion = 0; // SE MUEVE A LA IZQUIERA
+			}
+			else{
+				if(proximaCelda == this.miNivel.obtenerCelda(x+1-1, y)){
+					direccion = 1; // SE MUEVE A LA DERECHA
+				}
+				else{
+					if(proximaCelda == this.miNivel.obtenerCelda(x, y-1)){
+						direccion = 2; // SE MUEVE HACIA ARRIBA
+					}
+					else{
+						direccion = 3; //SE MUEVE HACIA ABAJO
+					}
+				}
+			}
+			miNivel.moverEnemigo(this,direccion);
+		}
 	}
 	
 	private Vector<Celda> PathFinder(int Sx, int Sy, int Fx, int Fy){
@@ -94,12 +122,12 @@ public class Sirius extends Enemigo {
 		Vector<Celda> devolver = new Vector<Celda>();
 		while(fin != inicio){  //REALIZA UN BACKTRACKING
 			devolver.add(0, fin); //AÑADE LAS CELDA AL PRINCIPIO PARA QUE QUEDE ORDENADO
-			fin = Padre.get(fin);
+			fin = Padre.get(fin); //CON EL MAPEO VA CONSIGUIENDO LAS CELDAS PADRE
 		}
 		return devolver;
 	}
 
-	private boolean estaEnLista(Celda c, Vector<Celda> lista) {
+	private boolean estaEnLista(Celda c, Vector<Celda> lista) { //VERIFICA QUE ESTE EN LA LISTA
 		boolean esta = false;
 		for(Celda celda : lista){
 			if(celda == c)
@@ -128,6 +156,10 @@ public class Sirius extends Enemigo {
 		return  dx + dy;
 	}
 	
+	
+	 //SE FIJA SI LA CELDA ES ATRAVESABLE O SI ESTA EN LA LISTA CERRADA (SI ES ASI LA IGNORA)
+	 //SINO, SINO ESTA EN LA ABIERTA, SETEA COMO CELDA "HIJA DE LA ACTUAL" (PARA PODER BACKTRACKEAR)
+	 //Y LA AGREGA A LA LISTA ABIERTA
 	private void realizarControl(int posX, int posY, Celda actual, Map<Celda,Celda> padre, Vector<Celda> abierta, Vector<Celda> cerrada){
 		if(miNivel.obtenerCelda(posX, posY).obtenerPared() != null && !estaEnLista(miNivel.obtenerCelda(posX, posY),cerrada)){
 			 if(!estaEnLista(miNivel.obtenerCelda(posX, posY),abierta))
