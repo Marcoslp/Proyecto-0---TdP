@@ -481,7 +481,7 @@ public class Nivel {
 	}
 	
 	
-
+/*
 	public void restaurarPiso(Bomba bomba) {
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
@@ -489,6 +489,66 @@ public class Nivel {
 		this.restaurarAux(bomba, "arriba");
 		this.restaurarAux(bomba, "izquierda");
 		this.restaurarAux(bomba, "derecha");
+	}
+	*/
+	
+	public void restaurarPiso(Bomba bomba) {
+		boolean cortar;
+		//QUITA EL LABEL CENTRAL
+		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
+		//CICLO QUE LIMPIA A LA DERECHA
+		cortar = false;
+		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
+		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
+		int posX = bomba.obtenerPosicion().obtenerX();
+		int posY = bomba.obtenerPosicion().obtenerY();
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX+i,posY);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+				if(celdaActual.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
+				}
+			}			
+		}
+		//CICLO QUE LIMPIA A LA IZQ
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX-i,posY);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionHorizontal; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+				if(celdaActual.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
+				}
+			}			
+		}
+		//CICLO QUE LIMPIA ARRIBA
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY-i);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+				if(celdaActual.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
+				}
+			}			
+		}
+		//CICLO QUE LIMPIA ABAJO
+		cortar = false;
+		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
+			Celda celdaActual = this.obtenerCelda(posX,posY+i);
+			cortar = celdaActual.obtenerGraficos().obtenerImagenActual().getIcon() != explosionVertical; //SE FIJA QUE HAYA SIDO UN LUGAR EN EL QUE EXPLOTO LA BOMBA
+			if(!cortar){	//SI EXPLOTO EN ESA PARTE, RESTAURA LA IMAGEN PRINCIPAL
+				celdaActual.obtenerGraficos().establecerimagenActual(0); //LE PONE LA IMAGEN DEL PISO
+				if(celdaActual.obtenerPowerUp()!=null){
+					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
+				}
+			}			
+		}
+		
 	}
 	
 	public int obtenerPuntuacion(){
