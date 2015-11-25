@@ -492,7 +492,7 @@ public class Nivel {
 	}
 	*/
 	
-	public void restaurarPiso(Bomba bomba) {
+	public synchronized void restaurarPiso(Bomba bomba) {
 		boolean cortar;
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
