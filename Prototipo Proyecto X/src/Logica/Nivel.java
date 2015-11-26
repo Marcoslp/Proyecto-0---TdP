@@ -582,7 +582,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					
+					this.miManejador.cartelPerder();
 				}
 			}			
 		}
