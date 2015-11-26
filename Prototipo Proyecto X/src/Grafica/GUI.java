@@ -87,16 +87,17 @@ public class GUI extends JFrame {
 		miTiempo.setForeground(new java.awt.Color(2, 2, 2));
 		miTiempo.setBounds(0, 417, 172, 25);
 		contentPane.add(miTiempo);
-		
 		puntaje = new JLabel("Puntaje : 0");
 		puntaje.setFont(new java.awt.Font("Tahoma", 1, 11));
 		puntaje.setForeground(new java.awt.Color(2, 2, 2));
 		puntaje.setBounds(181, 417, 191, 25);
 		contentPane.add(puntaje);
 		miNivel = new Nivel(this);
+		miSonido = new Sonido("Digimon - Butterfly.mid",true);
+		miSonido.run();
+		
 		setVisible(true);
-	//	miSonido = new Sonido("Digimon - Butterfly.mid",true);
-	//	miSonido.run();
+		
 		
 	}
 	
@@ -109,15 +110,13 @@ public class GUI extends JFrame {
 	}
 
 public void cartelPerder() {
-		miSonido.parar();
 		int puntuacion = miNivel.obtenerPuntuacion();
-		//miNivel=null;
 		PanelImagen panel = new PanelImagen();
 		panel.setVisible(true);
 		panel.setLayout(null);
 		setContentPane(panel);
 		miNivel.terminoJuego();
-		
+		miSonido.parar();
 		JLabel puntajeX = new JLabel("Puntaje : "+puntuacion);
 		puntajeX.setFont(new java.awt.Font("Impact", 1, 40));
 		puntajeX.setForeground(new java.awt.Color(2, 2, 2));

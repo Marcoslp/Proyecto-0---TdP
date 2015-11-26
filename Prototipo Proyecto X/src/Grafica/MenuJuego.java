@@ -65,9 +65,9 @@ public class MenuJuego extends JFrame{
 	
 	private class Oyente implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			miSonido.parar();
 			gui = new GUI();
 			setVisible(false);
-			miSonido.parar();
 		}
 	}
 	
