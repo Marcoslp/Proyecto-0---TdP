@@ -363,7 +363,7 @@ public class Nivel {
 	 */
 	
 	public void matarBomberman() {
-		//miBomberman.detener();
+		miBomberman.detener();
 		miBomberman.obtenerGrafico().eliminarImagen();	
 		//miBomberman  = null;
 	}
@@ -509,6 +509,7 @@ public class Nivel {
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
 		//CICLO QUE LIMPIA A LA DERECHA
 		cortar = false;
+		boolean perder = false;
 		
 		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
 		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
@@ -517,7 +518,7 @@ public class Nivel {
 		Celda celdaActual = this.obtenerCelda(posX,posY);
 		if(celdaActual.obtenerBomberman()!=null){
 			celdaActual.obtenerBomberman().morir();
-			this.miManejador.cartelPerder();
+			perder= true;
 		}
 		
 		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
@@ -531,7 +532,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					this.miManejador.cartelPerder();				
+					perder = true;				
 				}
 			}			
 		}
@@ -548,7 +549,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					this.miManejador.cartelPerder();					
+					perder = true;					
 				}
 			}			
 		}
@@ -565,7 +566,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					this.miManejador.cartelPerder();					
+					perder = true;					
 				}
 			}			
 		}
@@ -582,10 +583,12 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					this.miManejador.cartelPerder();
+					perder = true;
 				}
 			}			
 		}
+		if(perder)
+			this.miManejador.cartelPerder();
 		
 	}
 	
