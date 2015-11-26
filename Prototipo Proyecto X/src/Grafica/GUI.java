@@ -1,7 +1,10 @@
 package Grafica;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -98,14 +101,25 @@ public class GUI extends JFrame {
 
 public void cartelPerder() {
 		int puntuacion = miNivel.obtenerPuntuacion();
-		miNivel=null;
-		this.setVisible(false);
-		MenuJuego frame = new MenuJuego();
+		//miNivel=null;
+		PanelImagen panel = new PanelImagen();
+		panel.setVisible(true);
+		panel.setLayout(null);
+		setContentPane(panel);
+		miNivel.terminoJuego();
+		
+		JLabel puntajeX = new JLabel("Puntaje : "+puntuacion);
+		puntajeX.setFont(new java.awt.Font("Impact", 1, 40));
+		puntajeX.setForeground(new java.awt.Color(2, 2, 2));
+		puntajeX.setBounds(451, 300, 400, 100);
+		panel.add(puntajeX);
+		
+		/*
 		JOptionPane.showConfirmDialog(
-			    frame, "Tu puntuacion fue : " + puntuacion ,
+			    panel, "Tu puntuacion fue : " + puntuacion ,
 			    "¡ Perdiste !",
 			    JOptionPane.PLAIN_MESSAGE);
-		frame.setVisible(true);			
+	*/
 	}
 
 	public void cartelGanar() {
@@ -118,4 +132,19 @@ public void cartelPerder() {
 			    JOptionPane.PLAIN_MESSAGE);
 		
 	}
+	
+	private class PanelImagen extends javax.swing.JPanel {
+		public PanelImagen(){
+			this.setSize(1024,480);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+		@Override
+		public void paintComponent (Graphics g){
+		Dimension tamanio = getSize();
+		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imagenes/imagenPerdiste.png"));
+		g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, this);
+		setOpaque(false);
+		super.paintComponent(g);
+		}
+	}	
 }

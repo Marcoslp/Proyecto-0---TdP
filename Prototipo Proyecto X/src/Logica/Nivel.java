@@ -441,6 +441,12 @@ public class Nivel {
 		return miManejador;
 	}
 	
+	public void terminoJuego(){
+		for(int i = 0; i < this.misEnemigos.length; i++){
+			misEnemigos[i].destruir();
+		}
+	}
+	
 	/**
 	 * Método utilizado para restaurar el gráfico de una celda luego de algun evento
 	 * @param bomba de tipo Bomba
