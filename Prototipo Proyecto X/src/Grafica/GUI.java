@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
 import Logica.Nivel;
 import PowerUps.Masacrality;
 import PowerUps.PowerUp;
@@ -34,7 +35,8 @@ public class GUI extends JFrame {
 	private Nivel miNivel;
 	private JPanel contentPane;
 	private JLabel puntaje;
-
+	private Sonido miSonido;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -93,6 +95,9 @@ public class GUI extends JFrame {
 		contentPane.add(puntaje);
 		miNivel = new Nivel(this);
 		setVisible(true);
+	//	miSonido = new Sonido("Digimon - Butterfly.mid",true);
+	//	miSonido.run();
+		
 	}
 	
 	public void establecerTiempo(String tiempo){
@@ -104,6 +109,7 @@ public class GUI extends JFrame {
 	}
 
 public void cartelPerder() {
+		miSonido.parar();
 		int puntuacion = miNivel.obtenerPuntuacion();
 		//miNivel=null;
 		PanelImagen panel = new PanelImagen();

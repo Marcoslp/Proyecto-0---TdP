@@ -51,8 +51,8 @@ public class MenuJuego extends JFrame{
 		setContentPane(p);
 		p.add(iniciar);
 		p.add(salir);
-		Icon icon = new ImageIcon(getClass().getResource("/imagenes/nuevoJuego.png"));
-		Icon iconsalir = new ImageIcon(getClass().getResource("/imagenes/salirJuego.png"));
+		Icon icon = new ImageIcon(getClass().getResource("/Imagenes/Nuevojuego.png"));
+		Icon iconsalir = new ImageIcon(getClass().getResource("/Imagenes/salirJuego.png"));
 		iniciar.setIcon(icon);	
 		salir.setIcon(iconsalir);
 	  	iniciar.setBounds(451, 300, 123, 40);
@@ -85,7 +85,7 @@ public class MenuJuego extends JFrame{
 		@Override
 		public void paintComponent (Graphics g){
 		Dimension tamanio = getSize();
-		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imagenes/logoBomberman.gif"));
+		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Imagenes/logoBomberman.gif"));
 		g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, this);
 		setOpaque(false);
 		super.paintComponent(g);
