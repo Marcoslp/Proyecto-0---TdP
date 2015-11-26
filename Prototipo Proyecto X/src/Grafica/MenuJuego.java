@@ -59,8 +59,6 @@ public class MenuJuego extends JFrame{
 	  	salir.setBounds(451, 350, 123, 40);
 		miSonido = new Sonido("menu.wav",true);
 		miSonido.run();
-	  	
-		
 	}
 	
 	private class Oyente implements ActionListener {
