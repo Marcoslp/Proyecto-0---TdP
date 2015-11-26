@@ -231,8 +231,11 @@ public class Nivel {
 		Celda celdaActual=misCeldas[posX][posY];
 		
 		if(celdaActual.obtenerBomberman()!=null){
-			celdaActual.obtenerBomberman().morir();
+			if(!celdaActual.obtenerBomberman().obtenerModoDios()){
+				celdaActual.obtenerBomberman().morir();
+			}
 		}
+		
 		
 		for(int i = 1; i< b.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
 			
@@ -254,7 +257,7 @@ public class Nivel {
 				}
 				break;
 			}
-				
+			
 			cortar = celdaActual.obtenerPared() != null;
 			celdaActual.obtenerGraficos().obtenerImagenActual().setIcon(DireccionExplosion);
 			if(cortar){
@@ -523,8 +526,10 @@ public class Nivel {
 		int posY = bomba.obtenerPosicion().obtenerY();
 		Celda celdaActual = this.obtenerCelda(posX,posY);
 		if(celdaActual.obtenerBomberman()!=null){
-			celdaActual.obtenerBomberman().morir();
-			perder= true;
+			if(!celdaActual.obtenerBomberman().obtenerModoDios()){
+				celdaActual.obtenerBomberman().morir();
+				perder= true;
+			}
 		}
 		
 		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
@@ -537,8 +542,10 @@ public class Nivel {
 					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
 				}
 				if(celdaActual.obtenerBomberman()!=null){
+					if(!celdaActual.obtenerBomberman().obtenerModoDios()){
 					celdaActual.obtenerBomberman().morir();
-					perder = true;				
+					perder= true;
+					}
 				}
 			}			
 		}
@@ -554,8 +561,10 @@ public class Nivel {
 					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
 				}
 				if(celdaActual.obtenerBomberman()!=null){
-					celdaActual.obtenerBomberman().morir();
-					perder = true;					
+					if(!celdaActual.obtenerBomberman().obtenerModoDios()){
+						celdaActual.obtenerBomberman().morir();
+						perder= true;
+					}					
 				}
 			}			
 		}
@@ -571,8 +580,10 @@ public class Nivel {
 					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
 				}
 				if(celdaActual.obtenerBomberman()!=null){
-					celdaActual.obtenerBomberman().morir();
-					perder = true;					
+					if(!celdaActual.obtenerBomberman().obtenerModoDios()){
+						celdaActual.obtenerBomberman().morir();
+						perder= true;
+					}					
 				}
 			}			
 		}
@@ -588,8 +599,10 @@ public class Nivel {
 					miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
 				}
 				if(celdaActual.obtenerBomberman()!=null){
-					celdaActual.obtenerBomberman().morir();
-					perder = true;
+					if(!celdaActual.obtenerBomberman().obtenerModoDios()){
+						celdaActual.obtenerBomberman().morir();
+						perder= true;
+					}
 				}
 			}			
 		}

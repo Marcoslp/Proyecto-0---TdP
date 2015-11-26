@@ -49,7 +49,7 @@ public class Sirius extends Enemigo {
 	public void moverse (){
 		Vector<Celda> camino;
 		camino = this.PathFinder(this.obtenerPosicion().obtenerX(), this.obtenerPosicion().obtenerY(), miNivel.obtenerBomberman().obtenerPosicion().obtenerX(), miNivel.obtenerBomberman().obtenerPosicion().obtenerY());
-		int direccion;
+		int direccion=0;
 		if(camino == null){ // SI NO ENCUENTRA UN CAMINO, SE MUEVE ALEATORIAMENTE
 			Random r = new Random();
 			direccion = r.nextInt(4);
@@ -57,7 +57,8 @@ public class Sirius extends Enemigo {
 		else{
 			int x = this.obtenerPosicion().obtenerX();
 			int y = this.obtenerPosicion().obtenerY();
-			Celda proximaCelda = camino.get(0); // ver excepcion
+			if(camino.size() != 0){
+				Celda proximaCelda = camino.get(0); 	// ver excepcion y el if q agregue jose no me mates ploz t_t
 			if(proximaCelda == this.miNivel.obtenerCelda(x-1, y)){
 				direccion = 0; // SE MUEVE A LA IZQUIERA
 			}
@@ -74,6 +75,7 @@ public class Sirius extends Enemigo {
 					}
 				}
 			}
+		}
 		}
 		miNivel.moverEnemigo(this,direccion);
 		

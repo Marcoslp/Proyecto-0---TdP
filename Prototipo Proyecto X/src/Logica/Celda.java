@@ -71,9 +71,9 @@ public class Celda {
 				//graficos.recibirBomberman(b,miPosicion); No modifica en nada, seguir probando y borrarla de última
 				miBomberman=b;
 				b.obtenerGrafico().mover(dir);
-				
+				boolean soyDios = miBomberman.obtenerModoDios();
 				for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
-					if(misEnemigos[i]!=null){
+					if(misEnemigos[i]!=null && !soyDios){
 						miBomberman.morir();// ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
 						this.miNivel.obtenerManejadorGUI().cartelPerder();
 						break; //PROVISORIO
@@ -119,10 +119,14 @@ public class Celda {
 				e.obtenerPosicion().establecerY(miPosicion.obtenerY()); //ACTUALIZA LAS POSICIONES LOGICAS Y GRAFICAS
 				graficos.recibirEnemigo(e,miPosicion);
 				e.obtenerGrafico().mover(dir);
-				if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
-					miBomberman.morir();// ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
-					this.miNivel.obtenerManejadorGUI().cartelPerder();
+					if(miBomberman != null){//VERIFICA SI MATO AL BOMBERMAN0
+					boolean soyDios = miBomberman.obtenerModoDios();	
+					if(!soyDios){
+						miBomberman.morir();// ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+						this.miNivel.obtenerManejadorGUI().cartelPerder();
+					}
 				}			
+				
 				this.añadirEnemigo(e);
 			}
 			else{

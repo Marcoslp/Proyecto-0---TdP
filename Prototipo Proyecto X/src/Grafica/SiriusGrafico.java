@@ -34,28 +34,28 @@ public class SiriusGrafico extends ComponenteGrafico{
 					for(int i = 0; i < 4; i ++){
 						this.obtenerImagenActual().setBounds( miPosX -= 8, miPosY, ANCHO, ALTO);
 						this.establecerimagenActual(i);
-						Thread.sleep(600/velocidad);
+						Thread.sleep(400/velocidad);
 					}
 					break;
 				case 1 : // Derecha
 					for(int i = 0; i<4; i++){
 						this.obtenerImagenActual().setBounds( miPosX += 8, miPosY, ANCHO, ALTO);
 						this.establecerimagenActual(4 + i);
-						Thread.sleep(600/velocidad);
+						Thread.sleep(400/velocidad);
 					}
 					break;
 				case 2 : // Arriba
 					for(int i = 0; i < 4; i ++){
 						this.obtenerImagenActual().setBounds( miPosX , miPosY-= 8, ANCHO, ALTO);
 						this.establecerimagenActual(4+i);
-						Thread.sleep(600/velocidad);
+						Thread.sleep(400/velocidad);
 					}
 					break;
 				case 3 : // Abajo
 					for(int i = 0; i <4; i ++){
 						this.obtenerImagenActual().setBounds( miPosX , miPosY+= 8, ANCHO, ALTO);
 						this.establecerimagenActual(i);
-						Thread.sleep(600/velocidad);
+						Thread.sleep(400/velocidad);
 						}
 					break;
 			}

@@ -62,7 +62,6 @@ public class BombermanGrafico extends ComponenteGrafico {
 
 		
 	public void mover(int dir){
-		System.out.println(miBomberman.obtenerPosicion().obtenerX()+" "+miBomberman.obtenerPosicion().obtenerY());	
 		try {
 			switch (dir){
 				case 0 : // Izquierda
@@ -101,8 +100,6 @@ public class BombermanGrafico extends ComponenteGrafico {
 					
 			}
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }

@@ -4,16 +4,22 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
+
 import Logica.Nivel;
 import PowerUps.Masacrality;
 import PowerUps.PowerUp;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -65,14 +71,12 @@ public class GUI extends JFrame {
 			   			miNivel.obtenerBomberman().DuplicarVelocidad();
 			   			miNivel.obtenerBomberman().aumentarCapacidadBombas();
 			   			miNivel.obtenerBomberman().obtenerBomba().duplicarAlcance();
-			   			
 			   		}
 			   }
 			}
 			
 		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//this.setUndecorated(true);
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -113,14 +117,39 @@ public void cartelPerder() {
 		puntajeX.setForeground(new java.awt.Color(2, 2, 2));
 		puntajeX.setBounds(451, 300, 400, 100);
 		panel.add(puntajeX);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		/*
-		JOptionPane.showConfirmDialog(
-			    panel, "Tu puntuacion fue : " + puntuacion ,
-			    "¡ Perdiste !",
-			    JOptionPane.PLAIN_MESSAGE);
-	*/
+		JButton iniciar=new JButton();
+		JButton salir=new JButton();
+		iniciar.addActionListener(new Oyente());
+		salir.addActionListener(new OyenteSalir());
+		iniciar.setToolTipText("Inicia el juego");
+		salir.setToolTipText("Sale del juego");
+		panel.add(iniciar);
+	  	panel.add(salir);
+		Icon icon = new ImageIcon(getClass().getResource("/imagenes/nuevoJuego.png"));
+		Icon iconsalir = new ImageIcon(getClass().getResource("/imagenes/salirJuego.png"));
+		iniciar.setIcon(icon);	
+		salir.setIcon(iconsalir);
+	  	iniciar.setBounds(451, 400, 123, 40);
+	  	salir.setBounds(600, 400, 123, 40);
+	
 	}
+
+	private class Oyente implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			GUI gui = new GUI();
+			setVisible(false);
+		}
+	}
+
+	private class OyenteSalir implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			setVisible(false);
+			System.exit(0);
+		}
+	}
+
 
 	public void cartelGanar() {
 		this.setVisible(false);

@@ -74,6 +74,7 @@ public class MenuJuego extends JFrame{
 	private class OyenteSalir implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			setVisible(false);
+			System.exit(0);
 		}
 	}
 	
