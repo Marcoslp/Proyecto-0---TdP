@@ -47,7 +47,11 @@ public class Sirius extends Enemigo {
 	 */
 	
 	public void moverse (){
-		Vector<Celda> camino = this.PathFinder(this.obtenerPosicion().obtenerX(), this.obtenerPosicion().obtenerY(), miNivel.obtenerBomberman().obtenerPosicion().obtenerX(), miNivel.obtenerBomberman().obtenerPosicion().obtenerY());
+		Vector<Celda> camino;
+		if(miNivel.obtenerBomberman() != null)
+			camino = this.PathFinder(this.obtenerPosicion().obtenerX(), this.obtenerPosicion().obtenerY(), miNivel.obtenerBomberman().obtenerPosicion().obtenerX(), miNivel.obtenerBomberman().obtenerPosicion().obtenerY());
+		else
+			camino = null;
 		int direccion;
 		if(camino == null){ // SI NO ENCUENTRA UN CAMINO, SE MUEVE ALEATORIAMENTE
 			Random r = new Random();

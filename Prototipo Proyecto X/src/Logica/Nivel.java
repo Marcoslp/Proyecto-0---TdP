@@ -517,7 +517,7 @@ public class Nivel {
 		Celda celdaActual = this.obtenerCelda(posX,posY);
 		if(celdaActual.obtenerBomberman()!=null){
 			celdaActual.obtenerBomberman().morir();
-			
+			this.miManejador.cartelPerder();
 		}
 		
 		for(int i = 1; i< bomba.obtenerAlcance() + 1 && !cortar; i++){ //EL MAS 1 ES PARA QUE NO EMPIECE EN EL CENTRO DE LA EXPLOSION
@@ -531,7 +531,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					
+					this.miManejador.cartelPerder();				
 				}
 			}			
 		}
@@ -548,7 +548,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					
+					this.miManejador.cartelPerder();					
 				}
 			}			
 		}
@@ -565,7 +565,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					
+					this.miManejador.cartelPerder();					
 				}
 			}			
 		}
