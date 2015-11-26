@@ -97,17 +97,15 @@ public class GUI extends JFrame {
 	}
 
 public void cartelPerder() {
-		
-
+		int puntuacion = miNivel.obtenerPuntuacion();
+		miNivel=null;
 		this.setVisible(false);
 		MenuJuego frame = new MenuJuego();
-		frame.setVisible(true);
 		JOptionPane.showConfirmDialog(
-			    frame, "Tu puntuacion fue : " + this.miNivel.obtenerPuntuacion() ,
+			    frame, "Tu puntuacion fue : " + puntuacion ,
 			    "¡ Perdiste !",
 			    JOptionPane.PLAIN_MESSAGE);
-			
-				
+		frame.setVisible(true);			
 	}
 
 	public void cartelGanar() {

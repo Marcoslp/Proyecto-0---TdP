@@ -28,7 +28,7 @@ public class Sirius extends Enemigo {
 	public Sirius (int x, int y,Nivel miNivel) {
 		super(x,y, miNivel);
 		velocidad=6;
-		Graficos = new SiriusGrafico(4,x,y);	
+		Graficos = new SiriusGrafico(8,x,y);	
 		Graficos.establecerVelocidad(velocidad);
 	}
 	
@@ -57,7 +57,7 @@ public class Sirius extends Enemigo {
 		else{
 			int x = this.obtenerPosicion().obtenerX();
 			int y = this.obtenerPosicion().obtenerY();
-			Celda proximaCelda = camino.get(0);
+			Celda proximaCelda = camino.get(0); // ver excepcion
 			if(proximaCelda == this.miNivel.obtenerCelda(x-1, y)){
 				direccion = 0; // SE MUEVE A LA IZQUIERA
 			}

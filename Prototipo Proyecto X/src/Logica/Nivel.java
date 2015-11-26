@@ -363,7 +363,7 @@ public class Nivel {
 	 */
 	
 	public void matarBomberman() {
-		//miBomberman.detener();
+		miBomberman.detener();
 		miBomberman.obtenerGrafico().eliminarImagen();	
 		//miBomberman  = null;
 	}
@@ -445,7 +445,7 @@ public class Nivel {
 	 * Método utilizado para restaurar el gráfico de una celda luego de algun evento
 	 * @param bomba de tipo Bomba
 	 */
-	
+	/*	
 	private synchronized void restaurarAux(Bomba b, String s){
 		int posX = b.obtenerPosicion().obtenerX();
 		int posY = b.obtenerPosicion().obtenerY();
@@ -492,7 +492,7 @@ public class Nivel {
 	}
 	
 	
-/*
+
 	public void restaurarPiso(Bomba bomba) {
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
