@@ -365,7 +365,7 @@ public class Nivel {
 	public void matarBomberman() {
 		//miBomberman.detener();
 		miBomberman.obtenerGrafico().eliminarImagen();	
-		miBomberman  = null;
+		//miBomberman  = null;
 	}
 	
 	/**
