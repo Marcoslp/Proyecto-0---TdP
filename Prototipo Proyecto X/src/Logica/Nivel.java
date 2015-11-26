@@ -365,7 +365,7 @@ public class Nivel {
 	public void matarBomberman() {
 		//miBomberman.detener();
 		miBomberman.obtenerGrafico().eliminarImagen();	
-		miBomberman  = null;
+		//miBomberman  = null;
 	}
 	
 	/**
@@ -582,7 +582,7 @@ public class Nivel {
 				}
 				if(celdaActual.obtenerBomberman()!=null){
 					celdaActual.obtenerBomberman().morir();
-					
+					this.miManejador.cartelPerder();
 				}
 			}			
 		}
