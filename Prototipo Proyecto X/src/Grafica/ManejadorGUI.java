@@ -59,6 +59,14 @@ public class ManejadorGUI {
 		miGui.establecerPuntaje("Puntaje : " + puntaje);
 	}
 
+	public void cartelPerder() {
+		miGui.cartelPerder();		
+	}
+
+	public void cartelGanar() {
+		miGui.cartelGanar();		
+	}
+
 	
 
 	

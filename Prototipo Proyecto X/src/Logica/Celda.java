@@ -33,6 +33,7 @@ public class Celda {
 	protected Bomba miBomba;
 	
 	
+	
 	//Constructor
 	
 		public Celda(int x,int y, Nivel n){
@@ -43,6 +44,7 @@ public class Celda {
 		misEnemigos = new Enemigo[6];
 		miPosicion = new Posicion(x,y);
 		miNivel = n;
+		
 		//CREA TODO EL COMPONENTE GRAFICO
 		graficos = new CeldaGrafica(3,x,y);
 		
@@ -72,7 +74,8 @@ public class Celda {
 				
 				for(int i = 0 ; i < misEnemigos.length; i++){ //TESTEO PARA CHEQUEAR COLISION ENTRE BOMBERMAN Y ENEMIGO
 					if(misEnemigos[i]!=null){
-						System.out.println("Bomberman toco enemigo");
+						miBomberman.morir();// ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+						this.miNivel.obtenerManejadorGUI().cartelPerder();
 						break; //PROVISORIO
 					}
 				}
@@ -117,7 +120,8 @@ public class Celda {
 				graficos.recibirEnemigo(e,miPosicion);
 				e.obtenerGrafico().mover(dir);
 				if(miBomberman != null){ //VERIFICA SI MATO AL BOMBERMAN
-					System.out.println("Enemigo mato a bomberman");  // ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+					miBomberman.morir();// ACA LLAMARIA A LA FUNCION MATAR BOMBERMAN
+					this.miNivel.obtenerManejadorGUI().cartelPerder();
 				}			
 				this.añadirEnemigo(e);
 			}

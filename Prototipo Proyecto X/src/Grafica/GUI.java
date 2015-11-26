@@ -3,6 +3,7 @@ package Grafica;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -59,6 +60,8 @@ public class GUI extends JFrame {
 			   		case KeyEvent.VK_A:{
 			   			miNivel.obtenerBomberman().establecerModoDios(true);
 			   			miNivel.obtenerBomberman().DuplicarVelocidad();
+			   			miNivel.obtenerBomberman().aumentarCapacidadBombas();
+			   			miNivel.obtenerBomberman().obtenerBomba().duplicarAlcance();
 			   			
 			   		}
 			   }
@@ -91,5 +94,40 @@ public class GUI extends JFrame {
 	
 	public void establecerPuntaje(String puntaje){
 		this.puntaje.setText(puntaje);	
+	}
+
+	public void cartelPerder() {
+		this.miNivel.obtenerTiempo().stop();
+		int opcion = JOptionPane.showConfirmDialog(
+			    null,
+			    "Tu puntuacion fue : " + this.miNivel.obtenerPuntuacion() + " ¿Quieres volver a intentarlo?",
+			    "¡ Perdiste !",
+			    JOptionPane.YES_NO_OPTION);
+		if(opcion == JOptionPane.YES_OPTION){			
+			this.miNivel = new Nivel (this);
+			this.miTiempo.setText("Tiempo : 00 : 00 : 00");			
+			this.puntaje.setText("Puntaje : 0");
+		}
+		else{
+			this.setVisible(false);
+		}
+	}
+
+	public void cartelGanar() {
+		this.miNivel.obtenerTiempo().stop();
+		int opcion = JOptionPane.showConfirmDialog(
+			    null,
+			    "¡¡¡¡ Felicitaciones !!!!! Tu puntuacion fue : " + this.miNivel.obtenerPuntuacion() + " ¿Quieres volver a intentarlo?",
+			    "¡ Ganaste !",
+			    JOptionPane.YES_NO_OPTION);
+		if(opcion == JOptionPane.YES_OPTION){			
+			this.miNivel = new Nivel (this);
+			this.miTiempo.setText("Tiempo : 00 : 00 : 00");			
+			this.puntaje.setText("Puntaje : 0");
+		}
+		else{
+			this.setVisible(false);
+		}
+		
 	}
 }
