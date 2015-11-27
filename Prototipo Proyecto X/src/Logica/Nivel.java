@@ -447,8 +447,7 @@ public class Nivel {
 	public void terminoJuego(){
 		for(int i = 0; i < this.misEnemigos.length; i++){
 			misEnemigos[i].destruir();
-		}
-		
+		}	
 		miBomberman = new Bomberman(1,1,this);
 	}
 	

@@ -109,38 +109,47 @@ public class GUI extends JFrame {
 		this.puntaje.setText(puntaje);	
 	}
 
-public void cartelPerder() {
-		int puntuacion = miNivel.obtenerPuntuacion();
-		PanelImagen panel = new PanelImagen();
-		panel.setVisible(true);
-		panel.setLayout(null);
-		setContentPane(panel);
-		miNivel.terminoJuego();
-		miSonido.parar();
-		JLabel puntajeX = new JLabel("Puntaje : "+puntuacion);
-		puntajeX.setFont(new java.awt.Font("Impact", 1, 40));
-		puntajeX.setForeground(new java.awt.Color(2, 2, 2));
-		puntajeX.setBounds(451, 300, 400, 100);
-		panel.add(puntajeX);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JButton iniciar=new JButton();
-		JButton salir=new JButton();
-		iniciar.addActionListener(new Oyente());
-		salir.addActionListener(new OyenteSalir());
-		iniciar.setToolTipText("Inicia el juego");
-		salir.setToolTipText("Sale del juego");
-		panel.add(iniciar);
-	  	panel.add(salir);
-		Icon icon = new ImageIcon(getClass().getResource("/imagenes/nuevoJuego.png"));
-		Icon iconsalir = new ImageIcon(getClass().getResource("/imagenes/salirJuego.png"));
-		iniciar.setIcon(icon);	
-		salir.setIcon(iconsalir);
-	  	iniciar.setBounds(451, 400, 123, 40);
-	  	salir.setBounds(600, 400, 123, 40);
+private void armarPanel(int x, int y, int z, int t, boolean eleccion){
+	int puntuacion = miNivel.obtenerPuntuacion();
+	PanelImagen panel = new PanelImagen(eleccion);
+	panel.setVisible(true);
+	panel.setLayout(null);
+	setContentPane(panel);
+	miNivel.terminoJuego();
+	miSonido.parar();
+	JLabel puntajeX = new JLabel("Puntaje : "+puntuacion);
+	puntajeX.setFont(new java.awt.Font("Impact", 1, 40));
+	puntajeX.setForeground(new java.awt.Color(2, 2, 2));
+	puntajeX.setBounds(451, 300, 400, 100);
+	panel.add(puntajeX);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
+	JButton iniciar=new JButton();
+	JButton salir=new JButton();
+	iniciar.addActionListener(new Oyente());
+	salir.addActionListener(new OyenteSalir());
+	iniciar.setToolTipText("Inicia el juego");
+	salir.setToolTipText("Sale del juego");
+	panel.add(iniciar);
+  	panel.add(salir);
+  	Icon icon = new ImageIcon(getClass().getResource("/imagenes/nuevoJuego.png"));
+	Icon iconsalir = new ImageIcon(getClass().getResource("/imagenes/salirJuego.png"));
+	iniciar.setIcon(icon);
+	salir.setIcon(iconsalir);
+	iniciar.setBounds(x, y, 123, 40);
+  	salir.setBounds(z, t, 123, 40);
+}
+	
+	
+	public void cartelPerder() {
+		armarPanel(451,400,600,400,true);
 	}
 
+	public void cartelGanar() {
+		armarPanel(451,80,451,130,false);
+	}
+	
+	
 	private class Oyente implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			GUI gui = new GUI();
@@ -154,28 +163,24 @@ public void cartelPerder() {
 			System.exit(0);
 		}
 	}
-
-
-	public void cartelGanar() {
-		this.setVisible(false);
-		MenuJuego frame = new MenuJuego();
-		frame.setVisible(true);
-		JOptionPane.showConfirmDialog(
-			    frame, "¡¡¡Felicidades, ganaste !!! Tu puntuacion fue : " + this.miNivel.obtenerPuntuacion() ,
-			    "¡ Ganaste !",
-			    JOptionPane.PLAIN_MESSAGE);
-		
-	}
 	
 	private class PanelImagen extends javax.swing.JPanel {
-		public PanelImagen(){
+		private boolean eleccion;
+		public PanelImagen(boolean eleccion){
 			this.setSize(1024,480);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.eleccion = eleccion;
 		}
 		@Override
 		public void paintComponent (Graphics g){
 		Dimension tamanio = getSize();
-		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imagenes/imagenPerdiste.png"));
+		ImageIcon imagenFondo;
+		if(eleccion){
+			imagenFondo = new ImageIcon(getClass().getResource("/Imagenes/imagenPerdiste.png"));
+		}
+		else{
+			imagenFondo = new ImageIcon(getClass().getResource("/Imagenes/pantallaGanar.png"));
+		}
 		g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, this);
 		setOpaque(false);
 		super.paintComponent(g);
