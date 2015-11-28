@@ -4,6 +4,7 @@ import Grafica.GUI;
 import Grafica.ManejadorGUI;
 import Personajes.*;
 
+import java.applet.AudioClip;
 import java.util.Random;
 
 import javax.swing.Icon;
@@ -283,7 +284,10 @@ public class Nivel {
 		this.explosionAuxiliar(bomba,2,"izquierda");
 		this.explosionAuxiliar(bomba,1,"arriba");
 		this.explosionAuxiliar(bomba,1,"abajo");
+		AudioClip explosion = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/explosion.wav"));
+		explosion.play();
 	}
+	
 	
 	/**
 	 * Método que incrementa la puntuacion del jugador

@@ -1,9 +1,12 @@
 package Logica;
 
+
+
 import javax.swing.ImageIcon;
 
 import Grafica.BombaGrafica;
 import Grafica.ComponenteGrafico;
+import Grafica.Sonido;
 import Personajes.Bomberman;
 
 /**
@@ -18,26 +21,23 @@ public class Bomba {
 	protected static int alcance = 1;
 	protected Bomberman miBomberman;
 	protected Posicion miPosicion;
-	
+	protected Sonido miSonido;
 	//Constructor
 	
 	public Bomba (Bomberman b) {
 		miBomberman = b;
 		miPosicion = new Posicion(miBomberman.obtenerPosicion().obtenerX(),miBomberman.obtenerPosicion().obtenerY());
-		
+		miSonido = new Sonido("explosion.wav",false);
 		int Px = this.miPosicion.obtenerX();
 		int Py = this.miPosicion.obtenerY();
 		//INICIALIZO LA PARTE GRAFICA
 		Graficos = new BombaGrafica(4,Px,Py);
 		
+		
 	}
 	
 	//Operaciones
 	
-	//ver
-	public void explotar (Posicion p, Bomberman b) {
-		
-	}
 	/**
 	 * Método que duplica el alcance de una bomba
 	 */
@@ -93,7 +93,9 @@ public class Bomba {
 		return devolver;
 	}
 	
-
+	public Sonido obtenerSonido(){
+		return miSonido;
+	}
 	
 
 }

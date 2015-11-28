@@ -1,4 +1,6 @@
 package Threads;
+import java.applet.AudioClip;
+
 import Logica.Bomba;
 import Logica.Celda;
 import Logica.Nivel;
@@ -32,11 +34,11 @@ public class ContadorBomba extends Thread {
 			try {
 				Thread.sleep(tiempo);
 				miNivel.explosion(miBomba);
-				miNivel.obtenerBomberman().aumentarCapacidadBombas();
 				Thread.sleep(500);
 				miNivel.restaurarPiso(miBomba);
+				miNivel.obtenerBomberman().aumentarCapacidadBombas();
 				celdaAux.setBomba(null);
-				this.interrupt ();
+				this.interrupt();
 			}catch (InterruptedException e) { 
 			}		
 		}

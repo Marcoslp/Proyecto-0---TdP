@@ -1,5 +1,6 @@
 package Grafica;
 
+import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 
 
 
@@ -74,6 +76,11 @@ public class GUI extends JFrame {
 			   			miNivel.obtenerBomberman().aumentarCapacidadBombas();
 			   			miNivel.obtenerBomberman().obtenerBomba().duplicarAlcance();
 			   		}
+			   		break;
+			   		case KeyEvent.VK_S:{
+			   			miNivel.obtenerBomberman().establecerModoDios(false);
+			   		}
+			   		break;
 			   }
 			}
 			
@@ -138,20 +145,27 @@ private void armarPanel(int x, int y, int z, int t, boolean eleccion){
 	salir.setIcon(iconsalir);
 	iniciar.setBounds(x, y, 123, 40);
   	salir.setBounds(z, t, 123, 40);
+  	
 }
 	
 	
 	public void cartelPerder() {
 		armarPanel(451,400,600,400,true);
+		miSonido = new Sonido("perder.wav",true);
+		miSonido.run();
+		
 	}
 
 	public void cartelGanar() {
 		armarPanel(451,80,451,130,false);
+		miSonido = new Sonido("ganar.wav",true);
+		miSonido.run();
 	}
 	
 	
 	private class Oyente implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			miSonido.parar();
 			GUI gui = new GUI();
 			setVisible(false);
 		}
@@ -159,6 +173,7 @@ private void armarPanel(int x, int y, int z, int t, boolean eleccion){
 
 	private class OyenteSalir implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			miSonido.parar();
 			setVisible(false);
 			System.exit(0);
 		}

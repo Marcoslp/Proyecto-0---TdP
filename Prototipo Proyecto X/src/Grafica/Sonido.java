@@ -33,11 +33,10 @@ public class Sonido extends Thread {
             else 
             {
             	sonido.start();
-            
+            	
             	// Espera mientras se esté reproduciendo.
             	while (sonido.isRunning())
             		Thread.sleep(100);
-            
             	// Se cierra el clip.
             	sonido.close();
             }
