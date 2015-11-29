@@ -519,17 +519,22 @@ public class Nivel {
 	
 	public synchronized void restaurarPiso(Bomba bomba) {
 		boolean cortar;
+		int posX = bomba.obtenerPosicion().obtenerX();
+		int posY = bomba.obtenerPosicion().obtenerY();
+		Celda celdaActual = this.obtenerCelda(posX,posY);
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
+		celdaActual.obtenerGraficos().establecerimagenActual(0);
+		if(celdaActual.obtenerEnemigos()!= null){
+			this.matarEnemigo(celdaActual.obtenerEnemigos(), celdaActual);
+		}
 		//CICLO QUE LIMPIA A LA DERECHA
 		cortar = false;
 		boolean perder = false;
 		
 		Icon explosionHorizontal = bomba.obtenerGraficos().obtenerIconoActual(2);
 		Icon explosionVertical = bomba.obtenerGraficos().obtenerIconoActual(1);
-		int posX = bomba.obtenerPosicion().obtenerX();
-		int posY = bomba.obtenerPosicion().obtenerY();
-		Celda celdaActual = this.obtenerCelda(posX,posY);
+				
 		if(celdaActual.obtenerBomberman()!=null){
 			if(!celdaActual.obtenerBomberman().obtenerModoDios()){
 				celdaActual.obtenerBomberman().morir();
