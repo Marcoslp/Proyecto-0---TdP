@@ -524,7 +524,12 @@ public class Nivel {
 		Celda celdaActual = this.obtenerCelda(posX,posY);
 		//QUITA EL LABEL CENTRAL
 		bomba.obtenerGraficos().obtenerImagenActual().setVisible(false);
+		
+		celdaActual.eliminarPared();
 		celdaActual.obtenerGraficos().establecerimagenActual(0);
+		if(celdaActual.obtenerPowerUp()!=null)
+			miManejador.visiblePowerUp(celdaActual.obtenerPowerUp());
+		
 		if(celdaActual.obtenerEnemigos()!= null){
 			this.matarEnemigo(celdaActual.obtenerEnemigos(), celdaActual);
 		}
