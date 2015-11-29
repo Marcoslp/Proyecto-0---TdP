@@ -50,7 +50,7 @@ public class Altair extends Enemigo {
 	public void moverse (){
 		Random r = new Random ();
 		int i = r.nextInt(4);
-		miNivel.moverEnemigo(this,i);
+		miNivel.moverEnemigo(this,1);
 	}
 	
 	
