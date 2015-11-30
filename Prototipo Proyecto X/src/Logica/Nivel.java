@@ -388,11 +388,15 @@ public class Nivel {
 				enemigosMuertos++;
 			}
 		}
-				
-		
+	
 		if(enemigosMuertos == this.misEnemigos.length){
 			enemigosMuertos = 0;
-			this.miManejador.cartelGanar();
+			try {
+				Thread.sleep(500);
+				this.miManejador.cartelGanar();
+			} catch (InterruptedException e1) {
+			}
+			
 		}
 	}
 	
