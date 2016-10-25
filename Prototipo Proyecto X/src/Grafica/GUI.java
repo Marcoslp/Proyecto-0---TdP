@@ -137,6 +137,8 @@ private void armarPanel(int x, int y, int z, int t, boolean eleccion){
 	salir.addActionListener(new OyenteSalir());
 	iniciar.setToolTipText("Inicia el juego");
 	salir.setToolTipText("Sale del juego");
+	iniciar.setVisible(true);
+	salir.setVisible(true);
 	panel.add(iniciar);
   	panel.add(salir);
   	Icon icon = new ImageIcon(getClass().getResource("/imagenes/nuevoJuego.png"));
@@ -145,7 +147,7 @@ private void armarPanel(int x, int y, int z, int t, boolean eleccion){
 	salir.setIcon(iconsalir);
 	iniciar.setBounds(x, y, 123, 40);
   	salir.setBounds(z, t, 123, 40);
-  	
+  	panel.repaint();
 }
 	
 	
